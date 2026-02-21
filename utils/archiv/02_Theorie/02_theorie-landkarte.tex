@@ -1,0 +1,44 @@
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+  node distance=10mm,
+  every node/.style={draw, rounded corners, align=center, inner sep=6pt},
+  macro/.style={minimum width=55mm},
+  meso/.style={minimum width=55mm},
+  micro/.style={minimum width=55mm},
+  arrow/.style={-Latex, thick}
+]
+
+% --- Levels ---
+\node[macro] (oe) {Organisationsentwicklung (OE)\\
+\footnotesize Geplanter organisationaler Eingriff};
+
+\node[macro, below=of oe] (st) {Sozio-technische Systemtheorie\\
+\footnotesize Integration von Technik, Arbeit und Mensch};
+
+\node[meso, below=of st] (ai) {Generative KI in Organisationen\\
+\footnotesize Human--AI Interaction\\
+Entscheidungsvorbereitung};
+
+\node[meso, below=of ai] (wd) {Arbeitsgestaltung / Work Design\\
+\footnotesize Wahrgenommene Unterstützungsqualität};
+
+\node[micro, below=of wd] (sdt) {Self-Determination Theory (SDT)\\
+\footnotesize Psychologische Grundbedürfnisse};
+
+\node[micro, below=of sdt] (comp) {Kompetenzerleben\\
+\footnotesize Wahrgenommene Wirksamkeit};
+
+% --- Arrows ---
+\draw[arrow] (oe) -- (st);
+\draw[arrow] (st) -- (ai);
+\draw[arrow] (ai) -- (wd);
+\draw[arrow] (wd) -- (sdt);
+\draw[arrow] (sdt) -- (comp);
+
+\end{tikzpicture}
+\caption{Theorie-Landkarte der Arbeit: Integration organisationsentwicklungs-, technologie- und motivationsbezogener Ansätze}
+\label{fig:theorie-landkarte}
+\end{figure}
+
+Abbildung \ref{fig:theorie-landkarte} veranschaulicht den theoretischen Bezugsrahmen der Arbeit und zeigt, wie unterschiedliche theoretische Perspektiven zu einem integrierten Erklärungsmodell zusammengeführt werden. Ausgangspunkt bildet die Organisationsentwicklung, in deren Verständnis der Einsatz generativer KI als geplanter organisationsweiter Eingriff in bestehende Arbeits- und Entscheidungsstrukturen eingeordnet wird. Die sozio-technische Systemtheorie verbindet diesen organisationsbezogenen Rahmen mit der Betrachtung technischer Artefakte und menschlichen Erlebens und legitimiert damit die gleichzeitige Berücksichtigung technologischer und psychologischer Aspekte. Auf dieser Grundlage wird generative KI als Bestandteil organisationaler Entscheidungsarbeit verstanden, deren Wirkung nicht allein durch technische Eigenschaften, sondern durch wahrnehmungsabhängige Veränderungen der Arbeitsgestaltung bestimmt ist. Die wahrgenommene Unterstützungsqualität fungiert hierbei als zentraler vermittelnder Mechanismus, über den KI-Nutzung motivational wirksam wird. Die Self-Determination Theory bildet den theoretischen Kern der Arbeit und erklärt, wie unterstützende Arbeitsbedingungen zur Befriedigung psychologischer Grundbedürfnisse beitragen können. Das Kompetenzerleben stellt schließlich das zentrale Outcome dar und operationalisiert den motivationalen Effekt generativer KI im Arbeitskontext des mittleren Managements.

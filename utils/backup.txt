@@ -1,0 +1,6 @@
+% suppressing page numbers
+\pagenumbering{gobble}
+\usepackage[ngerman]{babel}
+\usepackage{csquotes}
+\usepackage[style=apa,backend=biber,language=ngerman]{biblatex} % APA-Format und deutsche Sprache
+\addbibresource{92_abstract.bib}

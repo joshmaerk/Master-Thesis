@@ -1,0 +1,31 @@
+% \usepackage{tikz}
+% \usetikzlibrary{positioning, arrows.meta}
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+  node distance=18mm and 18mm,
+  box/.style={draw, rounded corners, align=center, inner sep=6pt, minimum width=55mm, minimum height=20mm},
+  ctrl/.style={draw, dashed, rounded corners, align=left, inner sep=6pt, minimum width=55mm},
+  arrow/.style={-Latex, line width=0.6pt}
+]
+
+\node[box] (use) {Nutzung generativer\\KI-Tools\\(Entscheidungsvorbereitung)};
+
+\node[box, right=of use] (comp) {Kompetenzerleben\\(SDT)};
+
+\node[box, below=of use] (qual) {Wahrgenommene\\Unterstützungsqualität\\der KI};
+
+\node[ctrl, below=of qual] (controls) {\textbf{Kontrollen:}\\
+KI-Erfahrung, Führungserfahrung,\\
+Hierarchieniveau};
+
+\draw[arrow] (use) -- node[above, pos=0.5] {H1 (+)} (comp);
+\draw[arrow] (use) -- node[left, pos=0.5] {H2a (+)} (qual);
+\draw[arrow] (qual) -- node[right, pos=0.5] {H2b (+)} (comp);
+
+
+\end{tikzpicture}
+\caption{Wirkmodell: KI-Nutzung, Unterstützungsqualität und Kompetenzerleben (SDT).}
+\label{fig:wirkmodell-schlank}
+\end{figure}

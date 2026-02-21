@@ -1,0 +1,225 @@
+
+
+
+%BASICS%
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[left=3.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{pdflscape}
+\usepackage{caption}
+\usepackage{footmisc}
+\usepackage{hyperref}
+\usepackage{etoolbox}
+\usepackage{csquotes}
+\usepackage{pdfpages}
+\DeclareUnicodeCharacter{202F}{\,} % narrow no-break space (e.g., "z. B.")
+
+% Tabelle
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{array}
+
+% Flowchart
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{tikz}
+\usetikzlibrary{arrows,arrows.meta,positioning}
+
+
+% Schriftart und Zeilenabstand
+%\renewcommand{\familydefault}{\sfdefault} % Schriftart (Arial-ähnlich)
+\setlength{\parindent}{0pt} % Kein Absatzeinzug
+\setlength{\parskip}{0.5em} % Abstand zwischen Absätzen
+\onehalfspacing % Zeilenabstand 1,5
+
+% Überschriftenformate anpassen: Gleiche Schriftgröße wie der Text
+\titleformat{\chapter}%[hang]
+  {\normalfont\bfseries\normalsize} % Normale Textgröße (normalsize) für Kapitelüberschrift
+  {\thechapter.} % Kapitelnummerierung mit Punkt
+  {1em} % Abstand zwischen Nummer und Titel
+  {}
+
+\titleformat{\section}
+  {\normalfont\bfseries\normalsize} % Normale Textgröße (normalsize) für Abschnittsüberschrift
+  {\thesection.} % Abschnittsnummerierung mit Punkt
+  {1em} % Abstand zwischen Nummer und Titel
+  {}
+
+\titleformat{\subsection}
+  {\normalfont\bfseries\normalsize} % Normale Textgröße (normalsize) für Unterabschnittsüberschrift
+  {\thesubsection.} % Unterabschnittsnummerierung mit Punkt
+  {1em} % Abstand zwischen Nummer und Titel
+  {}
+
+% Fußnotenformat
+\renewcommand{\footnotelayout}{\setstretch{1}} % Zeilenabstand in Fußnoten
+
+% Kopf-/Fußzeilen
+\pagestyle{fancy}
+\makeatletter
+\let\ps@plain\ps@fancy % Überschreibt den plain-Stil mit dem fancy-Stil
+\makeatother
+\fancyhf{} % Setzt Kopf- und Fußzeilen zurück
+\fancyfoot[R]{\thepage} % Seitennummer rechts unten
+\renewcommand{\headrulewidth}{0pt} % Entfernt die Linie in der Kopfzeile
+\renewcommand{\footrulewidth}{0pt} % Entfernt die Linie in der Fußzeile
+
+% Beschriftungsformat für Tabellen anpassen
+\captionsetup[table]{
+    labelformat=simple,
+    labelsep=colon, % Trennt "Tabelle Nr" und Titel mit einem Doppelpunkt
+    name=Tabelle % Festlegen des Präfixes für die Beschriftung
+}
+
+% Nummerierung der Tabellen ohne Abschnittsnummer
+\renewcommand{\thetable}{\arabic{table}} % Tabellen nur fortlaufend nummerieren
+
+% Beschriftungsformat für Abbildungen anpassen
+\captionsetup[figure]{
+    labelformat=simple,
+    labelsep=colon, % Trennt "Abbildung Nr" und Titel mit einem Doppelpunkt
+    name=Abbildung % Festlegen des Präfixes für die Beschriftung
+}
+
+% Nummerierung der Abbildungen ohne Abschnittsnummer
+\renewcommand{\thefigure}{\arabic{figure}} % Abbildungen nur fortlaufend nummerieren
+
+\usepackage{tocloft} % Für Anpassungen im Inhalts-, Abbildungs- und Tabellenverzeichnis
+
+
+% Anpassung der Verzeichnisüberschriften
+\renewcommand{\contentsname}{Inhaltsverzeichnis}
+\renewcommand{\listfigurename}{Abbildungsverzeichnis}
+\renewcommand{\listtablename}{Tabellenverzeichnis}
+\renewcommand{\bibname}{Literaturverzeichnis}
+
+\usepackage{tocloft} % Für Anpassungen der Verzeichnisüberschriften
+
+% Schriftgröße für Verzeichnisüberschriften auf 11pt setzen
+\renewcommand{\cfttoctitlefont}{\normalfont\normalsize\bfseries} % Inhaltsverzeichnis
+\renewcommand{\cftloftitlefont}{\normalfont\normalsize\bfseries} % Abbildungsverzeichnis
+\renewcommand{\cftlottitlefont}{\normalfont\normalsize\bfseries} % Tabellenverzeichnis
+
+% Einheitliches Layout für alle Seiten
+\fancyhf{} % Setzt Kopf- und Fußzeilen zurück
+\fancyfoot[R]{\thepage} % Seitennummer rechts unten
+\renewcommand{\headrulewidth}{0pt} % Entfernt die Linie in der Kopfzeile
+\renewcommand{\footrulewidth}{0pt} % Entfernt die Linie in der Fußzeile
+
+% Kapitelüberschrift: Gleicher Abstand nach unten wie bei Abschnittsüberschriften
+\titlespacing{\chapter}{0pt}{0.5cm}{0.5cm} % Abstand oben und unten 0.5cm
+
+% Abschnittsüberschrift: Gleicher Abstand wie Kapitelüberschrift
+\titlespacing{\section}{0pt}{0.5cm}{0.5cm}
+
+% Unterabschnittsüberschrift: Optional anpassen, falls nötig
+\titlespacing{\subsection}{0pt}{0.5cm}{0.5cm}
+
+\usepackage[style=apa,backend=biber,language=ngerman]{biblatex} % APA-Format und deutsche Sprache
+\usepackage[ngerman]{babel}
+\addbibresource{B_Literatur/literatur.bib} % Pfad zur Literaturdatenbank
+\DefineBibliographyStrings{ngerman}{%
+    bibliography = {Literaturverzeichnis}, % Überschrift ändern
+}
+
+
+\usepackage[en-GB]{datetime2} % or ngerman
+\usepackage{draftwatermark}
+
+\SetWatermarkText{DRAFT\\\DTMtoday\\\DTMcurrenttime}
+\SetWatermarkScale{0.4}
+\SetWatermarkLightness{0.95}
+%'''''%
+
+
+\input{A_Template/00_basics}
+\input{variables} % Lädt die Variablen aus der Datei variables.tex
+
+\begin{document}
+
+% Sperrvermerk
+% \input{A_Template/02_sperrvermerk}
+% \thispagestyle{empty}
+
+% Deckblatt
+\begin{titlepage}
+    \raggedright % Flattersatz nur für das Deckblatt
+    \input{A_Template/01_deckblatt} % Einbindung der ausgelagerten Datei
+\end{titlepage}
+\thispagestyle{empty}
+
+% Einfügen der Eidesstattlichen Erklärung
+% \input{A_Template/03_eidesstattliche_erklaerung}
+% \thispagestyle{empty}
+
+% Einfügen der Kurzfassung/Abstract
+%\chapter*{Abstract}
+%\input{A_Template/04_abstract}
+%\thispagestyle{empty}
+%\newpage
+
+
+\newpage
+\thispagestyle{empty}
+\cleardoublepage
+
+% Inhaltsverzeichnis mit Seitennummerierung starten
+\pagenumbering{Roman} % Römische Zahlen starten
+\setcounter{page}{1}  % Startet die Nummerierung bei 1
+\tableofcontents
+\newpage
+
+% Abbildungsverzeichnis
+ \listoffigures
+ \addcontentsline{toc}{chapter}{\listfigurename} % Zum Inhaltsverzeichnis hinzufügen
+ \newpage
+
+% Tabellenverzeichnis
+ \listoftables
+ \addcontentsline{toc}{chapter}{\listtablename} % Zum Inhaltsverzeichnis hinzufügen
+ \newpage
+
+% Abkürzungsverzeichnis
+ \chapter*{Abkürzungsverzeichnis}
+% \addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+  \input{A_Template/06_abkuerzungsverzeichnis}
+
+% Arabische Seitennummerierung für den Hauptteil
+\pagenumbering{arabic}
+\setcounter{page}{1} % Startet die arabische Nummerierung bei 1
+
+%######### KAPITEL EINFÜGEN ##############
+\input{C_Inhalt/01_introduction}
+\input{C_Inhalt/02_theoretischerrahmen}
+\input{C_Inhalt/03_methodik}
+%\input{C_Inhalt/04_Ergebnisse}
+%\input{C_Inhalt/05_diskussion}
+%\input{C_Inhalt/06_fazit}
+\input{C_Inhalt/00_gliederung}
+
+%###### KAPITEL EINFÜGEN ENDE ############
+
+% Erklärung zu generativer KI
+% \chapter*{Erklärung zu generativer KI und KI-gestützten Technologien}
+% \addcontentsline{toc}{chapter}{Erklärung zu generativer KI und KI-gestützten Technologien}
+% \input{A_Template/99_author_contribution} % Einbindung der ausgelagerten Datei
+
+% Literaturverzeichnis
+%\addcontentsline{toc}{chapter}{\bibname}
+%\nocite{*} % alle Einträge aus der .bib-Datei ins Literaturverzeichnis aufnehmen
+\printbibliography[heading=bibintoc]
+
+% Anhang
+\appendix
+%\chapter{Interviewleitfaden}
+\input{C_Inhalt/Anhang/A1_Interviewleitfaden}
+\chapter{Einwilligungserklärung und Informationsblatt}
+\chapter{Kategoriensystem}
+%\input{C_Inhalt/07_anhang}
+
+\end{document}

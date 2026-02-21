@@ -1,0 +1,112 @@
+2.1 Organisationsentwicklung und digitale Transformation
+
+Ziel des Abschnitts:
+OE als Rahmenfeld, KI als organisationsentwicklungsrelevanter Eingriff (nicht nur Technologie).
+
+🔑 Pflichtliteratur
+	•	Cummings, T. G., & Worley, C. G. (2015). Organization Development and Change.
+→ Standardwerk zur OE-Logik (Intervention, Veränderung, Systemperspektive).
+	•	Burke, W. W. (2018). Organization Change: Theory and Practice.
+→ Verknüpft individuelle, strukturelle und kulturelle Veränderung.
+
+➕ Ergänzend (optional)
+	•	Schein, E. H. (2017). Organizational Culture and Leadership.
+→ Wichtig, wenn du Wahrnehmung, Sinnzuschreibung und Führung betonst.
+	•	Kamarova et al. (2025)
+→ Sehr gut für die Verbindung von psychologischen Mechanismen und organisationalem Wandel.
+
+⸻
+
+2.2 Generative KI in organisationalen Entscheidungsprozessen
+
+Ziel des Abschnitts:
+Begründung der UV: KI-Nutzung als sozio-technisches Phänomen in Entscheidungsarbeit.
+
+🔑 Pflichtliteratur
+	•	Bankins et al. (2024)
+→ Zentrale Übersichtsarbeit zu KI in Organisationen (Multilevel, OB-fokussiert).
+	•	Quaquebeke & Gerpott (2023)
+→ Digitale/AI Leadership, Rolle von Führung bei KI-Integration.
+
+➕ Ergänzend (optional)
+	•	Kadolkar et al. (2025)
+→ Algorithmic Management (wichtig zur Abgrenzung: Unterstützung vs. Kontrolle).
+	•	Smith et al. (2025)
+→ Human–AI Teams, Wahrnehmung & Signaleffekte.
+	•	Klonek & Parker (2025)
+→ Kritische Perspektive (Stress, Kontrolle), gut für Diskussion.
+
+⸻
+
+2.3 Self-Determination Theory im Arbeitskontext (Theoriekern)
+
+Ziel des Abschnitts:
+Theoretische Fundierung der AV (Kompetenzerleben).
+
+🔑 Pflichtliteratur
+	•	Deci & Ryan (2000)
+→ Grundlagentext: Bedürfnisse, Motivation, psychologische Mechanismen.
+	•	Deci, Olafsen & Ryan (2017)
+→ SDT im Arbeits- und Organisationskontext (State of the Science).
+	•	Van den Broeck et al. (2016)
+→ Review der psychologischen Grundbedürfnisse bei der Arbeit.
+
+➕ Ergänzend (optional)
+	•	Gagné & Deci (2005)
+→ SDT und Arbeitsmotivation.
+	•	Laguerre & Barnes-Farrell (2025)
+→ HR-Praktiken und SDT (guter Praxisbezug).
+
+⸻
+
+2.4 Kompetenzerleben im Arbeits- und Führungskontext
+
+Ziel des Abschnitts:
+Begriffliche Schärfung der AV, Abgrenzung zu ähnlichen Konstrukten.
+
+🔑 Pflichtliteratur
+	•	Van den Broeck et al. (2010)
+→ Validierung der Work-related Basic Need Satisfaction Scale (Kompetenz!).
+	•	Spreitzer (1995)
+→ Psychological Empowerment (Dimension Kompetenz).
+	•	Gagné et al. (2015)
+→ Multidimensional Work Motivation Scale (methodischer Anker).
+
+➕ Ergänzend (optional)
+	•	Srivastava et al. (2006)
+→ Empowering Leadership, Wirksamkeit, Wissensteilung.
+	•	Ma et al. (2020)
+→ Authentizität, Kompetenz, Leadership.
+
+⸻
+
+2.5 Wahrgenommene Unterstützungsqualität als vermittelnder Mechanismus
+
+Ziel des Abschnitts:
+Theoretische Begründung der Mediation (H2).
+
+🔑 Pflichtliteratur
+	•	Knight & Parker (2021)
+→ Job Design, Interventionen, Wirkmechanismen.
+	•	Hong & Gajendran (2018)
+→ Expertise-Nutzung, Unterstützung in Wissensarbeit.
+	•	Gagné et al. (2019)
+→ Arbeitsgestaltung, Motivation, Wissensverhalten.
+
+➕ Ergänzend (optional)
+	•	Lagios et al. (2022)
+→ Need thwarting vs. support (negativer Kontrast).
+	•	Karanika-Murray & Biron (2020)
+→ Adaptives Verhalten, Ressourcensicht (gut für Diskussion).
+
+⸻
+
+2.6 Einordnung der Kontrollvariablen
+
+Ziel des Abschnitts:
+Methodische Absicherung (kein Theoriekapitel!).
+
+🔑 Kurzanker (1–2 Zitate reichen)
+	•	Bankins et al. (2024) → KI-Erfahrung als Einflussfaktor.
+	•	Van den Broeck et al. (2016) → individuelle Unterschiede im Kompetenzerleben.
+	•	Srivastava et al. (2006) → Führungserfahrung & Wirksamkeit.

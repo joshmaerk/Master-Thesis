@@ -1,0 +1,137 @@
+% Preamble (falls noch nicht vorhanden)
+% \usepackage{tikz}
+% \usetikzlibrary{positioning, arrows.meta, fit, shapes.geometric}
+
+% ------------------------------------------------------------
+% FIGURE 1: Vertikale Theorie-Landkarte (OB -> SDT -> Kompetenz)
+% ------------------------------------------------------------
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+  font=\small,
+  node distance=8mm and 14mm,
+  box/.style={draw, rounded corners, align=center, inner sep=6pt, minimum width=60mm},
+  sub/.style={draw, rounded corners, align=left, inner sep=6pt, minimum width=70mm},
+  note/.style={draw, dashed, rounded corners, align=left, inner sep=6pt, minimum width=70mm},
+  arrow/.style={-Latex, line width=0.6pt}
+]
+
+% Main vertical spine
+\node[box] (ob) {Organizational Behavior (OB)\\\emph{Forschungsfeld: Verhalten in Organisationen}};
+\node[box, below=of ob] (mot) {Motivation im OB\\\emph{Erklärungen: Warum handeln Menschen engagiert?}};
+\node[box, below=of mot] (bridges) {Brückenebene\\Work/Job Design \& Empowerment\\\emph{Arbeitsmerkmale $\rightarrow$ Erleben}};
+\node[box, below=of bridges] (sdt) {Self-Determination Theory (SDT)\\\emph{Bedürfnisse $\rightarrow$ Motivation \& Wohlbefinden}};
+\node[box, below=of sdt] (comp) {Kompetenzerleben (AV)\\\emph{Wirksamkeit \& Fähigkeitsgefühl bei Arbeit/Entscheidung}};
+
+\draw[arrow] (ob) -- (mot);
+\draw[arrow] (mot) -- (bridges);
+\draw[arrow] (bridges) -- (sdt);
+\draw[arrow] (sdt) -- (comp);
+
+% Side theories near Motivation
+\node[sub, right=of mot, xshift=10mm] (altmot) {\textbf{Alternative Motivationstheorien (relevant, aber nicht Kern)}\\
+-- Expectancy / Valence-Ansätze\\
+-- Goal Setting\\
+-- Agency / Control-Logiken\\
+-- JD-R (Ressourcen vs. Belastung)};
+
+\draw[arrow] (altmot.west) -- ++(-8mm,0) |- (mot.east);
+
+% Bridges details
+\node[sub, right=of bridges, xshift=10mm] (bridge_detail) {\textbf{Brücken in Richtung SDT}\\
+-- Job Characteristics / Work Design\\
+-- Feedback, Autonomie, Lerngelegenheiten\\
+-- Psychological Empowerment (Dimension Kompetenz)};
+
+\draw[arrow] (bridge_detail.west) -- ++(-8mm,0) |- (bridges.east);
+
+% SDT details
+\node[sub, right=of sdt, xshift=10mm] (sdt_detail) {\textbf{SDT-Mechanik (Mikro)}\\
+-- Autonomie\\
+-- Kompetenz\\
+-- soziale Eingebundenheit\\
+\emph{Bedürfnisbefriedigung vs. Need thwarting}};
+
+\draw[arrow] (sdt_detail.west) -- ++(-8mm,0) |- (sdt.east);
+
+% AI as overlay context (connects to bridges/sdt)
+\node[note, left=of bridges, xshift=-10mm] (ai_ctx) {\textbf{Technologiepfad (OB neu)}\\
+Algorithmische Systeme / KI verändern\\
+Arbeitsgestaltung und Entscheidungsarbeit.\\
+Wirkungen sind \emph{wahrnehmungsabhängig}:\\
+\emph{Support vs. Control}.};
+
+\draw[arrow] (ai_ctx.east) -- ++(8mm,0) |- (bridges.west);
+\draw[arrow] (ai_ctx.east) -- ++(8mm,0) |- (sdt.west);
+
+\end{tikzpicture}
+\caption{Vertikale Theorie-Landkarte: Vom Feld Organizational Behavior zur SDT und dem Kompetenzerleben.}
+\label{fig:ob_sdt_vertical_map}
+\end{figure}
+
+
+% ------------------------------------------------------------
+% FIGURE 2: "Spielwiesen" von KI im OB + Eingrenzung auf generative, chatbasierte Augmentierung
+% ------------------------------------------------------------
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+  font=\small,
+  node distance=8mm and 10mm,
+  domainbox/.style={draw, rounded corners, align=left, inner sep=6pt, minimum width=70mm},
+  hi/.style={draw, rounded corners, very thick, align=left, inner sep=6pt, minimum width=70mm},
+  micro/.style={draw, rounded corners, align=left, inner sep=6pt, minimum width=70mm},
+  arrow/.style={-Latex, line width=0.6pt}
+]
+
+% AI playground domains (left column)
+\node[domainbox] (am) {\textbf{Algorithmic Management}\\
+Monitoring, Scheduling, Evaluation\\
+\emph{typisch: Steuerung/ Kontrolle}};
+\node[domainbox, below=of am] (hr) {\textbf{Algorithmic HR / People Analytics}\\
+Scoring, Screening, Feedback-Systeme\\
+\emph{Risiko: Kontrollattribution}};
+\node[domainbox, below=of hr] (teams) {\textbf{Human--AI Teams}\\
+Koordination, Vertrauen, Rollen\\
+\emph{Signaleffekte, Reliance}};
+\node[domainbox, below=of teams] (decision) {\textbf{AI in Entscheidungen}\\
+Empfehlungen, Prognosen, Analytik\\
+\emph{Accountability, Transparency}};
+
+% Focus area (right column): Generative AI as augmented chat-based support
+\node[hi, right=of teams, xshift=18mm] (genai) {\textbf{Fokus dieser Arbeit: Generative KI}\\
+\textbf{chatbasiert \& augmentierend}\\
+-- kognitive Unterstützung\\
+-- Strukturierung / Synthese\\
+-- Entscheidungsvorbereitung\\
+\emph{Mechanismus: wahrgenommene Unterstützungsqualität}};
+\node[micro, below=of genai] (boundary) {\textbf{Explizite Abgrenzung}\\
+Nicht im Fokus: verpflichtende\\
+algorithmische Steuerung (AM),\\
+automatisierte Leistungs-/Kontrollregime.};
+
+% Connections among AI playground
+\draw[arrow] (am) -- (hr);
+\draw[arrow] (hr) -- (teams);
+\draw[arrow] (teams) -- (decision);
+
+% Arrow to focus (why focus)
+\draw[arrow] (teams.east) -- ++(8mm,0) |- (genai.west);
+\draw[arrow] (decision.east) -- ++(8mm,0) |- (genai.west);
+
+% Boundary link
+\draw[arrow] (genai) -- (boundary);
+
+% Add a small mechanism box
+\node[micro, right=of decision, xshift=18mm, yshift=-12mm] (mech) {\textbf{OB-Mechanismen im KI-Kontext}\\
+-- Support vs. Control Attribution\\
+-- Vertrauen / Disclosure-Reaktionen\\
+-- Bedürfnisbefriedigung (SDT)};
+
+\draw[arrow] (mech.west) -- ++(-8mm,0) |- (decision.east);
+\draw[arrow] (mech.west) -- ++(-8mm,0) |- (genai.east);
+
+\end{tikzpicture}
+\caption{Spielwiesen von KI im OB-Kontext und Eingrenzung auf generative, chatbasierte Augmentierung.}
+\label{fig:ai_ob_playground}
+\end{figure}
