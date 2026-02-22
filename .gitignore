@@ -26,6 +26,10 @@ services/literature_review/scores/*.pdf
 .env
 services/.env
 
+# Python
+__pycache__/
+*.pyc
+
 # OS
 .DS_Store
 Thumbs.db
