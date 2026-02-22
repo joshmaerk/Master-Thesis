@@ -44,7 +44,7 @@ Master-Thesis/
 │   └── 99_author_contribution.tex         # AI usage declaration (commented out)
 │
 ├── B_Literatur/
-│   └── literatur.bib         # BibTeX bibliography (APA style, German)
+│   └── literatur.bib         # BibTeX bibliography — GENERATED via Zotero sync, do not edit manually
 │
 ├── C_Inhalt/                 # Main thesis content
 │   ├── 00_gliederung.tex     # Skeleton outline for chapters 4–6
@@ -69,6 +69,12 @@ Master-Thesis/
 │       ├── Interviewleitfaden_Masterarbeit_Maerker.pdf  # Interview guide PDF
 │       ├── ai_ob_playground.tex                # Experimental/scratch content
 │       └── ob_sdt_vertical_map.tex             # Conceptual map figure
+│
+├── services/                 # Helper scripts (run from repo root)
+│   ├── zotero_sync.py        # Fetches Zotero library → B_Literatur/literatur.bib
+│   ├── .env.example          # Template for ZOTERO_API_KEY / ZOTERO_USER_ID
+│   ├── requirements.txt      # pip dependency: requests
+│   └── README.md             # Setup and usage instructions
 │
 └── utils/                    # Working files and archives
     ├── outline.tex           # Detailed structural outline (earlier planning)
@@ -177,6 +183,15 @@ To update metadata, edit only `variables.tex`.
 - Language: `ngerman`
 - Citation command: `\parencite{key}` (parenthetical, APA-style)
 - Print: `\printbibliography[heading=bibintoc]` (appears in table of contents)
+
+> **IMPORTANT — do not edit `literatur.bib` manually.**
+> The file is the single source of truth exported from Zotero.
+> Any manual changes will be overwritten on the next sync.
+> To add or modify entries, use Zotero and then run:
+> ```bash
+> python3 services/zotero_sync.py
+> ```
+> See `services/README.md` for setup instructions.
 
 ### Heading Formatting
 
