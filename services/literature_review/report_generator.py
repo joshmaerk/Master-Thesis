@@ -7,7 +7,12 @@ Kein AI/GenAI — rein datengetrieben aus den Bewertungsergebnissen.
 from __future__ import annotations
 
 from datetime import datetime
+from typing import TYPE_CHECKING
+
 from journal_rater import AuthorInfo, JournalRating, NonJournalEntry
+
+if TYPE_CHECKING:
+    from citation_analyzer import CitationStats
 
 
 # ---------------------------------------------------------------------------
@@ -226,6 +231,138 @@ def _section_summary(
 
 
 # ---------------------------------------------------------------------------
+# Zitationsfrequenz-Abschnitt
+# ---------------------------------------------------------------------------
+
+def _section_citation_stats(
+    stats: CitationStats,
+    bib_entries: list[dict],
+    journals: dict[str, JournalRating] | None = None,
+) -> str:
+    """Abschnitt: Zitationsfrequenz-Analyse mit vollständiger Quellenliste."""
+
+    bib_map: dict[str, dict] = {e["ID"]: e for e in bib_entries}
+
+    # Nur Keys die tatsächlich in der .bib sind
+    cited_keys = {k for k in stats.counts if k in bib_map}
+    uncited_count = len(stats.uncited)
+    total_bib = len(bib_map)
+    total_citations = sum(stats.counts[k] for k in cited_keys)
+    avg = total_citations / len(cited_keys) if cited_keys else 0.0
+    pct_cited = len(cited_keys) / total_bib * 100 if total_bib else 0.0
+    pct_uncited = uncited_count / total_bib * 100 if total_bib else 0.0
+
+    # Reverse-Lookup: bib_key → JournalRating (für Qualitätsanzeige)
+    key_to_journal: dict[str, JournalRating] = {}
+    if journals:
+        for jr in journals.values():
+            for k in jr.bib_keys:
+                key_to_journal[k] = jr
+
+    unique_missing = len({key for key, _ in stats.missing})
+
+    lines: list[str] = [
+        "## 4. Zitationsfrequenz-Analyse",
+        "",
+        "### Zusammenfassung",
+        "",
+        "| Metrik | Wert |",
+        "|---|---|",
+        f"| Einträge in .bib | {total_bib} |",
+        f"| Davon zitiert | {len(cited_keys)} ({pct_cited:.0f}%) |",
+        f"| Nicht zitiert | {uncited_count} ({pct_uncited:.0f}%) |",
+        f"| Gesamtzitationen im Text | {total_citations} |",
+        f"| Ø Zitationen je Eintrag | {avg:.1f} |",
+    ]
+    if unique_missing:
+        lines.append(f"| Fehlerhafte Keys im Text | {unique_missing} ⚠️ |")
+    lines.append("")
+
+    # ── Vollständige Quellenliste ─────────────────────────────────────────────
+    lines += [
+        "### Vollständige Quellenliste (zitierte Einträge)",
+        "",
+        "Sortiert nach Zitationshäufigkeit — VHB/ABS nur für Zeitschriften-Artikel:",
+        "",
+        "| # | Zit. | BibTeX-Key | Autor (Jahr) | Typ | VHB | ABS |",
+        "|---|---|---|---|---|---|---|",
+    ]
+
+    cited_sorted = sorted(
+        [(k, stats.counts[k]) for k in cited_keys],
+        key=lambda x: x[1],
+        reverse=True,
+    )
+
+    for rank, (key, count) in enumerate(cited_sorted, start=1):
+        entry = bib_map.get(key, {})
+        author = _author_short(entry.get("author", "—"))
+        year = entry.get("year", "—")
+        typ = _etype_label(entry.get("ENTRYTYPE", "article"))
+
+        vhb, abs_r = "—", "—"
+        if key in key_to_journal:
+            jr = key_to_journal[key]
+            vhb = jr.vhb_rating or "—"
+            abs_r = str(jr.abs_rating) if jr.abs_rating else "—"
+
+        lines.append(
+            f"| {rank} | **{count}** | `{key}` "
+            f"| {_escape_md(author)} ({year}) "
+            f"| {typ} | {vhb} | {abs_r} |"
+        )
+
+    lines.append("")
+
+    # ── Nicht zitierte Einträge ───────────────────────────────────────────────
+    if stats.uncited:
+        lines += [
+            f"### Nicht zitierte Einträge ({len(stats.uncited)})",
+            "",
+            "| BibTeX-Key | Autor (Jahr) | Typ |",
+            "|---|---|---|",
+        ]
+        for key in stats.uncited:
+            entry = bib_map.get(key, {})
+            author = _author_short(entry.get("author", "—"))
+            year = entry.get("year", "—")
+            typ = _etype_label(entry.get("ENTRYTYPE", ""))
+            lines.append(
+                f"| `{key}` | {_escape_md(author)} ({year}) | {typ} |"
+            )
+        lines.append("")
+    else:
+        lines += [
+            "### Nicht zitierte Einträge",
+            "",
+            "_Alle Einträge werden im Text zitiert._ ✅",
+            "",
+        ]
+
+    # ── Fehlerhafte Keys ─────────────────────────────────────────────────────
+    if stats.missing:
+        lines += [
+            f"### ⚠️ Fehlerhafte Keys im Text ({unique_missing} eindeutige Keys)",
+            "",
+            "> Diese Keys kommen im Text vor, sind aber **nicht in der .bib-Datei**.",
+            "> Bitte `key_corrector.py` ausführen.",
+            "",
+            "| Key | Datei | Zeile |",
+            "|---|---|---|",
+        ]
+        seen_keys: set[str] = set()
+        for key, loc in sorted(stats.missing, key=lambda x: (x[0], str(x[1].file), x[1].line)):
+            marker = "" if key in seen_keys else ""
+            seen_keys.add(key)
+            lines.append(
+                f"| `{key}` {marker}| `{loc.file.name}` | {loc.line} |"
+            )
+        lines.append("")
+
+    return "\n".join(lines)
+
+
+# ---------------------------------------------------------------------------
 # Haupt-API
 # ---------------------------------------------------------------------------
 
@@ -234,6 +371,8 @@ def generate(
     non_journal: list[NonJournalEntry],
     authors: dict[str, AuthorInfo],
     bib_path: str = "B_Literatur/literatur.bib",
+    citation_stats: CitationStats | None = None,
+    bib_entries: list[dict] | None = None,
 ) -> str:
     """Erstellt den vollständigen Markdown-Report."""
     now = datetime.now().strftime("%Y-%m-%d %H:%M")
@@ -250,7 +389,7 @@ def generate(
 
 """
 
-    sections = [
+    sections: list[str] = [
         header,
         _section_summary(journals, non_journal, authors),
         "\n---\n",
@@ -259,6 +398,15 @@ def generate(
         _section_non_journal(non_journal),
         "\n---\n",
         _section_authors(authors),
+    ]
+
+    if citation_stats is not None and bib_entries is not None:
+        sections += [
+            "\n---\n",
+            _section_citation_stats(citation_stats, bib_entries, journals),
+        ]
+
+    sections += [
         "\n---\n",
         "*Dieser Report wird automatisch durch den Literature-Review-Service generiert.*  \n"
         "*Manuelle Änderungen werden beim nächsten Lauf überschrieben.*\n",

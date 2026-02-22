@@ -41,8 +41,10 @@ except ValueError:
 sys.path.insert(0, str(Path(__file__).parent))
 
 import apa7_checker
+import citation_analyzer
 import issue_manager
 import journal_rater
+import key_corrector
 import report_generator
 
 # ---------------------------------------------------------------------------
@@ -223,18 +225,31 @@ def parse_args() -> argparse.Namespace:
                         help="APA7-Konformitätsprüfung durchführen")
     parser.add_argument("--rate-journals", action="store_true",
                         help="Journal-Qualitätsbewertung und Report erstellen")
+    parser.add_argument("--check-citations", action="store_true",
+                        help="Zitationsfrequenz analysieren (zitiert/nicht zitiert)")
+    parser.add_argument("--fix-keys", action="store_true",
+                        help="Fehlerhafte BibTeX-Keys in .tex-Dateien finden und korrigieren")
+    parser.add_argument("--fix-threshold", type=float, default=0.92, metavar="F",
+                        help="Konfidenz-Schwelle für Auto-Korrektur, 0–1 (Standard: 0.92)")
+    parser.add_argument("--key-report-output", type=Path,
+                        default=Path(__file__).parent / "key_correction_report.md",
+                        metavar="DATEI",
+                        help="Ausgabepfad für den Key-Korrekturbericht")
     parser.add_argument("--skip-ai", action="store_true",
                         help="AI/GenAI-Schritte überspringen")
     parser.add_argument("--dry-run", action="store_true",
-                        help="Keine Issues erstellen, keinen Report schreiben")
+                        help="Keine Issues erstellen, keinen Report schreiben, keine Dateien ändern")
     parser.add_argument("--verbose", action="store_true", default=True,
                         help="Ausführliche Ausgabe")
 
     args = parser.parse_args()
 
     # Mindestens eine Aktion erforderlich
-    if not args.check_apa7 and not args.rate_journals:
-        parser.error("Mindestens eine Aktion erforderlich: --check-apa7 und/oder --rate-journals")
+    if not any([args.check_apa7, args.rate_journals, args.check_citations, args.fix_keys]):
+        parser.error(
+            "Mindestens eine Aktion erforderlich: "
+            "--check-apa7, --rate-journals, --check-citations, --fix-keys"
+        )
 
     return args
 
@@ -288,6 +303,23 @@ def main() -> None:
         else:
             print("Alle Einträge sind APA7-konform.")
 
+    # ── Zitationsfrequenz-Analyse ──────────────────────────────────────────
+    cit_stats = None
+    if args.check_citations or args.rate_journals:
+        print("\n=== Zitationsfrequenz-Analyse ===")
+        cit_stats = citation_analyzer.analyze(
+            bib_entries=entries,
+            tex_root=REPO_ROOT,
+            ignore_keys=ignore_keys,
+        )
+        cited_count = len([k for k in cit_stats.counts if k in {e["ID"] for e in entries}])
+        print(f"Zitiert: {cited_count} / {len(entries) - len(ignore_keys)} Einträge")
+        print(f"Nicht zitiert: {len(cit_stats.uncited)}")
+        print(f"Gesamtzitationen im Text: {sum(cit_stats.counts.values())}")
+        if cit_stats.missing:
+            unique_missing = len({k for k, _ in cit_stats.missing})
+            print(f"Fehlerhafte Keys im Text: {unique_missing} (run --fix-keys)")
+
     # ── Journal-Bewertung ─────────────────────────────────────────────────
     if args.rate_journals:
         print("\n=== Journal-Qualitätsbewertung ===")
@@ -308,6 +340,8 @@ def main() -> None:
             non_journal,
             authors,
             bib_path=str(args.bib.relative_to(REPO_ROOT)),
+            citation_stats=cit_stats,
+            bib_entries=entries,
         )
 
         if args.dry_run:
@@ -319,6 +353,38 @@ def main() -> None:
             args.report_output.parent.mkdir(parents=True, exist_ok=True)
             args.report_output.write_text(report_md, encoding="utf-8")
             print(f"Report gespeichert: {args.report_output.relative_to(REPO_ROOT)}")
+
+    # ── BibTeX-Key-Korrektur ───────────────────────────────────────────────
+    if args.fix_keys:
+        print("\n=== BibTeX-Key-Korrektur ===")
+        if args.dry_run:
+            print("[DRY-RUN] Keine Dateien werden geändert.")
+
+        correction_report = key_corrector.correct(
+            bib_entries=entries,
+            tex_root=REPO_ROOT,
+            auto_threshold=args.fix_threshold,
+            dry_run=args.dry_run,
+            verbose=args.verbose,
+        )
+
+        auto = len({c.wrong_key for c in correction_report.corrections})
+        unres = len(correction_report.unresolvable)
+        action = "würden korrigiert" if args.dry_run else "korrigiert"
+        print(f"{auto} eindeutige Keys {action}, {unres} nicht auflösbar")
+
+        report_md = key_corrector.format_report(
+            correction_report, REPO_ROOT, dry_run=args.dry_run
+        )
+
+        if args.dry_run:
+            print("\n--- Bericht-Vorschau (erste 20 Zeilen) ---")
+            for line in report_md.splitlines()[:20]:
+                print(line)
+        else:
+            args.key_report_output.parent.mkdir(parents=True, exist_ok=True)
+            args.key_report_output.write_text(report_md, encoding="utf-8")
+            print(f"Bericht gespeichert: {args.key_report_output.relative_to(REPO_ROOT)}")
 
     print("\nAnalyse abgeschlossen.")
 
