@@ -9,7 +9,7 @@ cd "${ROOT_DIR}"
 # Force a fresh build: remove stale auxiliary files (including .bbl)
 # so that biber always regenerates the bibliography from scratch.
 latexmk -C
-rm -f main.bbl main.bcf main.run.xml
+rm -f main.bbl main.bcf main.run.xml main.acn main.acr main.alg main.glo main.gls main.glg
 latexmk -pdf main.tex
 
 timestamp="$(date +"%Y%m%d-%H%M")"
