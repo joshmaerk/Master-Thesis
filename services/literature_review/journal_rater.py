@@ -1,12 +1,12 @@
 """
 Journal- und Autoren-Qualitätsbewertung.
 
-AI/GenAI wird NUR für:
-  1. Extraktion von Scores aus PDF-Bewertungstabellen
-  2. Bewertung von Zeitschriften, die nicht in den PDFs enthalten sind
-  3. Bewertung der Autorenqualität
+Priorität der Datenbasis (höchste zuerst):
+  1. journal_scores.json  — kuratierte Datenbank (VHB-JOURQUAL3, ABS, SJR)
+  2. User-PDFs in scores/ — per AI extrahiert (pdfplumber + Claude)
+  3. Claude AI            — für Journals die in keiner der o.g. Quellen sind
 
-Alle übrigen Schritte sind deterministisch.
+AI/GenAI wird NUR für Punkt 2 und 3 verwendet.
 """
 
 from __future__ import annotations
@@ -18,6 +18,9 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
 
+# Pfad zur kuratierten JSON-Datenbank (im selben Verzeichnis)
+_DB_PATH = Path(__file__).parent / "journal_scores.json"
+
 # ---------------------------------------------------------------------------
 # Datenmodelle
 # ---------------------------------------------------------------------------
@@ -25,7 +28,7 @@ from typing import Optional
 @dataclass
 class JournalRating:
     name: str                               # Exakter Name aus BibTeX
-    science_field: str = "Unbekannt"               # Fachrichtung
+    research_field: str = "Unbekannt"      # Fachrichtung
     sub_field: str = ""
     peer_reviewed: bool | None = None
     journal_type: str = "unbekannt"         # empirical|review|mixed|practitioner
@@ -120,6 +123,58 @@ def extract_authors(entries: list[dict], ignore_keys: set[str]) -> dict[str, Aut
         name: AuthorInfo(name=name, papers_in_bib=count)
         for name, count in sorted(counts.items(), key=lambda x: -x[1])
     }
+
+
+# ---------------------------------------------------------------------------
+# Kuratierte JSON-Datenbank (kein AI)
+# ---------------------------------------------------------------------------
+
+def load_scores_from_db(
+    journal_map: dict[str, JournalRating],
+    db_path: Path = _DB_PATH,
+) -> set[str]:
+    """
+    Liest journal_scores.json und befüllt bekannte JournalRating-Objekte.
+
+    Returns:
+        Set der Journal-Namen die in der DB gefunden wurden.
+    """
+    if not db_path.exists():
+        print(f"  Hinweis: {db_path.name} nicht gefunden — überspringe DB-Lookup.")
+        return set()
+
+    with open(db_path, encoding="utf-8") as f:
+        db: dict = json.load(f)
+
+    db.pop("_meta", None)   # Metadaten-Eintrag überspringen
+
+    found: set[str] = set()
+    for jname, rating in journal_map.items():
+        # 1. Exakter Treffer
+        data = db.get(jname)
+        # 2. Fallback: case-insensitiver Vergleich
+        if data is None:
+            jname_lower = jname.lower()
+            for db_key, db_val in db.items():
+                if db_key.lower() == jname_lower:
+                    data = db_val
+                    break
+        if data is None:
+            continue
+
+        rating.research_field = data.get("field", rating.research_field)
+        rating.sub_field = data.get("sub_field", "")
+        rating.peer_reviewed = data.get("peer_reviewed")
+        rating.journal_type = data.get("journal_type", rating.journal_type)
+        rating.impact_level = data.get("impact_level", rating.impact_level)
+        rating.vhb_rating = data.get("vhb_rating", "nicht bewertet")
+        rating.abs_rating = data.get("abs_rating", "nicht bewertet")
+        rating.notes = data.get("notes", "")
+        rating.ai_assessed = False   # aus kuratierter DB, kein AI
+        found.add(jname)
+
+    print(f"  Journal-DB: {len(found)}/{len(journal_map)} Journals erkannt")
+    return found
 
 
 # ---------------------------------------------------------------------------
@@ -347,11 +402,16 @@ def rate(
     print(f"Gefunden: {len(journal_map)} Zeitschriften, {len(non_journal)} Nicht-Journal-Einträge")
     print(f"Autoren gesamt: {len(author_map)}")
 
+    # ── Schritt 1: Kuratierte JSON-Datenbank (immer, kein AI) ────────────
+    db_found = load_scores_from_db(journal_map)
+    unknown_journals = [j for j in journal_map if j not in db_found]
+    print(f"  Nicht in DB: {len(unknown_journals)} Journals")
+
     if not use_ai:
-        print("AI-Bewertung deaktiviert (--skip-ai). Überspringe Journal- und Autoren-Bewertung.")
+        print("AI-Bewertung deaktiviert (--skip-ai). Überspringe PDF- und AI-Bewertung.")
         return journal_map, non_journal, author_map
 
-    # Anthropic-Client initialisieren
+    # ── Schritt 2: Anthropic-Client ───────────────────────────────────────
     key = api_key or os.environ.get("ANTHROPIC_API_KEY", "").strip()
     if not key:
         print("ANTHROPIC_API_KEY nicht gesetzt — überspringe AI-Bewertung.")
@@ -364,43 +424,50 @@ def rate(
         print("anthropic-Paket nicht installiert — überspringe AI-Bewertung.")
         return journal_map, non_journal, author_map
 
-    # 1. PDF-Scores laden
-    known_journal_names = set(journal_map.keys())
-    pdf_scores = load_scores_from_pdfs(scores_dir, known_journal_names, client)
-    print(f"Scores aus PDFs: {len(pdf_scores)} Zeitschriften")
+    # ── Schritt 3: PDF-Scores (AI) — nur für Journals ohne DB-Eintrag ────
+    if unknown_journals:
+        pdf_scores = load_scores_from_pdfs(
+            scores_dir, set(unknown_journals), client
+        )
+        print(f"  Scores aus PDFs: {len(pdf_scores)} Journals")
+        for jname, (score, source) in pdf_scores.items():
+            if jname in journal_map:
+                journal_map[jname].pdf_score = score
+                journal_map[jname].pdf_source = source
 
-    for jname, (score, source) in pdf_scores.items():
-        if jname in journal_map:
-            journal_map[jname].pdf_score = score
-            journal_map[jname].pdf_source = source
-
-    # 2. Zeitschriften via AI bewerten
-    print(f"Bewerte {len(journal_map)} Zeitschriften via AI …")
-    ai_journal_data = _assess_journals_via_ai(list(journal_map.keys()), client)
-
-    for jname, rating in journal_map.items():
-        data = ai_journal_data.get(jname, {})
-        if data:
-            rating.science_field = data.get("science_field", rating.science_field)
+    # ── Schritt 4: AI-Bewertung — nur für wirklich unbekannte Journals ───
+    # Noch unbekannt = nicht in DB UND kein vollständiger Eintrag durch PDF
+    still_unknown = [
+        j for j in unknown_journals
+        if not journal_map[j].research_field or journal_map[j].research_field == "Unbekannt"
+    ]
+    if still_unknown:
+        print(f"  Bewerte {len(still_unknown)} unbekannte Journals via AI …")
+        ai_journal_data = _assess_journals_via_ai(still_unknown, client)
+        for jname, data in ai_journal_data.items():
+            if jname not in journal_map or not data:
+                continue
+            rating = journal_map[jname]
+            rating.research_field = data.get("field", rating.research_field)
             rating.sub_field = data.get("sub_field", "")
             rating.peer_reviewed = data.get("peer_reviewed")
             rating.journal_type = data.get("journal_type", "unbekannt")
             rating.impact_level = data.get("impact_level", "unbekannt")
-            # Nur übernehmen wenn nicht aus PDF bekannt
-            if not rating.vhb_rating or rating.vhb_rating == "nicht bewertet":
+            if rating.vhb_rating == "nicht bewertet":
                 rating.vhb_rating = data.get("vhb_rating", "nicht bewertet")
-            if not rating.abs_rating or rating.abs_rating == "nicht bewertet":
+            if rating.abs_rating == "nicht bewertet":
                 rating.abs_rating = data.get("abs_rating", "nicht bewertet")
             rating.notes = data.get("notes", "")
             rating.ai_assessed = True
+    else:
+        print("  Alle Journals in kuratierter DB gefunden — kein AI-Journal-Lookup nötig.")
 
-    # 3. Autoren bewerten (nur die mit ≥ 2 Werken im Bib)
+    # ── Schritt 5: Autoren bewerten (AI) — nur ≥ 2 Werke im Bib ─────────
     notable_authors = [
         name for name, info in author_map.items() if info.papers_in_bib >= 2
     ]
-    print(f"Bewerte {len(notable_authors)} Autoren (≥2 Werke) via AI …")
-
     if notable_authors:
+        print(f"  Bewerte {len(notable_authors)} Autoren (≥2 Werke) via AI …")
         ai_author_data = _assess_authors_via_ai(notable_authors, client)
         for name, data in ai_author_data.items():
             if name in author_map:
