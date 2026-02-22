@@ -225,8 +225,8 @@ Spacing above and below all headings: 0.5cm (`\titlespacing`).
 Use `\parencite{}` for all in-text citations (APA parenthetical style):
 
 ```latex
-\parencite{deci_what_2000}
-\parencite{brynjolfsson_generative_2023, noyExperimentalEvidenceProductivity2023}
+\parencite{deciWhatWhyGoal2000}
+\parencite{brynjolfssonGenerativeAIWork2025, noyExperimentalEvidenceProductivity2023}
 ```
 
 ### Special Characters
