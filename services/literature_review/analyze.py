@@ -229,6 +229,8 @@ def parse_args() -> argparse.Namespace:
                         help="Zitationsfrequenz analysieren (zitiert/nicht zitiert)")
     parser.add_argument("--fix-keys", action="store_true",
                         help="Fehlerhafte BibTeX-Keys in .tex-Dateien finden und korrigieren")
+    parser.add_argument("--interactive", "-i", action="store_true",
+                        help="Interaktiver Modus für --fix-keys: Benutzer entscheidet für jeden Key")
     parser.add_argument("--fix-threshold", type=float, default=0.92, metavar="F",
                         help="Konfidenz-Schwelle für Auto-Korrektur, 0–1 (Standard: 0.92)")
     parser.add_argument("--key-report-output", type=Path,
@@ -371,17 +373,25 @@ def main() -> None:
 
     # ── BibTeX-Key-Korrektur ───────────────────────────────────────────────
     if args.fix_keys:
-        print("\n=== BibTeX-Key-Korrektur ===")
+        mode_label = "interaktiv" if args.interactive else "automatisch"
+        print(f"\n=== BibTeX-Key-Korrektur ({mode_label}) ===")
         if args.dry_run:
             print("[DRY-RUN] Keine Dateien werden geändert.")
 
-        correction_report = key_corrector.correct(
-            bib_entries=entries,
-            tex_root=REPO_ROOT,
-            auto_threshold=args.fix_threshold,
-            dry_run=args.dry_run,
-            verbose=args.verbose,
-        )
+        if args.interactive:
+            correction_report = key_corrector.interactive_correct(
+                bib_entries=entries,
+                tex_root=REPO_ROOT,
+                dry_run=args.dry_run,
+            )
+        else:
+            correction_report = key_corrector.correct(
+                bib_entries=entries,
+                tex_root=REPO_ROOT,
+                auto_threshold=args.fix_threshold,
+                dry_run=args.dry_run,
+                verbose=args.verbose,
+            )
 
         auto = len({c.wrong_key for c in correction_report.corrections})
         unres = len(correction_report.unresolvable)
