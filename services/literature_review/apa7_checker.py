@@ -114,16 +114,29 @@ def _field_present(fields: dict, name: str) -> bool:
 
 
 def _check_doi(doi: str) -> str | None:
-    """Gibt einen Fehlertext zurück wenn das DOI nicht APA7-konform formatiert ist."""
+    """Gibt einen Fehlertext zurück wenn das DOI nicht APA7-konform formatiert ist.
+
+    biblatex-Konvention: Das `doi`-Feld enthält nur den Bezeichner (10.xxxx/...),
+    *ohne* URL-Prefix. biblatex fügt https://doi.org/ beim Rendern selbst hinzu.
+    Erlaubt sind daher:
+      - 10.xxxx/...              (Bare DOI — Standardformat Zotero-Export)
+      - https://doi.org/10.xxxx  (Explicit URL — ebenfalls akzeptiert)
+    Fehler:
+      - doi:10.xxxx/...          (veraltetes Format)
+      - http://dx.doi.org/...    (veraltetes HTTP-Resolver-Format)
+    """
     doi = doi.strip()
     if _DOI_OLD_PREFIX.match(doi):
         bare = _DOI_OLD_PREFIX.sub("", doi).strip()
-        return f"DOI als `doi:` formatiert — muss `https://doi.org/{bare}` sein"
-    if _DOI_BARE_RE.match(doi):
-        return f"DOI ohne URL-Prefix — muss `https://doi.org/{doi}` sein"
-    if not doi.startswith("https://doi.org/"):
-        return f"Unbekanntes DOI-Format: `{doi[:60]}` — erwartet `https://doi.org/…`"
-    return None
+        return f"DOI als `doi:` formatiert — muss `{bare}` (bare) oder `https://doi.org/{bare}` sein"
+    if doi.startswith("http://dx.doi.org/") or doi.startswith("http://doi.org/"):
+        bare = doi.split("doi.org/", 1)[1]
+        return f"Veralteter HTTP-DOI-Resolver — muss `https://doi.org/{bare}` sein"
+    # Bare DOI (10.xxxx/...) und https://doi.org/... sind beide korrekt
+    if _DOI_BARE_RE.match(doi) or doi.startswith("https://doi.org/"):
+        return None
+    return f"Unbekanntes DOI-Format: `{doi[:60]}` — erwartet bare DOI (`10.xxxx/…`) oder `https://doi.org/…`"
+
 
 
 def check_entry(entry: dict) -> EntryResult:
