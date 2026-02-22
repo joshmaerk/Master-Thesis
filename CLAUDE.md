@@ -1,6 +1,6 @@
 # CLAUDE.md — Master-Thesis Repository Guide
 
-This file provides AI assistants with the context needed to work effectively in this repository.
+This file provides \gls{AI} assistants with the context needed to work effectively in this repository.
 
 ## Project Overview
 
@@ -14,11 +14,11 @@ This is a **LaTeX academic master's thesis** written in German, submitted to:
 ### Research Topic
 
 **Title**: *Zwischen Effizienzversprechen und Motivation: Generative KI in der Führungsarbeit*
-(Between Efficiency Promise and Motivation: Generative AI in Leadership Work)
+(Between Efficiency Promise and Motivation: Generative \gls{AI} in Leadership Work)
 
-**Research question**: How do middle managers in banks in the DACH region (Germany, Austria, Switzerland) experience the use of generative AI in decision-preparation processes motivationally — and under what conditions is this technology perceived as supporting or restricting autonomy, competence, and social relatedness?
+**Research question**: How do middle managers in banks in the \gls{DACH} region (Germany, Austria, Switzerland) experience the use of generative \gls{AI} in decision-preparation processes motivationally — and under what conditions is this technology perceived as supporting or restricting autonomy, competence, and social relatedness?
 
-**Theoretical framework**: Self-Determination Theory (SDT) with its three basic psychological needs:
+**Theoretical framework**: Self-Determination Theory (\gls{SDT}) with its three basic psychological needs:
 - Autonomy (Autonomie)
 - Competence / Perceived Competence (Kompetenzerleben)
 - Social Relatedness (Soziale Eingebundenheit)
@@ -41,7 +41,7 @@ Master-Thesis/
 │   ├── 03_eidesstattliche_erklaerung.tex  # Statutory declaration (commented out)
 │   ├── 04_abstract.tex       # Abstract (commented out)
 │   ├── 06_abkuerzungsverzeichnis.tex      # List of abbreviations
-│   └── 99_author_contribution.tex         # AI usage declaration (commented out)
+│   └── 99_author_contribution.tex         # \gls{AI} usage declaration (commented out)
 │
 ├── B_Literatur/
 │   └── literatur.bib         # BibTeX bibliography — GENERATED via Zotero sync, do not edit manually
@@ -51,7 +51,7 @@ Master-Thesis/
 │   ├── 01_introduction.tex   # Chapter 1: Introduction (COMPLETE)
 │   ├── 02_theoretischerrahmen.tex  # Chapter 2 wrapper (COMPLETE)
 │   ├── 02_Theorie/           # Chapter 2 subsections (COMPLETE)
-│   │   ├── 02 01 generative ki.tex   # Generative AI as sociotechnical system
+│   │   ├── 02 01 generative ki.tex   # Generative \gls{AI} as sociotechnical system
 │   │   ├── 02 02 fuehrungsarbeit.tex # Leadership work in middle management
 │   │   ├── 02 03 sdt.tex             # Self-Determination Theory
 │   │   └── 02 04 synthese.tex        # Theoretical synthesis
@@ -280,9 +280,9 @@ Fix bibliography: missing DOI for Deci & Ryan 2000
 
 Understanding the thesis content helps when assisting with writing or editing:
 
-- **Target group**: Middle managers (mittleres Management) in DACH-region banks
-- **Technology studied**: Generative AI tools (e.g., GPT-4, Claude, Gemini) used in decision-preparation workflows
-- **Theoretical lens**: Self-Determination Theory (SDT) — Deci & Ryan
+- **Target group**: Middle managers (mittleres Management) in \gls{DACH}-region banks
+- **Technology studied**: Generative \gls{AI} tools (e.g., GPT-4, Claude, Gemini) used in decision-preparation workflows
+- **Theoretical lens**: Self-Determination Theory (\gls{SDT}) — Deci & Ryan
   - Autonomy: perceived self-determination in decisions
   - Competence (Kompetenzerleben): perceived effectiveness and capability
   - Relatedness (Eingebundenheit): sense of connection and belonging
@@ -293,9 +293,9 @@ Understanding the thesis content helps when assisting with writing or editing:
 
 | Key | Reference |
 |---|---|
-| `deci_what_2000` | Deci & Ryan (2000) — SDT basics |
-| `deciSelfDeterminationTheoryWork2017` | Deci et al. (2017) — SDT at work |
-| `brynjolfsson_generative_2023` | Brynjolfsson et al. — GenAI productivity |
-| `bankinsMultilevelReviewArtificial2024` | Bankins et al. — multilevel AI review |
+| `deciWhatWhyGoal2000` | Deci & Ryan (2000) — \gls{SDT} basics |
+| `deciSelfDeterminationTheoryWork2017` | Deci et al. (2017) — \gls{SDT} at work |
+| `brynjolfssonGenerativeAIWork2025` | Brynjolfsson et al. — GenAI productivity |
+| `bankinsMultilevelReviewArtificial2024` | Bankins et al. — multilevel \gls{AI} review |
 | `kuckartz_qualitative_2018` | Kuckartz (2018) — qualitative content analysis |
 | `floydManagingStrategicConsensus1997` | Floyd & Wooldridge — middle management |

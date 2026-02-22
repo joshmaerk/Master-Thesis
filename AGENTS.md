@@ -1,6 +1,6 @@
 # AGENTS.md - Master-Thesis
 
-Diese Datei gibt AI-Coding-Agents die nötigen Projektregeln für dieses Repository.
+Diese Datei gibt \gls{AI}-Coding-Agents die nötigen Projektregeln für dieses Repository.
 
 ## Projektkontext
 
