@@ -1,0 +1,68 @@
+name: Build LaTeX PDF
+
+on:
+  workflow_dispatch:
+    inputs:
+      draft_mode:
+        description: 'Include DRAFT watermark'
+        required: false
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y --no-install-recommends \
+            texlive-latex-extra \
+            texlive-bibtex-extra \
+            biber \
+            texlive-lang-german \
+            texlive-fonts-recommended \
+            texlive-science \
+            latexmk
+
+      - name: Remove DRAFT watermark (if requested)
+        if: inputs.draft_mode == 'false'
+        run: |
+          sed -i \
+            -e 's/\\usepackage{draftwatermark}/% \\usepackage{draftwatermark}/' \
+            -e 's/\\SetWatermarkText/% \\SetWatermarkText/' \
+            -e 's/\\SetWatermarkScale/% \\SetWatermarkScale/' \
+            -e 's/\\SetWatermarkLightness/% \\SetWatermarkLightness/' \
+            main.tex
+
+      - name: Compile LaTeX (full build)
+        run: |
+          pdflatex -interaction=nonstopmode main.tex
+          biber main
+          pdflatex -interaction=nonstopmode main.tex
+          pdflatex -interaction=nonstopmode main.tex
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: thesis-pdf
+          path: main.pdf
+          retention-days: 30
+
+      - name: Upload build log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: |
+            main.log
+            main.blg
