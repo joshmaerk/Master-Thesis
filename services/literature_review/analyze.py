@@ -312,13 +312,28 @@ def main() -> None:
             tex_root=REPO_ROOT,
             ignore_keys=ignore_keys,
         )
-        cited_count = len([k for k in cit_stats.counts if k in {e["ID"] for e in entries}])
-        print(f"Zitiert: {cited_count} / {len(entries) - len(ignore_keys)} Einträge")
-        print(f"Nicht zitiert: {len(cit_stats.uncited)}")
-        print(f"Gesamtzitationen im Text: {sum(cit_stats.counts.values())}")
+        bib_key_set = {e["ID"] for e in entries}
+        cited_count = len([k for k in cit_stats.counts if k in bib_key_set])
+        total_active = len(entries) - len(ignore_keys)
+        print(f"Zitiert:          {cited_count} / {total_active}")
+        print(f"Nicht zitiert:    {len(cit_stats.uncited)} / {total_active}")
+        print(f"Gesamtzitationen: {sum(cit_stats.counts.values())}")
         if cit_stats.missing:
             unique_missing = len({k for k, _ in cit_stats.missing})
-            print(f"Fehlerhafte Keys im Text: {unique_missing} (run --fix-keys)")
+            print(f"Fehlerhafte Keys: {unique_missing} (run --fix-keys)")
+
+        # Detaillierte Liste der nicht zitierten Einträge
+        if cit_stats.uncited and args.check_citations:
+            bib_map = {e["ID"]: e for e in entries}
+            print(f"\nNicht zitierte Einträge ({len(cit_stats.uncited)}):")
+            for key in cit_stats.uncited:
+                entry = bib_map.get(key, {})
+                author_raw = entry.get("author", "")
+                # Ersten Autor kürzen: "Nachname, V." oder "Nachname"
+                first_author = author_raw.split(" and ")[0].split(",")[0].strip() if author_raw else "—"
+                year = entry.get("year", "—")
+                etype = entry.get("ENTRYTYPE", "?")
+                print(f"  {key:<45}  {first_author} ({year})  [{etype}]")
 
     # ── Journal-Bewertung ─────────────────────────────────────────────────
     if args.rate_journals:
