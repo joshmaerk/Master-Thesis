@@ -110,6 +110,11 @@
 \usepackage[style=apa,backend=biber,language=ngerman]{biblatex} % APA-Format und deutsche Sprache
 \usepackage[ngerman]{babel}
 \addbibresource{B_Literatur/literatur.bib} % Pfad zur Literaturdatenbank
+
+% Abkürzungsverzeichnis (muss nach hyperref und babel geladen werden)
+\usepackage[acronym, nomain, toc]{glossaries}
+\setacronymstyle{long-short}
+\makeglossaries
 \DefineBibliographyStrings{ngerman}{%
     bibliography = {Literaturverzeichnis}, % Überschrift ändern
 }

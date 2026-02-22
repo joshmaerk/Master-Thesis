@@ -1,5 +1,6 @@
 \input{A_Template/00_basics}
 \input{variables} % Lädt die Variablen aus der Datei variables.tex
+\input{A_Template/glossary} % Abkürzungsdefinitionen
 
 \begin{document}
 
@@ -45,10 +46,8 @@
  \addcontentsline{toc}{chapter}{\listtablename} % Zum Inhaltsverzeichnis hinzufügen
  \newpage
 
-% Abkürzungsverzeichnis
- \chapter*{Abkürzungsverzeichnis}
-% \addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
-  \input{A_Template/06_abkuerzungsverzeichnis}
+% Abkürzungsverzeichnis (automatisch aus glossary.tex generiert)
+\printglossary[type=\acronymtype, title=Abkürzungsverzeichnis]
 
 % Arabische Seitennummerierung für den Hauptteil
 \pagenumbering{arabic}
