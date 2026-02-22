@@ -25,7 +25,7 @@ from typing import Optional
 @dataclass
 class JournalRating:
     name: str                               # Exakter Name aus BibTeX
-    field: str = "Unbekannt"               # Fachrichtung
+    science_field: str = "Unbekannt"               # Fachrichtung
     sub_field: str = ""
     peer_reviewed: bool | None = None
     journal_type: str = "unbekannt"         # empirical|review|mixed|practitioner
@@ -240,7 +240,7 @@ Zeitschriften:
 Antworte mit einem JSON-Objekt, wobei der Key der exakte Zeitschriftenname ist:
 {{
   "Zeitschrift A": {{
-    "field": "Hauptfachrichtung (z.B. Organizational Psychology, Management, Information Systems)",
+    "science_field": "Hauptfachrichtung (z.B. Organizational Psychology, Management, Information Systems)",
     "sub_field": "Unterfachrichtung (z.B. Work Motivation, AI & Technology)",
     "peer_reviewed": true,
     "journal_type": "empirical",
@@ -381,7 +381,7 @@ def rate(
     for jname, rating in journal_map.items():
         data = ai_journal_data.get(jname, {})
         if data:
-            rating.field = data.get("field", rating.field)
+            rating.science_field = data.get("science_field", rating.science_field)
             rating.sub_field = data.get("sub_field", "")
             rating.peer_reviewed = data.get("peer_reviewed")
             rating.journal_type = data.get("journal_type", "unbekannt")
