@@ -295,7 +295,7 @@ Zeitschriften:
 Antworte mit einem JSON-Objekt, wobei der Key der exakte Zeitschriftenname ist:
 {{
   "Zeitschrift A": {{
-    "field": "Hauptfachrichtung (z.B. Organizational Psychology, Management, Information Systems)",
+    "science_field": "Hauptfachrichtung (z.B. Organizational Psychology, Management, Information Systems)",
     "sub_field": "Unterfachrichtung (z.B. Work Motivation, AI & Technology)",
     "peer_reviewed": true,
     "journal_type": "empirical",
