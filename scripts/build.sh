@@ -6,9 +6,11 @@ ROOT_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
 cd "${ROOT_DIR}"
 
-# Force a fresh build to avoid stale latexmk state.
+# Force a fresh build: remove stale auxiliary files (including .bbl)
+# so that biber always regenerates the bibliography from scratch.
 latexmk -C
-latexmk -gg -pdf main.tex
+rm -f main.bbl main.bcf main.run.xml
+latexmk -pdf main.tex
 
 timestamp="$(date +"%Y%m%d-%H%M")"
 output_dir="${ROOT_DIR}/builds"
