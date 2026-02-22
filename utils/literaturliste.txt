@@ -26,13 +26,13 @@ Begründung der UV: KI-Nutzung als sozio-technisches Phänomen in Entscheidungsa
 	•	Bankins et al. (2024)
 → Zentrale Übersichtsarbeit zu KI in Organisationen (Multilevel, OB-fokussiert).
 	•	Quaquebeke & Gerpott (2023)
-→ Digitale/AI Leadership, Rolle von Führung bei KI-Integration.
+→ Digitale/\gls{AI} Leadership, Rolle von Führung bei KI-Integration.
 
 ➕ Ergänzend (optional)
 	•	Kadolkar et al. (2025)
 → Algorithmic Management (wichtig zur Abgrenzung: Unterstützung vs. Kontrolle).
 	•	Smith et al. (2025)
-→ Human–AI Teams, Wahrnehmung & Signaleffekte.
+→ Human–\gls{AI} Teams, Wahrnehmung & Signaleffekte.
 	•	Klonek & Parker (2025)
 → Kritische Perspektive (Stress, Kontrolle), gut für Diskussion.
 
@@ -47,15 +47,15 @@ Theoretische Fundierung der AV (Kompetenzerleben).
 	•	Deci & Ryan (2000)
 → Grundlagentext: Bedürfnisse, Motivation, psychologische Mechanismen.
 	•	Deci, Olafsen & Ryan (2017)
-→ SDT im Arbeits- und Organisationskontext (State of the Science).
+→ \gls{SDT} im Arbeits- und Organisationskontext (State of the Science).
 	•	Van den Broeck et al. (2016)
 → Review der psychologischen Grundbedürfnisse bei der Arbeit.
 
 ➕ Ergänzend (optional)
 	•	Gagné & Deci (2005)
-→ SDT und Arbeitsmotivation.
+→ \gls{SDT} und Arbeitsmotivation.
 	•	Laguerre & Barnes-Farrell (2025)
-→ HR-Praktiken und SDT (guter Praxisbezug).
+→ HR-Praktiken und \gls{SDT} (guter Praxisbezug).
 
 ⸻
 

@@ -9,7 +9,7 @@ Beispiele:
     # Nur APA7-Prüfung
     python3 services/literature_review/analyze.py --check-apa7
 
-    # Journal-Bewertung ohne AI
+    # Journal-Bewertung ohne \gls{AI}
     python3 services/literature_review/analyze.py --rate-journals --skip-ai
 
     # Komplette Analyse
@@ -238,7 +238,7 @@ def parse_args() -> argparse.Namespace:
                         metavar="DATEI",
                         help="Ausgabepfad für den Key-Korrekturbericht")
     parser.add_argument("--skip-ai", action="store_true",
-                        help="AI/GenAI-Schritte überspringen")
+                        help="\gls{AI}/GenAI-Schritte überspringen")
     parser.add_argument("--dry-run", action="store_true",
                         help="Keine Issues erstellen, keinen Report schreiben, keine Dateien ändern")
     parser.add_argument("--verbose", action="store_true", default=True,
@@ -343,7 +343,7 @@ def main() -> None:
         use_ai = not args.skip_ai and bool(os.environ.get("ANTHROPIC_API_KEY"))
 
         if not use_ai and not args.skip_ai:
-            print("Hinweis: ANTHROPIC_API_KEY nicht gesetzt — AI-Bewertung wird übersprungen.")
+            print("Hinweis: ANTHROPIC_API_KEY nicht gesetzt — \gls{AI}-Bewertung wird übersprungen.")
 
         journals, non_journal, authors = journal_rater.rate(
             entries,
