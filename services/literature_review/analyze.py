@@ -51,23 +51,66 @@ DEFAULT_REPORT = Path(__file__).parent / "journal_report.md"
 # ---------------------------------------------------------------------------
 
 def load_bib(bib_path: Path) -> list[dict]:
-    try:
-        import bibtexparser
-        from bibtexparser.bparser import BibTexParser
-        from bibtexparser.customization import convert_to_unicode
-    except ImportError:
-        print("Fehler: bibtexparser ist nicht installiert.")
-        print("  pip install bibtexparser")
-        sys.exit(1)
+    """
+    Toleranter BibTeX-Parser ohne externe Abhängigkeiten.
+    Doppelte Felder: letzter Wert gewinnt (Zotero-Export kann doppelte DOI haben).
+    """
+    import re
 
-    parser = BibTexParser(common_strings=True)
-    parser.customization = convert_to_unicode
+    text = bib_path.read_text(encoding="utf-8", errors="replace")
 
-    with open(bib_path, encoding="utf-8") as f:
-        bib = bibtexparser.load(f, parser=parser)
+    # Alle @type{key, ...} Blöcke finden
+    entries = []
+    # Findet @entrytype{key, ...} inkl. geschachtelter {}
+    pos = 0
+    entry_re = re.compile(r"@(\w+)\s*\{", re.IGNORECASE)
+    field_re  = re.compile(
+        r"(\w+)\s*=\s*(?:"
+        r"\{((?:[^{}]|\{[^{}]*\})*)\}"   # {value} (ein Level geschachtelt)
+        r'|"([^"]*)"'                     # "value"
+        r"|(\w+)"                         # bare value
+        r")",
+        re.DOTALL,
+    )
 
-    print(f"BibTeX geladen: {len(bib.entries)} Einträge aus {bib_path.relative_to(REPO_ROOT)}")
-    return bib.entries
+    while pos < len(text):
+        m = entry_re.search(text, pos)
+        if not m:
+            break
+        etype = m.group(1).lower()
+        if etype in ("comment", "preamble", "string"):
+            pos = m.end()
+            continue
+
+        # Klammertiefe-Tracking um Eintragsende zu finden
+        depth = 1
+        i = m.end()
+        while i < len(text) and depth > 0:
+            if text[i] == "{":
+                depth += 1
+            elif text[i] == "}":
+                depth -= 1
+            i += 1
+        block = text[m.end():i - 1]
+        pos = i
+
+        # Schlüssel ist das erste Komma-getrennte Token
+        comma = block.find(",")
+        if comma == -1:
+            continue
+        key = block[:comma].strip()
+        body = block[comma + 1:]
+
+        row: dict = {"ID": key, "ENTRYTYPE": etype}
+        for fm in field_re.finditer(body):
+            fname = fm.group(1).lower()
+            fval  = (fm.group(2) or fm.group(3) or fm.group(4) or "").strip()
+            row[fname] = fval   # Duplikat: letzter Wert gewinnt
+
+        entries.append(row)
+
+    print(f"BibTeX geladen: {len(entries)} Einträge aus {bib_path.relative_to(REPO_ROOT)}")
+    return entries
 
 
 # ---------------------------------------------------------------------------
