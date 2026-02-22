@@ -1,0 +1,24 @@
+# .literatureignore — Einträge von der Literaturanalyse ausschließen
+#
+# Syntax (analog .gitignore):
+#   - Jede Zeile enthält einen BibTeX-Schlüssel oder ein Muster
+#   - Kommentare beginnen mit #
+#   - Leerzeilen werden ignoriert
+#   - Wildcards: * (beliebige Zeichen), ? (ein Zeichen)
+#
+# Beispiele:
+#   deci_what_2000            # exakter Schlüssel
+#   schein*                   # alle Schlüssel die mit "schein" beginnen
+#   *2006                     # alle Schlüssel die mit "2006" enden
+#
+# ──────────────────────────────────────────────────────────────────────────
+# Bekannte Einträge die bewusst ausgenommen werden (Methodologie, Grundlagen):
+# ──────────────────────────────────────────────────────────────────────────
+
+# Methodologische Grundlagenwerke (keine Journalartikel, breiter Scope)
+# kuckartz_qualitative_2018
+# witzelProblemcenteredInterview2000
+
+# Online-Ressourcen ohne klassische Begutachtung
+# noauthor_generative_nodate
+# YourJourneyGenAI
