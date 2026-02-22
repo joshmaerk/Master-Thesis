@@ -28,7 +28,7 @@ _DB_PATH = Path(__file__).parent / "journal_scores.json"
 @dataclass
 class JournalRating:
     name: str                               # Exakter Name aus BibTeX
-    field: str = "Unbekannt"               # Fachrichtung
+    research_field: str = "Unbekannt"      # Fachrichtung
     sub_field: str = ""
     peer_reviewed: bool | None = None
     journal_type: str = "unbekannt"         # empirical|review|mixed|practitioner
@@ -162,7 +162,7 @@ def load_scores_from_db(
         if data is None:
             continue
 
-        rating.field = data.get("field", rating.field)
+        rating.research_field = data.get("field", rating.research_field)
         rating.sub_field = data.get("sub_field", "")
         rating.peer_reviewed = data.get("peer_reviewed")
         rating.journal_type = data.get("journal_type", rating.journal_type)
@@ -439,7 +439,7 @@ def rate(
     # Noch unbekannt = nicht in DB UND kein vollständiger Eintrag durch PDF
     still_unknown = [
         j for j in unknown_journals
-        if not journal_map[j].field or journal_map[j].field == "Unbekannt"
+        if not journal_map[j].research_field or journal_map[j].research_field == "Unbekannt"
     ]
     if still_unknown:
         print(f"  Bewerte {len(still_unknown)} unbekannte Journals via AI …")
@@ -448,7 +448,7 @@ def rate(
             if jname not in journal_map or not data:
                 continue
             rating = journal_map[jname]
-            rating.field = data.get("field", rating.field)
+            rating.research_field = data.get("field", rating.research_field)
             rating.sub_field = data.get("sub_field", "")
             rating.peer_reviewed = data.get("peer_reviewed")
             rating.journal_type = data.get("journal_type", "unbekannt")

@@ -100,7 +100,7 @@ def _section_journals(journals: dict[str, JournalRating]) -> str:
         pdf_info = f"{j.pdf_score} *({j.pdf_source})*" if j.pdf_score else "—"
         lines.append(
             f"| {_escape_md(j.name)} "
-            f"| {_escape_md(j.field)} "
+            f"| {_escape_md(j.research_field)} "
             f"| {_type_label(j.journal_type)} "
             f"| {j.vhb_rating} "
             f"| {j.abs_rating} "
