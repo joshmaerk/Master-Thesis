@@ -29,3 +29,8 @@ services/.env
 # OS
 .DS_Store
 Thumbs.db
+
+# python virtual environment
+venv/
+*.pyc
+__pycache__/
