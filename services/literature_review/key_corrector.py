@@ -263,7 +263,8 @@ def correct(
                 top = candidates[0][0] if candidates else "—"
                 print(f"  ✘ {wrong_key!r} nicht korrigierbar (bester: {top!r})")
 
-    applied = _apply_decisions(decisions, wrong_keys, bib_key_set, tex_root, exclude_dirs, dry_run)
+    wrong_key_locs = {k: v[0] for k, v in wrong_keys.items()}
+    applied = _apply_decisions(decisions, wrong_key_locs, bib_key_set, tex_root, exclude_dirs, dry_run)
 
     # confidence aus decisions zurückrechnen
     conf_map = {
@@ -423,7 +424,8 @@ def interactive_correct(
             print("Abgebrochen. Keine Dateien geändert.")
             return CorrectionReport()
 
-    applied = _apply_decisions(decisions, wrong_keys, bib_key_set, tex_root, exclude_dirs, dry_run)
+    wrong_key_locs = {k: v[0] for k, v in wrong_keys.items()}
+    applied = _apply_decisions(decisions, wrong_key_locs, bib_key_set, tex_root, exclude_dirs, dry_run)
 
     report = CorrectionReport()
     report.corrections = applied
