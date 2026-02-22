@@ -1,0 +1,508 @@
+{
+  "_meta": {
+    "description": "Zeitschriften-Bewertungsdatenbank für Master-Thesis Literaturanalyse",
+    "sources": [
+      "VHB-JOURQUAL3 (Verband der Hochschullehrer für Betriebswirtschaft, 2015)",
+      "ABS Academic Journal Guide 2024 (Chartered ABS, UK)",
+      "Scimago Journal Rank (SJR) 2023"
+    ],
+    "vhb_scale": "A+ (führend international) > A (exzellent) > B (sehr gut) > C (gut) > D (gelistet)",
+    "abs_scale": "4* (Weltelite) > 4 (Top) > 3 (Hoch angesehen) > 2 (Anerkannt) > 1 (Emerging)",
+    "last_updated": "2026-02",
+    "note": "Ratings basieren auf öffentlich zugänglichen Ranking-Tabellen. Für Entscheidungen bitte Primärquelle prüfen."
+  },
+
+  "Academy of Management Journal": {
+    "field": "Management",
+    "sub_field": "Organizational Behavior, Strategic Management",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "high",
+    "vhb_rating": "A+",
+    "abs_rating": "4*",
+    "sjr_quartile": "Q1",
+    "notes": "Flagship-Journal der Academy of Management; gehört zu den weltweit einflussreichsten Management-Zeitschriften.",
+    "is_journal": true
+  },
+
+  "Annual Review of Organizational Psychology and Organizational Behavior": {
+    "field": "Organizational Psychology",
+    "sub_field": "Work Motivation, OB",
+    "peer_reviewed": true,
+    "journal_type": "review",
+    "impact_level": "high",
+    "vhb_rating": "nicht bewertet",
+    "abs_rating": "4",
+    "sjr_quartile": "Q1",
+    "notes": "Hochrangige Review-Zeitschrift (Erstausgabe 2014, daher nicht in VHB-JOURQUAL3 2015). Impact Factor ~11. Inhaltlich sehr relevant für SDT-Forschung.",
+    "is_journal": true
+  },
+
+  "British Journal of Management": {
+    "field": "Management",
+    "sub_field": "General Management",
+    "peer_reviewed": true,
+    "journal_type": "mixed",
+    "impact_level": "medium",
+    "vhb_rating": "B",
+    "abs_rating": "3",
+    "sjr_quartile": "Q1",
+    "notes": "Führende britische Management-Zeitschrift; breites methodisches Spektrum.",
+    "is_journal": true
+  },
+
+  "Computers in Human Behavior": {
+    "field": "Psychology / Technology",
+    "sub_field": "Human-Computer Interaction, Technology Acceptance",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "medium",
+    "vhb_rating": "C",
+    "abs_rating": "2",
+    "sjr_quartile": "Q1",
+    "notes": "Etabliertes Journal für Technologienutzungsverhalten; hoher Impact Factor (~9), aber VHB-Einstufung niedrig wegen interdisziplinärem Charakter.",
+    "is_journal": true
+  },
+
+  "European Journal of Work and Organizational Psychology": {
+    "field": "Work and Organizational Psychology",
+    "sub_field": "Work Motivation, SDT",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "medium",
+    "vhb_rating": "B",
+    "abs_rating": "3",
+    "sjr_quartile": "Q1",
+    "notes": "Zentrale europäische Zeitschrift für Arbeits- und Organisationspsychologie; direkt relevant für SDT-Forschung am Arbeitsplatz.",
+    "is_journal": true
+  },
+
+  "Forum Qualitative Sozialforschung / Forum: Qualitative Social Research": {
+    "field": "Social Research Methodology",
+    "sub_field": "Qualitative Methods",
+    "peer_reviewed": true,
+    "journal_type": "mixed",
+    "impact_level": "low",
+    "vhb_rating": "nicht bewertet",
+    "abs_rating": "nicht bewertet",
+    "sjr_quartile": "Q2",
+    "notes": "Open-Access-Zeitschrift für qualitative Forschungsmethoden (Berlin). Wichtig für methodologische Grundlagen qualitativer Studien; nicht in BWL-Rankings.",
+    "is_journal": true
+  },
+
+  "Harvard Business Review": {
+    "field": "Management",
+    "sub_field": "Leadership, Strategy",
+    "peer_reviewed": false,
+    "journal_type": "practitioner",
+    "impact_level": "high",
+    "vhb_rating": "B",
+    "abs_rating": "3",
+    "sjr_quartile": "Q1",
+    "notes": "Einflussreiches Practitioner-Journal; nicht peer-reviewed im akademischen Sinne. Hohe Reichweite und Sichtbarkeit in Führungspraxis.",
+    "is_journal": true
+  },
+
+  "Human Relations": {
+    "field": "Organizational Behavior",
+    "sub_field": "Work, Employment, Organizations",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "high",
+    "vhb_rating": "A",
+    "abs_rating": "4",
+    "sjr_quartile": "Q1",
+    "notes": "Interdisziplinäres Journal (Management, Soziologie, Psychologie) mit langer Tradition seit 1947.",
+    "is_journal": true
+  },
+
+  "Human Resource Management": {
+    "field": "Human Resource Management",
+    "sub_field": "Strategic HRM, Motivation",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "high",
+    "vhb_rating": "A",
+    "abs_rating": "4",
+    "sjr_quartile": "Q1",
+    "notes": "Führendes HRM-Journal (Wiley). Veröffentlicht empirische und konzeptionelle Arbeiten zu strategischem Personalmanagement.",
+    "is_journal": true
+  },
+
+  "Humanities and Social Sciences Communications": {
+    "field": "Social Sciences",
+    "sub_field": "Interdisciplinary",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "low",
+    "vhb_rating": "nicht bewertet",
+    "abs_rating": "nicht bewertet",
+    "sjr_quartile": "Q2",
+    "notes": "Open-Access-Journal der Nature/Springer-Gruppe. Breites sozialwissenschaftliches Spektrum; kein Spezialisierungsrating in BWL-Rankings.",
+    "is_journal": true
+  },
+
+  "IEEE Transactions on Engineering Management": {
+    "field": "Engineering Management",
+    "sub_field": "Technology Management, Innovation",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "medium",
+    "vhb_rating": "nicht bewertet",
+    "abs_rating": "2",
+    "sjr_quartile": "Q1",
+    "notes": "Technisch orientiertes Management-Journal (IEEE). Nicht in VHB-JOURQUAL, da primär Engineering-Fokus.",
+    "is_journal": true
+  },
+
+  "Information and Organization": {
+    "field": "Information Systems",
+    "sub_field": "IS & Organizing, Digital Transformation",
+    "peer_reviewed": true,
+    "journal_type": "mixed",
+    "impact_level": "medium",
+    "vhb_rating": "nicht bewertet",
+    "abs_rating": "3",
+    "sjr_quartile": "Q1",
+    "notes": "Fokus auf kritische und interpretative IS-Forschung. Relevant für Digitalisierungs- und KI-Themen.",
+    "is_journal": true
+  },
+
+  "International Journal of Hospitality Management": {
+    "field": "Hospitality Management",
+    "sub_field": "Service, Tourism",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "medium",
+    "vhb_rating": "C",
+    "abs_rating": "3",
+    "sjr_quartile": "Q1",
+    "notes": "Führendes Journal im Hospitality-Bereich; für diese Thesis Randdomäne.",
+    "is_journal": true
+  },
+
+  "Journal of Business and Psychology": {
+    "field": "Work and Organizational Psychology",
+    "sub_field": "Applied Psychology, OB",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "low",
+    "vhb_rating": "C",
+    "abs_rating": "2",
+    "sjr_quartile": "Q2",
+    "notes": "Angewandte Psychologie im Wirtschaftskontext; solide aber nicht erstrangig.",
+    "is_journal": true
+  },
+
+  "Journal of Leadership & Organizational Studies": {
+    "field": "Leadership",
+    "sub_field": "Organizational Leadership",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "low",
+    "vhb_rating": "D",
+    "abs_rating": "1",
+    "sjr_quartile": "Q2",
+    "notes": "Spezialisiertes Leadership-Journal; niedrige Einstufung in internationalen Rankings.",
+    "is_journal": true
+  },
+
+  "Journal of Management": {
+    "field": "Management",
+    "sub_field": "Organizational Behavior, Strategy, HRM",
+    "peer_reviewed": true,
+    "journal_type": "mixed",
+    "impact_level": "high",
+    "vhb_rating": "A+",
+    "abs_rating": "4*",
+    "sjr_quartile": "Q1",
+    "notes": "Herausgebendes Journal der Southern Management Association. Einer der wichtigsten Management-Journals weltweit.",
+    "is_journal": true
+  },
+
+  "Journal of Management Studies": {
+    "field": "Management",
+    "sub_field": "Organization Theory, Strategy",
+    "peer_reviewed": true,
+    "journal_type": "mixed",
+    "impact_level": "high",
+    "vhb_rating": "A",
+    "abs_rating": "4",
+    "sjr_quartile": "Q1",
+    "notes": "Renommiertes britisches Management-Journal mit breitem theoretischem Spektrum.",
+    "is_journal": true
+  },
+
+  "Journal of Management & Organization": {
+    "field": "Management",
+    "sub_field": "General Management",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "low",
+    "vhb_rating": "nicht bewertet",
+    "abs_rating": "1",
+    "sjr_quartile": "Q3",
+    "notes": "Australasisches Journal; niedrig geratet in internationalen Rankings.",
+    "is_journal": true
+  },
+
+  "Journal of Managerial Psychology": {
+    "field": "Management / Psychology",
+    "sub_field": "Leadership, Work Psychology",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "low",
+    "vhb_rating": "C",
+    "abs_rating": "2",
+    "sjr_quartile": "Q2",
+    "notes": "Emerald-Journal an der Schnittstelle Management und Psychologie.",
+    "is_journal": true
+  },
+
+  "Journal of Occupational and Organizational Psychology": {
+    "field": "Work and Organizational Psychology",
+    "sub_field": "OB, Work Motivation, SDT",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "medium",
+    "vhb_rating": "B",
+    "abs_rating": "3",
+    "sjr_quartile": "Q1",
+    "notes": "Offizielles Journal der British Psychological Society (Work & Organizational Division). Sehr relevant für SDT-Forschung.",
+    "is_journal": true
+  },
+
+  "Journal of Organizational Behavior": {
+    "field": "Organizational Behavior",
+    "sub_field": "Work Motivation, SDT, Leadership",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "high",
+    "vhb_rating": "A",
+    "abs_rating": "4",
+    "sjr_quartile": "Q1",
+    "notes": "Eines der führenden OB-Journals (Wiley). Zentral für SDT-Forschung am Arbeitsplatz.",
+    "is_journal": true
+  },
+
+  "Journal of Personnel Psychology": {
+    "field": "Work and Organizational Psychology",
+    "sub_field": "Personnel Assessment, Work Motivation",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "medium",
+    "vhb_rating": "B",
+    "abs_rating": "2",
+    "sjr_quartile": "Q2",
+    "notes": "Deutsches Journal (Hogrefe); gut geratet in VHB für deutschsprachigen Raum.",
+    "is_journal": true
+  },
+
+  "Journal of Service Research": {
+    "field": "Marketing / Service Management",
+    "sub_field": "Service Operations, Customer Experience",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "high",
+    "vhb_rating": "A",
+    "abs_rating": "4",
+    "sjr_quartile": "Q1",
+    "notes": "Führendes Service-Marketing-Journal; für diese Thesis Randdomäne.",
+    "is_journal": true
+  },
+
+  "Leadership & Organization Development Journal": {
+    "field": "Leadership",
+    "sub_field": "Organizational Development",
+    "peer_reviewed": true,
+    "journal_type": "mixed",
+    "impact_level": "low",
+    "vhb_rating": "D",
+    "abs_rating": "1",
+    "sjr_quartile": "Q3",
+    "notes": "Emerald-Journal; niedrig geratet, stärker praxisorientiert.",
+    "is_journal": true
+  },
+
+  "Nature Reviews Psychology": {
+    "field": "Psychology",
+    "sub_field": "Comprehensive Psychology",
+    "peer_reviewed": true,
+    "journal_type": "review",
+    "impact_level": "high",
+    "vhb_rating": "nicht bewertet",
+    "abs_rating": "nicht bewertet",
+    "sjr_quartile": "Q1",
+    "notes": "Neues Hochprestige-Review-Journal der Nature-Familie (Erstausgabe 2022); noch nicht in Rankings. Sehr hohe Qualitätsstandards, eingeladene Reviews.",
+    "is_journal": true
+  },
+
+  "Organizational Behavior and Human Performance": {
+    "field": "Organizational Behavior",
+    "sub_field": "Work Motivation, Performance",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "high",
+    "vhb_rating": "A",
+    "abs_rating": "4",
+    "sjr_quartile": "Q1",
+    "notes": "Historischer Name des heutigen 'Organizational Behavior and Human Decision Processes' (OBHDP). Eines der ältesten OB-Journals; klassische Studien zur Arbeitsmotivation.",
+    "is_journal": true
+  },
+
+  "Psychological Inquiry": {
+    "field": "Psychology",
+    "sub_field": "Theory, Meta-Science",
+    "peer_reviewed": true,
+    "journal_type": "review",
+    "impact_level": "medium",
+    "vhb_rating": "nicht bewertet",
+    "abs_rating": "2",
+    "sjr_quartile": "Q2",
+    "notes": "Journal für theoretische und methodische Grundlagen der Psychologie; Kommentar-Dialogformat.",
+    "is_journal": true
+  },
+
+  "Research Policy": {
+    "field": "Innovation / Technology Policy",
+    "sub_field": "R&D, Technology Management",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "high",
+    "vhb_rating": "A",
+    "abs_rating": "4",
+    "sjr_quartile": "Q1",
+    "notes": "Führendes Journal für Innovations- und Technologiepolitik. Relevant für GenAI-Themen.",
+    "is_journal": true
+  },
+
+  "Science": {
+    "field": "Multidisciplinary Science",
+    "sub_field": "All Fields",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "high",
+    "vhb_rating": "nicht bewertet",
+    "abs_rating": "nicht bewertet",
+    "sjr_quartile": "Q1",
+    "notes": "Eine der weltweit angesehensten Fachzeitschriften (AAAS). Nicht in BWL-Rankings, aber höchstes wissenschaftliches Ansehen. Impact Factor ~50.",
+    "is_journal": true
+  },
+
+  "Scientific Reports": {
+    "field": "Multidisciplinary Science",
+    "sub_field": "Natural & Social Sciences",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "medium",
+    "vhb_rating": "nicht bewertet",
+    "abs_rating": "nicht bewertet",
+    "sjr_quartile": "Q1",
+    "notes": "Open-Access-Journal der Nature-Gruppe; breites Spektrum, geringe Ablehungsquote (~50%). Nicht in BWL-Rankings.",
+    "is_journal": true
+  },
+
+  "SSRN Electronic Journal": {
+    "field": "Preprint / Working Paper",
+    "sub_field": "Social Sciences",
+    "peer_reviewed": false,
+    "journal_type": "practitioner",
+    "impact_level": "low",
+    "vhb_rating": "nicht bewertet",
+    "abs_rating": "nicht bewertet",
+    "sjr_quartile": null,
+    "notes": "SSRN ist ein Preprint-Server (Elsevier), kein Peer-reviewed Journal. Einträge sollten nach Möglichkeit durch publizierte Versionen ersetzt werden.",
+    "is_journal": false
+  },
+
+  "Strategic Management Journal": {
+    "field": "Strategic Management",
+    "sub_field": "Corporate Strategy, Competitive Advantage",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "high",
+    "vhb_rating": "A+",
+    "abs_rating": "4*",
+    "sjr_quartile": "Q1",
+    "notes": "Offizielles Journal der Strategic Management Society; eines der einflussreichsten Strategy-Journals.",
+    "is_journal": true
+  },
+
+  "The International Review of Research in Open and Distributed Learning": {
+    "field": "Education Technology",
+    "sub_field": "Distance Learning, E-Learning",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "low",
+    "vhb_rating": "nicht bewertet",
+    "abs_rating": "nicht bewertet",
+    "sjr_quartile": "Q2",
+    "notes": "Open-Access-Journal (IRRODL); nicht in BWL-Rankings. Für diese Thesis Randdomäne.",
+    "is_journal": true
+  },
+
+  "The Journal of Strategic Information Systems": {
+    "field": "Information Systems",
+    "sub_field": "Strategic IS, Digital Strategy",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "medium",
+    "vhb_rating": "C",
+    "abs_rating": "2",
+    "sjr_quartile": "Q1",
+    "notes": "Fokus auf strategische Dimension von Informationssystemen; relevant für KI-Strategie-Themen.",
+    "is_journal": true
+  },
+
+  "AI": {
+    "field": "Artificial Intelligence",
+    "sub_field": "AI Research",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "high",
+    "vhb_rating": "nicht bewertet",
+    "abs_rating": "2",
+    "sjr_quartile": "Q1",
+    "notes": "Elsevier-Journal 'Artificial Intelligence' (seit 1970); ältestes und eines der angesehensten KI-Journals. Nicht in BWL-JOURQUAL.",
+    "is_journal": true
+  },
+
+  "AI & SOCIETY": {
+    "field": "AI Ethics / Sociology",
+    "sub_field": "AI and Social Impact",
+    "peer_reviewed": true,
+    "journal_type": "mixed",
+    "impact_level": "low",
+    "vhb_rating": "nicht bewertet",
+    "abs_rating": "1",
+    "sjr_quartile": "Q2",
+    "notes": "Springer-Journal zu gesellschaftlichen Aspekten von KI; interdisziplinärer Ansatz.",
+    "is_journal": true
+  },
+
+  "Behavioral Sciences": {
+    "field": "Behavioral Sciences",
+    "sub_field": "Psychology, Organizational Behavior",
+    "peer_reviewed": true,
+    "journal_type": "empirical",
+    "impact_level": "low",
+    "vhb_rating": "nicht bewertet",
+    "abs_rating": "nicht bewertet",
+    "sjr_quartile": "Q3",
+    "notes": "MDPI Open-Access-Journal; breites Spektrum. Geringe Schwelle bei Annahme (MDPI-Kritik bekannt).",
+    "is_journal": true
+  },
+
+  "Pearson Deutschland": {
+    "field": "Verlag / Publisher",
+    "sub_field": "",
+    "peer_reviewed": false,
+    "journal_type": "practitioner",
+    "impact_level": "low",
+    "vhb_rating": "nicht bewertet",
+    "abs_rating": "nicht bewertet",
+    "sjr_quartile": null,
+    "notes": "KEIN Journal — Pearson Deutschland ist ein Schulbuch-/Wissenschaftsverlag. Bitte BibTeX-Eintrag auf @book korrigieren und das journal-Feld entfernen.",
+    "is_journal": false
+  }
+}
