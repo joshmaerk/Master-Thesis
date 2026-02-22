@@ -27,6 +27,16 @@ import os
 import sys
 from pathlib import Path
 
+bib_file = Path("B_Literatur/literatur.bib").resolve()
+repo_root = Path("/home/runner/work/Master-Thesis/Master-Thesis").resolve()  # Example; possibly use Path.cwd() or Path(__file__).parent
+
+try:
+    relative_path = bib_file.relative_to(repo_root)
+except ValueError:
+    # Handle the error, or skip using relative_to if not in subpath
+    relative_path = bib_file
+
+
 # Eigene Module aus demselben Verzeichnis importierbar machen
 sys.path.insert(0, str(Path(__file__).parent))
 
