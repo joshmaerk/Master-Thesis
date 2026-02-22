@@ -6,7 +6,7 @@ Automatisierte Analyse der BibTeX-Bibliographie auf APA7-Konformität und Litera
 
 ## Übersicht
 
-| Funktion | AI benötigt | Beschreibung |
+| Funktion | \gls{AI} benötigt | Beschreibung |
 |---|---|---|
 | APA7-Prüfung | ❌ Nein | Regelbasierte Pflichtfeld- und Formatprüfung |
 | GitHub Issues | ❌ Nein | Erstellt Issues für nicht-konforme Einträge |
@@ -21,9 +21,9 @@ Automatisierte Analyse der BibTeX-Bibliographie auf APA7-Konformität und Litera
 ```
 services/literature_review/
 ├── analyze.py              # Hauptskript (Einstiegspunkt)
-├── apa7_checker.py         # APA7-Regelprüfung (kein AI)
-├── issue_manager.py        # GitHub Issue-Verwaltung (kein AI)
-├── journal_rater.py        # Journal- & Autoren-Bewertung (AI)
+├── apa7_checker.py         # APA7-Regelprüfung (kein \gls{AI})
+├── issue_manager.py        # GitHub Issue-Verwaltung (kein \gls{AI})
+├── journal_rater.py        # Journal- & Autoren-Bewertung (\gls{AI})
 ├── report_generator.py     # Markdown-Report-Generator
 ├── .literatureignore       # Ausschlussliste (analog .gitignore)
 ├── scores/                 # ← Hier PDFs mit Rankings ablegen
@@ -52,7 +52,7 @@ pip install -r services/literature_review/requirements.txt
 |---|---|---|
 | `GITHUB_TOKEN` | Für Issues | PAT oder Actions-Token mit `issues:write` |
 | `GITHUB_REPOSITORY` | Für Issues | Format: `owner/repo` |
-| `ANTHROPIC_API_KEY` | Für AI-Bewertung | Anthropic API-Schlüssel |
+| `ANTHROPIC_API_KEY` | Für \gls{AI}-Bewertung | Anthropic API-Schlüssel |
 
 In GitHub Actions werden `GITHUB_TOKEN` und `GITHUB_REPOSITORY` automatisch gesetzt.
 
@@ -71,13 +71,13 @@ Eingaben:
 |---|---|---|
 | `check_apa7` | ✅ | APA7-Prüfung + Issue-Erstellung |
 | `rate_journals` | ✅ | Journal-Bewertung + Report |
-| `skip_ai` | ❌ | AI-Aufrufe überspringen |
+| `skip_ai` | ❌ | \gls{AI}-Aufrufe überspringen |
 | `dry_run` | ❌ | Testlauf ohne Schreiben |
 | `bib_file` | `B_Literatur/literatur.bib` | Pfad zur BibTeX-Datei |
 | `ignore_file` | `services/literature_review/.literatureignore` | Ausschlussliste |
 
 **Secrets** (einmalig einrichten: *Settings → Secrets → Actions*):
-- `ANTHROPIC_API_KEY` — nur für AI-Bewertung erforderlich
+- `ANTHROPIC_API_KEY` — nur für \gls{AI}-Bewertung erforderlich
 
 ### Lokal ausführen
 
@@ -87,11 +87,11 @@ Eingaben:
 # Nur APA7-Prüfung (Dry-Run)
 python3 services/literature_review/analyze.py --check-apa7 --dry-run
 
-# Vollständige Analyse ohne AI
+# Vollständige Analyse ohne \gls{AI}
 python3 services/literature_review/analyze.py \
     --check-apa7 --rate-journals --skip-ai
 
-# Vollständige Analyse mit AI
+# Vollständige Analyse mit \gls{AI}
 export GITHUB_TOKEN=ghp_...
 export GITHUB_REPOSITORY=joshmaerk/Master-Thesis
 export ANTHROPIC_API_KEY=sk-ant-...
@@ -110,7 +110,7 @@ python3 services/literature_review/analyze.py \
 Um Zeitschriften-Rankings aus externen Quellen einzulesen:
 
 1. PDF-Datei in `services/literature_review/scores/` ablegen
-2. Analyse starten (mit AI) — das Skript extrahiert automatisch Scores
+2. Analyse starten (mit \gls{AI}) — das Skript extrahiert automatisch Scores
 3. Unterstützte Ranking-Systeme (werden automatisch erkannt):
    - VHB-JOURQUAL3
    - ABS Academic Journal Guide
@@ -127,7 +127,7 @@ Analog zu `.gitignore` können einzelne BibTeX-Schlüssel von der Analyse ausgen
 
 ```
 # Kommentare mit #
-deci_what_2000          # exakter Schlüssel
+deciWhatWhyGoal2000          # exakter Schlüssel
 berger*                 # Wildcard: alle Schlüssel die mit "berger" beginnen
 *2006                   # alle Schlüssel die mit "2006" enden
 noauthor_*              # alle Online-Ressourcen ohne Autor
@@ -180,7 +180,7 @@ KI-gestützte Bewertungen sind mit *(KI-bewertet)* gekennzeichnet und sollten ma
 → Token hat keine `issues:write`-Berechtigung
 
 **`ANTHROPIC_API_KEY` nicht gesetzt**
-→ AI-Schritte werden automatisch übersprungen; Analyse läuft weiter
+→ \gls{AI}-Schritte werden automatisch übersprungen; Analyse läuft weiter
 
 **PDF-Scores werden nicht erkannt**
 → `pdfplumber` installiert? Text-extrahierbar (keine reinen Bild-PDFs)?

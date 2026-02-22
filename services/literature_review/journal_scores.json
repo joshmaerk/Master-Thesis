@@ -34,7 +34,7 @@
     "vhb_rating": "nicht bewertet",
     "abs_rating": "4",
     "sjr_quartile": "Q1",
-    "notes": "Hochrangige Review-Zeitschrift (Erstausgabe 2014, daher nicht in VHB-JOURQUAL3 2015). Impact Factor ~11. Inhaltlich sehr relevant für SDT-Forschung.",
+    "notes": "Hochrangige Review-Zeitschrift (Erstausgabe 2014, daher nicht in VHB-JOURQUAL3 2015). Impact Factor ~11. Inhaltlich sehr relevant für \gls{SDT}-Forschung.",
     "is_journal": true
   },
 
@@ -66,14 +66,14 @@
 
   "European Journal of Work and Organizational Psychology": {
     "field": "Work and Organizational Psychology",
-    "sub_field": "Work Motivation, SDT",
+    "sub_field": "Work Motivation, \gls{SDT}",
     "peer_reviewed": true,
     "journal_type": "empirical",
     "impact_level": "medium",
     "vhb_rating": "B",
     "abs_rating": "3",
     "sjr_quartile": "Q1",
-    "notes": "Zentrale europäische Zeitschrift für Arbeits- und Organisationspsychologie; direkt relevant für SDT-Forschung am Arbeitsplatz.",
+    "notes": "Zentrale europäische Zeitschrift für Arbeits- und Organisationspsychologie; direkt relevant für \gls{SDT}-Forschung am Arbeitsplatz.",
     "is_journal": true
   },
 
@@ -261,27 +261,27 @@
 
   "Journal of Occupational and Organizational Psychology": {
     "field": "Work and Organizational Psychology",
-    "sub_field": "OB, Work Motivation, SDT",
+    "sub_field": "OB, Work Motivation, \gls{SDT}",
     "peer_reviewed": true,
     "journal_type": "empirical",
     "impact_level": "medium",
     "vhb_rating": "B",
     "abs_rating": "3",
     "sjr_quartile": "Q1",
-    "notes": "Offizielles Journal der British Psychological Society (Work & Organizational Division). Sehr relevant für SDT-Forschung.",
+    "notes": "Offizielles Journal der British Psychological Society (Work & Organizational Division). Sehr relevant für \gls{SDT}-Forschung.",
     "is_journal": true
   },
 
   "Journal of Organizational Behavior": {
     "field": "Organizational Behavior",
-    "sub_field": "Work Motivation, SDT, Leadership",
+    "sub_field": "Work Motivation, \gls{SDT}, Leadership",
     "peer_reviewed": true,
     "journal_type": "empirical",
     "impact_level": "high",
     "vhb_rating": "A",
     "abs_rating": "4",
     "sjr_quartile": "Q1",
-    "notes": "Eines der führenden OB-Journals (Wiley). Zentral für SDT-Forschung am Arbeitsplatz.",
+    "notes": "Eines der führenden OB-Journals (Wiley). Zentral für \gls{SDT}-Forschung am Arbeitsplatz.",
     "is_journal": true
   },
 
@@ -454,9 +454,9 @@
     "is_journal": true
   },
 
-  "AI": {
+  "\gls{AI}": {
     "field": "Artificial Intelligence",
-    "sub_field": "AI Research",
+    "sub_field": "\gls{AI} Research",
     "peer_reviewed": true,
     "journal_type": "empirical",
     "impact_level": "high",
@@ -467,9 +467,9 @@
     "is_journal": true
   },
 
-  "AI & SOCIETY": {
-    "field": "AI Ethics / Sociology",
-    "sub_field": "AI and Social Impact",
+  "\gls{AI} & SOCIETY": {
+    "field": "\gls{AI} Ethics / Sociology",
+    "sub_field": "\gls{AI} and Social Impact",
     "peer_reviewed": true,
     "journal_type": "mixed",
     "impact_level": "low",

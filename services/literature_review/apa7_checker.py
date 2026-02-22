@@ -1,7 +1,7 @@
 """
 APA7 compliance checker for BibTeX entries.
 
-Rein regelbasiert — kein AI/GenAI erforderlich.
+Rein regelbasiert — kein \gls{AI}/GenAI erforderlich.
 """
 
 from __future__ import annotations

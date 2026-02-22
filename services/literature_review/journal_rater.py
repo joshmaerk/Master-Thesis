@@ -3,10 +3,10 @@ Journal- und Autoren-Qualitätsbewertung.
 
 Priorität der Datenbasis (höchste zuerst):
   1. journal_scores.json  — kuratierte Datenbank (VHB-JOURQUAL3, ABS, SJR)
-  2. User-PDFs in scores/ — per AI extrahiert (pdfplumber + Claude)
-  3. Claude AI            — für Journals die in keiner der o.g. Quellen sind
+  2. User-PDFs in scores/ — per \gls{AI} extrahiert (pdfplumber + Claude)
+  3. Claude \gls{AI}            — für Journals die in keiner der o.g. Quellen sind
 
-AI/GenAI wird NUR für Punkt 2 und 3 verwendet.
+\gls{AI}/GenAI wird NUR für Punkt 2 und 3 verwendet.
 """
 
 from __future__ import annotations
@@ -64,7 +64,7 @@ class NonJournalEntry:
 
 
 # ---------------------------------------------------------------------------
-# BibTeX-Extraktion (kein AI)
+# BibTeX-Extraktion (kein \gls{AI})
 # ---------------------------------------------------------------------------
 
 def extract_journals(entries: list[dict], ignore_keys: set[str]) -> dict[str, JournalRating]:
@@ -126,7 +126,7 @@ def extract_authors(entries: list[dict], ignore_keys: set[str]) -> dict[str, Aut
 
 
 # ---------------------------------------------------------------------------
-# Kuratierte JSON-Datenbank (kein AI)
+# Kuratierte JSON-Datenbank (kein \gls{AI})
 # ---------------------------------------------------------------------------
 
 def load_scores_from_db(
@@ -170,7 +170,7 @@ def load_scores_from_db(
         rating.vhb_rating = data.get("vhb_rating", "nicht bewertet")
         rating.abs_rating = data.get("abs_rating", "nicht bewertet")
         rating.notes = data.get("notes", "")
-        rating.ai_assessed = False   # aus kuratierter DB, kein AI
+        rating.ai_assessed = False   # aus kuratierter DB, kein \gls{AI}
         found.add(jname)
 
     print(f"  Journal-DB: {len(found)}/{len(journal_map)} Journals erkannt")
@@ -178,7 +178,7 @@ def load_scores_from_db(
 
 
 # ---------------------------------------------------------------------------
-# PDF-Score-Extraktion (AI erforderlich)
+# PDF-Score-Extraktion (\gls{AI} erforderlich)
 # ---------------------------------------------------------------------------
 
 def _extract_text_from_pdf(pdf_path: Path) -> str:
@@ -263,13 +263,13 @@ Gib NUR das JSON-Array zurück, keine Erklärungen. Wenn keine Zeitschrift gefun
                     if jname and score and jname in known_journals:
                         score_map[jname] = (score, f"{system} ({pdf_path.name})")
         except Exception as exc:
-            print(f"  AI-Fehler bei {pdf_path.name}: {exc}")
+            print(f"  \gls{AI}-Fehler bei {pdf_path.name}: {exc}")
 
     return score_map
 
 
 # ---------------------------------------------------------------------------
-# AI-basierte Journal-Bewertung
+# \gls{AI}-basierte Journal-Bewertung
 # ---------------------------------------------------------------------------
 
 def _assess_journals_via_ai(
@@ -287,7 +287,7 @@ def _assess_journals_via_ai(
     prompt = f"""Du bist Experte für akademische Bibliometrie und Zeitschriftenbewertung.
 
 Bewerte die folgenden Zeitschriften für eine Masterarbeit im Bereich
-Wirtschaft/Management/Organisationspsychologie (DACH-Raum, deutschsprachig).
+Wirtschaft/Management/Organisationspsychologie (\gls{DACH}-Raum, deutschsprachig).
 
 Zeitschriften:
 {journals_json}
@@ -296,7 +296,7 @@ Antworte mit einem JSON-Objekt, wobei der Key der exakte Zeitschriftenname ist:
 {{
   "Zeitschrift A": {{
     "science_field": "Hauptfachrichtung (z.B. Organizational Psychology, Management, Information Systems)",
-    "sub_field": "Unterfachrichtung (z.B. Work Motivation, AI & Technology)",
+    "sub_field": "Unterfachrichtung (z.B. Work Motivation, \gls{AI} & Technology)",
     "peer_reviewed": true,
     "journal_type": "empirical",
     "impact_level": "high",
@@ -343,7 +343,7 @@ def _assess_authors_via_ai(
     prompt = f"""Du bist Experte für Wissenschaftsforschung und Bibliometrie.
 
 Bewerte die folgenden Wissenschaftler, die in einer Masterarbeit zu den Themen
-Self-Determination Theory, Generative AI, Leadership und Arbeitspsychologie zitiert werden.
+Self-Determination Theory, Generative \gls{AI}, Leadership und Arbeitspsychologie zitiert werden.
 
 Autoren:
 {authors_json}
@@ -402,29 +402,29 @@ def rate(
     print(f"Gefunden: {len(journal_map)} Zeitschriften, {len(non_journal)} Nicht-Journal-Einträge")
     print(f"Autoren gesamt: {len(author_map)}")
 
-    # ── Schritt 1: Kuratierte JSON-Datenbank (immer, kein AI) ────────────
+    # ── Schritt 1: Kuratierte JSON-Datenbank (immer, kein \gls{AI}) ────────────
     db_found = load_scores_from_db(journal_map)
     unknown_journals = [j for j in journal_map if j not in db_found]
     print(f"  Nicht in DB: {len(unknown_journals)} Journals")
 
     if not use_ai:
-        print("AI-Bewertung deaktiviert (--skip-ai). Überspringe PDF- und AI-Bewertung.")
+        print("\gls{AI}-Bewertung deaktiviert (--skip-ai). Überspringe PDF- und \gls{AI}-Bewertung.")
         return journal_map, non_journal, author_map
 
     # ── Schritt 2: Anthropic-Client ───────────────────────────────────────
     key = api_key or os.environ.get("ANTHROPIC_API_KEY", "").strip()
     if not key:
-        print("ANTHROPIC_API_KEY nicht gesetzt — überspringe AI-Bewertung.")
+        print("ANTHROPIC_API_KEY nicht gesetzt — überspringe \gls{AI}-Bewertung.")
         return journal_map, non_journal, author_map
 
     try:
         import anthropic
         client = anthropic.Anthropic(api_key=key)
     except ImportError:
-        print("anthropic-Paket nicht installiert — überspringe AI-Bewertung.")
+        print("anthropic-Paket nicht installiert — überspringe \gls{AI}-Bewertung.")
         return journal_map, non_journal, author_map
 
-    # ── Schritt 3: PDF-Scores (AI) — nur für Journals ohne DB-Eintrag ────
+    # ── Schritt 3: PDF-Scores (\gls{AI}) — nur für Journals ohne DB-Eintrag ────
     if unknown_journals:
         pdf_scores = load_scores_from_pdfs(
             scores_dir, set(unknown_journals), client
@@ -435,14 +435,14 @@ def rate(
                 journal_map[jname].pdf_score = score
                 journal_map[jname].pdf_source = source
 
-    # ── Schritt 4: AI-Bewertung — nur für wirklich unbekannte Journals ───
+    # ── Schritt 4: \gls{AI}-Bewertung — nur für wirklich unbekannte Journals ───
     # Noch unbekannt = nicht in DB UND kein vollständiger Eintrag durch PDF
     still_unknown = [
         j for j in unknown_journals
         if not journal_map[j].research_field or journal_map[j].research_field == "Unbekannt"
     ]
     if still_unknown:
-        print(f"  Bewerte {len(still_unknown)} unbekannte Journals via AI …")
+        print(f"  Bewerte {len(still_unknown)} unbekannte Journals via \gls{AI} …")
         ai_journal_data = _assess_journals_via_ai(still_unknown, client)
         for jname, data in ai_journal_data.items():
             if jname not in journal_map or not data:
@@ -460,14 +460,14 @@ def rate(
             rating.notes = data.get("notes", "")
             rating.ai_assessed = True
     else:
-        print("  Alle Journals in kuratierter DB gefunden — kein AI-Journal-Lookup nötig.")
+        print("  Alle Journals in kuratierter DB gefunden — kein \gls{AI}-Journal-Lookup nötig.")
 
-    # ── Schritt 5: Autoren bewerten (AI) — nur ≥ 2 Werke im Bib ─────────
+    # ── Schritt 5: Autoren bewerten (\gls{AI}) — nur ≥ 2 Werke im Bib ─────────
     notable_authors = [
         name for name, info in author_map.items() if info.papers_in_bib >= 2
     ]
     if notable_authors:
-        print(f"  Bewerte {len(notable_authors)} Autoren (≥2 Werke) via AI …")
+        print(f"  Bewerte {len(notable_authors)} Autoren (≥2 Werke) via \gls{AI} …")
         ai_author_data = _assess_authors_via_ai(notable_authors, client)
         for name, data in ai_author_data.items():
             if name in author_map:

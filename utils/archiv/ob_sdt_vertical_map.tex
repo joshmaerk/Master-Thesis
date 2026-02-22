@@ -3,7 +3,7 @@
 % \usetikzlibrary{positioning, arrows.meta, fit, shapes.geometric}
 
 % ------------------------------------------------------------
-% FIGURE 1: Vertikale Theorie-Landkarte (OB -> SDT -> Kompetenz)
+% FIGURE 1: Vertikale Theorie-Landkarte (OB -> \gls{SDT} -> Kompetenz)
 % ------------------------------------------------------------
 \begin{figure}[ht]
 \centering
@@ -20,7 +20,7 @@
 \node[box] (ob) {Organizational Behavior (OB)\\\emph{Forschungsfeld: Verhalten in Organisationen}};
 \node[box, below=of ob] (mot) {Motivation im OB\\\emph{Erklärungen: Warum handeln Menschen engagiert?}};
 \node[box, below=of mot] (bridges) {Brückenebene\\Work/Job Design \& Empowerment\\\emph{Arbeitsmerkmale $\rightarrow$ Erleben}};
-\node[box, below=of bridges] (sdt) {Self-Determination Theory (SDT)\\\emph{Bedürfnisse $\rightarrow$ Motivation \& Wohlbefinden}};
+\node[box, below=of bridges] (sdt) {Self-Determination Theory (\gls{SDT})\\\emph{Bedürfnisse $\rightarrow$ Motivation \& Wohlbefinden}};
 \node[box, below=of sdt] (comp) {Kompetenzerleben (AV)\\\emph{Wirksamkeit \& Fähigkeitsgefühl bei Arbeit/Entscheidung}};
 
 \draw[arrow] (ob) -- (mot);
@@ -38,15 +38,15 @@
 \draw[arrow] (altmot.west) -- ++(-8mm,0) |- (mot.east);
 
 % Bridges details
-\node[sub, right=of bridges, xshift=10mm] (bridge_detail) {\textbf{Brücken in Richtung SDT}\\
+\node[sub, right=of bridges, xshift=10mm] (bridge_detail) {\textbf{Brücken in Richtung \gls{SDT}}\\
 -- Job Characteristics / Work Design\\
 -- Feedback, Autonomie, Lerngelegenheiten\\
 -- Psychological Empowerment (Dimension Kompetenz)};
 
 \draw[arrow] (bridge_detail.west) -- ++(-8mm,0) |- (bridges.east);
 
-% SDT details
-\node[sub, right=of sdt, xshift=10mm] (sdt_detail) {\textbf{SDT-Mechanik (Mikro)}\\
+% \gls{SDT} details
+\node[sub, right=of sdt, xshift=10mm] (sdt_detail) {\textbf{\gls{SDT}-Mechanik (Mikro)}\\
 -- Autonomie\\
 -- Kompetenz\\
 -- soziale Eingebundenheit\\
@@ -54,7 +54,7 @@
 
 \draw[arrow] (sdt_detail.west) -- ++(-8mm,0) |- (sdt.east);
 
-% AI as overlay context (connects to bridges/sdt)
+% \gls{AI} as overlay context (connects to bridges/sdt)
 \node[note, left=of bridges, xshift=-10mm] (ai_ctx) {\textbf{Technologiepfad (OB neu)}\\
 Algorithmische Systeme / KI verändern\\
 Arbeitsgestaltung und Entscheidungsarbeit.\\
@@ -65,7 +65,7 @@ Wirkungen sind \emph{wahrnehmungsabhängig}:\\
 \draw[arrow] (ai_ctx.east) -- ++(8mm,0) |- (sdt.west);
 
 \end{tikzpicture}
-\caption{Vertikale Theorie-Landkarte: Vom Feld Organizational Behavior zur SDT und dem Kompetenzerleben.}
+\caption{Vertikale Theorie-Landkarte: Vom Feld Organizational Behavior zur \gls{SDT} und dem Kompetenzerleben.}
 \label{fig:ob_sdt_vertical_map}
 \end{figure}
 
@@ -84,21 +84,21 @@ Wirkungen sind \emph{wahrnehmungsabhängig}:\\
   arrow/.style={-Latex, line width=0.6pt}
 ]
 
-% AI playground domains (left column)
+% \gls{AI} playground domains (left column)
 \node[domainbox] (am) {\textbf{Algorithmic Management}\\
 Monitoring, Scheduling, Evaluation\\
 \emph{typisch: Steuerung/ Kontrolle}};
 \node[domainbox, below=of am] (hr) {\textbf{Algorithmic HR / People Analytics}\\
 Scoring, Screening, Feedback-Systeme\\
 \emph{Risiko: Kontrollattribution}};
-\node[domainbox, below=of hr] (teams) {\textbf{Human--AI Teams}\\
+\node[domainbox, below=of hr] (teams) {\textbf{Human--\gls{AI} Teams}\\
 Koordination, Vertrauen, Rollen\\
 \emph{Signaleffekte, Reliance}};
-\node[domainbox, below=of teams] (decision) {\textbf{AI in Entscheidungen}\\
+\node[domainbox, below=of teams] (decision) {\textbf{\gls{AI} in Entscheidungen}\\
 Empfehlungen, Prognosen, Analytik\\
 \emph{Accountability, Transparency}};
 
-% Focus area (right column): Generative AI as augmented chat-based support
+% Focus area (right column): Generative \gls{AI} as augmented chat-based support
 \node[hi, right=of teams, xshift=18mm] (genai) {\textbf{Fokus dieser Arbeit: Generative KI}\\
 \textbf{chatbasiert \& augmentierend}\\
 -- kognitive Unterstützung\\
@@ -110,7 +110,7 @@ Nicht im Fokus: verpflichtende\\
 algorithmische Steuerung (AM),\\
 automatisierte Leistungs-/Kontrollregime.};
 
-% Connections among AI playground
+% Connections among \gls{AI} playground
 \draw[arrow] (am) -- (hr);
 \draw[arrow] (hr) -- (teams);
 \draw[arrow] (teams) -- (decision);
@@ -126,7 +126,7 @@ automatisierte Leistungs-/Kontrollregime.};
 \node[micro, right=of decision, xshift=18mm, yshift=-12mm] (mech) {\textbf{OB-Mechanismen im KI-Kontext}\\
 -- Support vs. Control Attribution\\
 -- Vertrauen / Disclosure-Reaktionen\\
--- Bedürfnisbefriedigung (SDT)};
+-- Bedürfnisbefriedigung (\gls{SDT})};
 
 \draw[arrow] (mech.west) -- ++(-8mm,0) |- (decision.east);
 \draw[arrow] (mech.west) -- ++(-8mm,0) |- (genai.east);

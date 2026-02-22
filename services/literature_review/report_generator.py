@@ -1,7 +1,7 @@
 """
 Markdown-Report-Generator für die Literaturqualitätsbewertung.
 
-Kein AI/GenAI — rein datengetrieben aus den Bewertungsergebnissen.
+Kein \gls{AI}/GenAI — rein datengetrieben aus den Bewertungsergebnissen.
 """
 
 from __future__ import annotations
@@ -169,7 +169,7 @@ def _section_non_journal(entries: list[NonJournalEntry]) -> str:
 
 
 def _section_authors(authors: dict[str, AuthorInfo]) -> str:
-    # Nur Autoren mit ≥ 2 Werken oder AI-Bewertung
+    # Nur Autoren mit ≥ 2 Werken oder \gls{AI}-Bewertung
     notable = {
         name: info
         for name, info in authors.items()
@@ -224,7 +224,7 @@ def _section_summary(
         f"| Peer-reviewte Journals | {peer_reviewed} / {len(journals)} |",
         f"| Journals mit hohem Impact | {high_impact} / {len(journals)} |",
         f"| Autoren gesamt | {len(authors)} |",
-        f"| AI-bewertete Journals | {ai_count} |",
+        f"| \gls{AI}-bewertete Journals | {ai_count} |",
         "",
     ]
     return "\n".join(lines)

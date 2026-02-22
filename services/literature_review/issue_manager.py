@@ -1,7 +1,7 @@
 """
 GitHub Issue Manager für APA7-Konformitätsprobleme.
 
-Kein AI/GenAI — verwendet ausschließlich die GitHub REST API v3.
+Kein \gls{AI}/GenAI — verwendet ausschließlich die GitHub REST API v3.
 Authentifizierung via GITHUB_TOKEN (automatisch in GitHub Actions verfügbar).
 """
 
