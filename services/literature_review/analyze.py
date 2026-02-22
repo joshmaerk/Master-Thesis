@@ -43,6 +43,41 @@ REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 DEFAULT_BIB = REPO_ROOT / "B_Literatur" / "literatur.bib"
 DEFAULT_IGNORE = Path(__file__).parent / ".literatureignore"
 DEFAULT_SCORES = Path(__file__).parent / "scores"
+
+# ---------------------------------------------------------------------------
+# .env laden (services/.env hat Vorrang vor services/literature_review/.env)
+# ---------------------------------------------------------------------------
+
+def _load_env(path: Path) -> int:
+    """Liest KEY=VALUE aus einer .env-Datei; setzt nur noch nicht gesetzte Variablen.
+    Gibt Anzahl der geladenen Keys zurück."""
+    if not path.exists():
+        return 0
+    loaded = 0
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, _, value = line.partition("=")
+            key = key.strip()
+            value = value.strip().strip('"').strip("'")
+            if key and key not in os.environ:
+                os.environ[key] = value
+                loaded += 1
+    return loaded
+
+
+# Suchreihenfolge: services/.env → services/literature_review/.env
+_ENV_CANDIDATES = [
+    REPO_ROOT / "services" / ".env",
+    Path(__file__).parent / ".env",
+]
+
+for _env_path in _ENV_CANDIDATES:
+    _n = _load_env(_env_path)
+    if _n:
+        print(f"[.env] {_n} Variable(n) aus {_env_path.relative_to(REPO_ROOT)} geladen")
 DEFAULT_REPORT = Path(__file__).parent / "journal_report.md"
 
 
