@@ -12,7 +12,7 @@
 \usepackage{etoolbox}
 \usepackage{csquotes}
 \usepackage{pdfpages}
-\DeclareUnicodeCharacter{202F}{\,} % narrow no-break space (e.g., "z. B.")
+\DeclareUnicodeCharacter{202F}{\,} 
 
 % Tabelle
 \usepackage{tabularx}
@@ -24,6 +24,9 @@
 \usepackage{lmodern}
 \usepackage{tikz}
 \usetikzlibrary{arrows,arrows.meta,positioning}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,fit,shapes.geometric}
 
 
 % Schriftart und Zeilenabstand
@@ -150,10 +153,10 @@
 % \thispagestyle{empty}
 
 % Einfügen der Kurzfassung/Abstract
-%\chapter*{Abstract}
-%\input{A_Template/04_abstract}
-%\thispagestyle{empty}
-%\newpage
+\chapter*{Abstract}
+\input{A_Template/04_abstract}
+\thispagestyle{empty}
+\newpage
 
 
 \newpage
@@ -187,10 +190,9 @@
 \input{C_Inhalt/01_introduction}
 \input{C_Inhalt/02_theoretischerrahmen}
 \input{C_Inhalt/03_methodik}
-%\input{C_Inhalt/04_Ergebnisse}
-%\input{C_Inhalt/05_diskussion}
-%\input{C_Inhalt/06_fazit}
-\input{C_Inhalt/00_gliederung}
+\input{C_Inhalt/04_Ergebnisse}
+\input{C_Inhalt/05_diskussion}
+\input{C_Inhalt/06_fazit}
 
 %###### KAPITEL EINFÜGEN ENDE ############
 
