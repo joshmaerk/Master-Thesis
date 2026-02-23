@@ -224,7 +224,7 @@ def _section_summary(
         f"| Peer-reviewte Journals | {peer_reviewed} / {len(journals)} |",
         f"| Journals mit hohem Impact | {high_impact} / {len(journals)} |",
         f"| Autoren gesamt | {len(authors)} |",
-        f"| \gls{AI}-bewertete Journals | {ai_count} |",
+        f"| AI-bewertete Journals | {ai_count} |",
         "",
     ]
     return "\n".join(lines)
