@@ -1,0 +1,52 @@
+\documentclass[a4paper]{report}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{geometry}
+\usepackage{ragged2e}
+
+\geometry{margin=1.5cm, landscape}
+
+\begin{document}
+
+\chapter{Dokumentation der KI-Nutzung}
+
+\begin{table}[ht]
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{
+  >{\RaggedRight\bfseries}p{3cm}
+  >{\RaggedRight}p{1.6cm}
+  >{\RaggedRight}p{2.8cm}
+  >{\RaggedRight}p{4.5cm}
+  >{\RaggedRight}p{4.5cm}
+  >{\RaggedRight}p{4cm}
+}
+\toprule
+\textbf{Kapitel} & \textbf{Datum} & \textbf{KI Tool \& Version} & \textbf{KI Verwendungszweck} & \textbf{Überprüfungsprozess} & \textbf{Einfluss auf Ergebnis} \\
+\midrule
+Kapitel 1, Einleitung
+  & 15.01.2024
+  & ChatGPT 4-turbo
+  & KI schlug alternative Einleitungen sowie bessere Einbindung des:r Lesers:in vor
+  & Forscher:in verglich KI-Vorschläge mit den Kapitelthemen, integrierte relevante Ideen, umformuliert (eigene Wortwahl)
+  & Kein wesentlicher Einfluss auf zentrale Argumente oder Schlussfolgerungen \\
+\midrule
+Kapitel 5, Genauigkeit von Klimamodellen
+  & 05.02.2024
+  & Claude 3.5 Sonnet
+  & KI synthetisierte über 200 Klimastudien und identifizierte Trends und Unstimmigkeiten in der Genauigkeit von Klimamodellen
+  & Forscher:in überprüfte KI-generierte Zusammenfassungen, validierte Quellen und verglich wichtige Ergebnisse mit der ursprünglichen Forschung
+  & Deckte regionale Unterschiede in der Modellgenauigkeit auf~-- Anpassung der These von „Modelle überschätzen die Erwärmung“ zu „Modellgenauigkeit variiert je nach Region“ \\
+\bottomrule
+\end{tabular}
+\caption{KI-Nutzungsprotokoll nach Kapitel}
+\label{tab:ki-protokoll}
+\end{table}
+
+\end{document}
