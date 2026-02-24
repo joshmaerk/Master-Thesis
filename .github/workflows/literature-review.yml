@@ -12,7 +12,7 @@ on:
         type: boolean
         default: true
       skip_ai:
-        description: 'AI-Bewertung überspringen (kein Anthropic-API-Aufruf)'
+        description: '\gls{AI}-Bewertung überspringen (kein Anthropic-API-Aufruf)'
         type: boolean
         default: false
       dry_run:
