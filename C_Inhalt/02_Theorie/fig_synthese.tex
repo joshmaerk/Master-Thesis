@@ -1,0 +1,175 @@
+% --- Pfeil-Styles (orthogonal, ruhig) ---
+\tikzset{
+  arrow/.style={-{Latex[length=3mm]}, thick, rounded corners=2mm},
+  dashedarrow/.style={-{Latex[length=3mm]}, thick, dashed, rounded corners=2mm},
+  hlabel/.style={font=\footnotesize, fill=white, inner sep=1.5pt}
+}
+
+% --- Layout-Parameter ---
+\newlength{\Pad}     % inner sep
+\newlength{\GutterX} % horizontaler Abstand zwischen Spalten
+\newlength{\GapY}    % vertikaler Abstand zwischen SDT-Boxen
+
+\newlength{\Wcol}     % Node-Breite je Spalte (inkl. Pad)
+\newlength{\WcolTxt}  % Textbreite je Spalte (ohne Pad)
+
+\newlength{\Hmid}      % Gesamthöhe der mittleren Zone (inkl. Pad)
+\newlength{\HmidTxt}   % Texthöhe für Midbox (ohne Pad)
+
+\newlength{\Hsmall}    % Node-Höhe SDT-Teilbox (inkl. Pad)
+\newlength{\HsmallTxt} % Texthöhe SDT-Teilbox (ohne Pad)
+
+\setlength{\Pad}{6pt}
+\setlength{\GutterX}{6mm}
+\setlength{\GapY}{3mm}
+
+% Höhe der Zeile mit GenAI/Leadership/SDT (SDT-Stack hat gleiche Gesamthöhe)
+\setlength{\Hmid}{7cm}
+
+% 3 Spalten + 2*Gutter = \textwidth
+\setlength{\Wcol}{\dimexpr(\textwidth - 2\GutterX)/3\relax}
+\setlength{\WcolTxt}{\dimexpr\Wcol - 2\Pad\relax}
+
+% SDT: 3 Boxen + 2*GapY = Hmid
+\setlength{\Hsmall}{\dimexpr(\Hmid - 2\GapY)/3\relax}
+
+% Text-/Parbox-Höhen (ohne Pad)
+\setlength{\HmidTxt}{\dimexpr\Hmid - 2\Pad\relax}
+\setlength{\HsmallTxt}{\dimexpr\Hsmall - 2\Pad\relax}
+
+% --- Box-Styles ---
+\tikzset{
+  base/.style={
+    draw, rectangle, rounded corners=1pt,
+    align=left, inner sep=\Pad, outer sep=0pt
+  },
+  fullwidth/.style={
+    base,
+    minimum width=\textwidth,
+    text width=\dimexpr\textwidth - 2\Pad\relax,
+    minimum height=2.2cm
+  },
+  midbox/.style={
+    base,
+    minimum width=\Wcol,
+    text width=\WcolTxt,
+    minimum height=\Hmid
+  },
+  smallbox/.style={
+    base,
+    minimum width=\Wcol,
+    text width=\WcolTxt,
+    minimum height=\Hsmall
+  },
+}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1pt,y=1pt]
+
+  % --- TOP (100%) ---
+  \node[fullwidth, anchor=north west] (top) at (0,0)
+  {\raggedright\sloppy
+   \textbf{Kontextfaktoren (moderierend)}:\\
+   Sensemaking, Implementierungsmodus, Freiwilligkeit, Teamprozesse};
+
+  % --- 3-SPALTEN-ZEILE (GenAI | Leadership | SDT) ---
+  \coordinate (midNW) at ([yshift=-12mm]top.south west);
+
+  % Spalte 1: GenAI
+  \node[midbox, anchor=north west] (genai)
+    at (midNW)
+  {\raggedright\sloppy
+   \parbox[t][\HmidTxt][t]{\WcolTxt}{%
+     \textbf{GenAI als soziotechnisches System}\\[0.3em]
+     -- Aufgabenautomatisierung/\allowbreak-augmentation\\
+     -- Algorithmische Kontrolle/\allowbreak Feedback\\
+     -- Mensch--KI-Interaktion
+   }};
+
+  % Spalte 2: Leadership
+  \node[midbox, anchor=north west] (leadership)
+    at ([xshift=\GutterX]genai.north east)
+  {\raggedright\sloppy
+   \parbox[t][\HmidTxt][t]{\WcolTxt}{%
+     \textbf{Führungsarbeit im Bankensektor}\\[0.3em]
+     -- Entscheidungsvorbereitung\\
+     -- Regulatorische Einbettung\\
+     -- Rollen- und Expertiseanforderungen
+   }};
+
+  % Spalte 3: SDT (Stack)
+  \node[smallbox, anchor=north west] (autonomy)
+    at ([xshift=\GutterX]leadership.north east)
+  {\raggedright\sloppy
+   \parbox[t][\HsmallTxt][t]{\WcolTxt}{%
+     \textbf{Autonomie}\\
+     Volition, Entscheidungsspielraum
+   }};
+
+  \node[smallbox, anchor=north west] (competence)
+    at ([yshift=-\GapY]autonomy.south west)
+  {\raggedright\sloppy
+   \parbox[t][\HsmallTxt][t]{\WcolTxt}{%
+     \textbf{Kompetenz}\\
+     Wirksamkeit, Expertiseerleben
+   }};
+
+  \node[smallbox, anchor=north west] (relatedness)
+    at ([yshift=-\GapY]competence.south west)
+  {\raggedright\sloppy
+   \parbox[t][\HsmallTxt][t]{\WcolTxt}{%
+     \textbf{Soziale Eingebundenheit}\\
+     Verbundenheit, Wertschätzung
+   }};
+
+  % --- BOTTOM (Motivationale Wirkung) ---
+  \node[fullwidth, anchor=north west] (bottom)
+    at ([yshift=-12mm]genai.south west)
+  {\raggedright\sloppy
+   \textbf{Motivationale Wirkung}\\
+   Bedürfnisunterstützend $\rightarrow$ Engagement, Wohlbefinden\\
+   Bedürfnisfrustrierend $\rightarrow$ Erschöpfung, Rückzug};
+
+  % ===== Routing-Koordinaten =====
+  \path (autonomy.south) -- (competence.north) coordinate[midway] (sdtmid);
+  \coordinate (busX12) at ($(genai.east)+(0.5\GutterX,0)$);         % zwischen GenAI und Leadership
+  \coordinate (busX23) at ($(leadership.east)+(0.5\GutterX,0)$);    % zwischen Leadership und SDT
+  \coordinate (bottommid) at ([yshift=6mm]bottom.north);
+
+  % ===== Pfeile (orthogonal, Top-Journal) =====
+  % H1: GenAI -> Leadership
+  \draw[arrow]
+    ([xshift=2mm]genai.east) -| (busX12 |- genai.east)
+    node[hlabel, near end, above] {H1}
+    -- ([xshift=-2mm]leadership.west);
+
+  % H2: Leadership -> SDT
+  \draw[arrow]
+    ([xshift=2mm]leadership.east) -| (busX23 |- sdtmid)
+    node[hlabel, near end, above] {H2}
+    -- ([xshift=-2mm]sdtmid);
+
+  % H3: GenAI -> SDT (direkter Pfad, getrennt geroutet)
+  \draw[arrow]
+    ([xshift=2mm]genai.east) -| (busX23 |- sdtmid)
+    node[hlabel, pos=0.75, above] {H3}
+    -- ([xshift=-2mm]sdtmid);
+
+  % H4: SDT -> Motivationale Wirkung (gebündelt)
+  \draw[arrow] (autonomy.south)   |- (bottommid);
+  \draw[arrow] (competence.south) |- (bottommid);
+  \draw[arrow] (relatedness.south) |- (bottommid);
+  \draw[arrow] (bottommid) -- node[hlabel, right] {H4} (bottom.north);
+
+  % H5: Moderation (Top) -> Eingänge (gestrichelt)
+  \draw[dashedarrow] (top.south) |- node[hlabel, right] {H5} ([yshift=2mm]genai.north);
+  \draw[dashedarrow] (top.south) |- ([yshift=2mm]leadership.north);
+  \draw[dashedarrow] (top.south) |- ([yshift=2mm]autonomy.north);
+
+\end{tikzpicture}
+
+\caption{Integratives konzeptionelles Rahmenmodell zur Verknüpfung von GenAI als soziotechnischem System, bankenspezifischer Führungsarbeit und SDT-Grundbedürfnissen. Eigene Darstellung in Anlehnung an SDT \parencite{deciWhatWhyGoal2000,deciSelfDeterminationTheoryWork2017,vandenbroeckReviewSelfDeterminationTheorys2016} sowie KI/Algorithmus- und Führungs-/OB-Perspektiven \parencite{bankinsMultilevelReviewArtificial2024,edwardsManagerialControlFeedback2024,tongJanusFaceArtificial2021,quaquebekeNowNewNext2023,LiuWangLin2023}.}
+\label{fig:integratives-rahmenmodell}
+\label{fig:top-journal-model-3col}
+\end{figure}

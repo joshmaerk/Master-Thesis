@@ -3,58 +3,9 @@
 
 Die vorangegangenen Abschnitte haben drei Perspektiven entfaltet, die nun zusammengeführt werden: generative \gls{ki} als soziotechnisches System mit spezifischer Eingriffstiefe in wissensintensive Arbeit (Abschnitt \ref{sec:genai}), Führungsarbeit im mittleren Management des Bankensektors mit ihrer charakteristischen Verknüpfung von Entscheidungskompetenz, Expertiseidentität und regulatorischer Einbettung (Abschnitt \ref{sec:fuehrung}) sowie die \gls{sdt} als motivationspsychologischer Erklärungsrahmen (Abschnitt \ref{sec:sdt}). Der vorliegende Abschnitt integriert diese Stränge zu einem konzeptionellen Analyserahmen, identifiziert die zentrale Forschungslücke und formuliert die Fragestellung der Arbeit.
 
-\begin{figure}[htbp]
-\centering
-\resizebox{\textwidth}{!}{%
-\begin{tikzpicture}[
-  box/.style={draw, rounded corners, align=left, font=\small, minimum width=4.8cm, minimum height=3.8cm, inner sep=6pt},
-  smallbox/.style={draw, rounded corners, align=left, font=\small, minimum width=4.2cm, minimum height=1.2cm, inner sep=5pt},
-  arrow/.style={-Latex, very thick},
-  modarrow/.style={-Latex, dashed, thick}
-]
 
-\node[box] (genai) at (0,0) {\textbf{GenAI als soziotechnisches System}\\[0.3em]
-\begin{tabular}{@{}l@{}}
-- Aufgabenautomatisierung/-augmentation\\
-- Algorithmische Kontrolle/Feedback\\
-- Mensch-KI-Interaktion
-\end{tabular}};
+\input{C_Inhalt/02_Theorie/fig_synthese}
 
-\node[box] (leadership) at (6.0,0) {\textbf{Führungsarbeit im Bankensektor}\\[0.3em]
-\begin{tabular}{@{}l@{}}
-- Entscheidungsvorbereitung\\
-- Regulatorische Einbettung\\
-- Rollen- und Expertiseanforderungen
-\end{tabular}};
-
-\node[smallbox] (autonomy) at (12.0,1.5) {\textbf{Autonomie}\\Volition, Entscheidungsspielraum};
-\node[smallbox] (competence) at (12.0,0.0) {\textbf{Kompetenz}\\Wirksamkeit, Expertiseerleben};
-\node[smallbox] (relatedness) at (12.0,-1.5) {\textbf{Soziale Eingebundenheit}\\Verbundenheit, Wertschätzung};
-
-\node[smallbox, minimum width=6.3cm, minimum height=1.6cm, align=left] (outcomes) at (6.0,-4.0) {\textbf{Motivationale Wirkung}\\
-Bedürfnisunterstützend $\rightarrow$ Engagement, Wohlbefinden\\
-Bedürfnisfrustrierend $\rightarrow$ Erschöpfung, Rückzug};
-
-\node[smallbox, minimum width=10.0cm, minimum height=1.2cm, align=center] (context) at (6.0,3.4) {\textbf{Kontextfaktoren (moderierend)}: Sensemaking, Implementierungsmodus, Freiwilligkeit, Teamprozesse};
-
-\draw[arrow] (genai.east) -- (leadership.west);
-\draw[arrow] (leadership.east) -- (autonomy.west);
-\draw[arrow] (leadership.east) -- (competence.west);
-\draw[arrow] (leadership.east) -- (relatedness.west);
-
-\draw[arrow] (autonomy.south) |- (outcomes.east);
-\draw[arrow] (competence.south) -- (outcomes.east);
-\draw[arrow] (relatedness.south) |- (outcomes.east);
-
-\draw[modarrow] (context.south) -- (6.0,1.9);
-\draw[modarrow] (context.south west) -- (10.1,1.9);
-\draw[modarrow] (context.south east) -- (11.0,1.9);
-
-\end{tikzpicture}%
-}
-\caption{Integratives konzeptionelles Rahmenmodell zur Verknüpfung von GenAI als soziotechnischem System, bankenspezifischer Führungsarbeit und SDT-Grundbedürfnissen. Eigene Darstellung in Anlehnung an SDT \parencite{deciWhatWhyGoal2000,deciSelfDeterminationTheoryWork2017,vandenbroeckReviewSelfDeterminationTheorys2016} sowie KI/Algorithmus- und Führungs-/OB-Perspektiven \parencite{bankinsMultilevelReviewArtificial2024,edwardsManagerialControlFeedback2024,tongJanusFaceArtificial2021,quaquebekeNowNewNext2023,LiuWangLin2023}.}
-\label{fig:integratives-rahmenmodell}
-\end{figure}
 
 Abbildung \ref{fig:integratives-rahmenmodell} zeigt die Forschungslogik als Wirkungskette: GenAI verändert die Bedingungen bankenspezifischer Führungsarbeit, diese Veränderung wirkt auf die drei SDT-Grundbedürfnisse, und deren Ausprägung entscheidet über bedürfnisunterstützende oder -frustrierende motivationale Konsequenzen.
 
