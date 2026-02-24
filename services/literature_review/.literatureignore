@@ -7,7 +7,7 @@
 #   - Wildcards: * (beliebige Zeichen), ? (ein Zeichen)
 #
 # Beispiele:
-#   deci_what_2000            # exakter Schlüssel
+#   deciWhatWhyGoal2000            # exakter Schlüssel
 #   schein*                   # alle Schlüssel die mit "schein" beginnen
 #   *2006                     # alle Schlüssel die mit "2006" enden
 #

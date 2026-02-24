@@ -3,10 +3,10 @@ Journal- und Autoren-Qualitätsbewertung.
 
 Priorität der Datenbasis (höchste zuerst):
   1. journal_scores.json  — kuratierte Datenbank (VHB-JOURQUAL3, ABS, SJR)
-  2. User-PDFs in scores/ — per AI extrahiert (pdfplumber + Claude)
-  3. Claude AI            — für Journals die in keiner der o.g. Quellen sind
+  2. User-PDFs in scores/ — per \gls{AI} extrahiert (pdfplumber + Claude)
+  3. Claude \gls{AI}            — für Journals die in keiner der o.g. Quellen sind
 
-AI/GenAI wird NUR für Punkt 2 und 3 verwendet.
+\gls{AI}/GenAI wird NUR für Punkt 2 und 3 verwendet.
 """
 
 from __future__ import annotations
@@ -126,7 +126,7 @@ def extract_authors(entries: list[dict], ignore_keys: set[str]) -> dict[str, Aut
 
 
 # ---------------------------------------------------------------------------
-# Kuratierte JSON-Datenbank (kein AI)
+# Kuratierte JSON-Datenbank (kein \gls{AI})
 # ---------------------------------------------------------------------------
 
 def load_scores_from_db(
@@ -170,7 +170,7 @@ def load_scores_from_db(
         rating.vhb_rating = data.get("vhb_rating", "nicht bewertet")
         rating.abs_rating = data.get("abs_rating", "nicht bewertet")
         rating.notes = data.get("notes", "")
-        rating.ai_assessed = False   # aus kuratierter DB, kein AI
+        rating.ai_assessed = False   # aus kuratierter DB, kein \gls{AI}
         found.add(jname)
 
     print(f"  Journal-DB: {len(found)}/{len(journal_map)} Journals erkannt")
@@ -178,7 +178,7 @@ def load_scores_from_db(
 
 
 # ---------------------------------------------------------------------------
-# PDF-Score-Extraktion (AI erforderlich)
+# PDF-Score-Extraktion (\gls{AI} erforderlich)
 # ---------------------------------------------------------------------------
 
 def _extract_text_from_pdf(pdf_path: Path) -> str:
@@ -263,13 +263,13 @@ Gib NUR das JSON-Array zurück, keine Erklärungen. Wenn keine Zeitschrift gefun
                     if jname and score and jname in known_journals:
                         score_map[jname] = (score, f"{system} ({pdf_path.name})")
         except Exception as exc:
-            print(f"  AI-Fehler bei {pdf_path.name}: {exc}")
+            print(f"  \gls{AI}-Fehler bei {pdf_path.name}: {exc}")
 
     return score_map
 
 
 # ---------------------------------------------------------------------------
-# AI-basierte Journal-Bewertung
+# \gls{AI}-basierte Journal-Bewertung
 # ---------------------------------------------------------------------------
 
 def _assess_journals_via_ai(
@@ -424,7 +424,7 @@ def rate(
         print("anthropic-Paket nicht installiert — überspringe AI-Bewertung.")
         return journal_map, non_journal, author_map
 
-    # ── Schritt 3: PDF-Scores (AI) — nur für Journals ohne DB-Eintrag ────
+    # ── Schritt 3: PDF-Scores (\gls{AI}) — nur für Journals ohne DB-Eintrag ────
     if unknown_journals:
         pdf_scores = load_scores_from_pdfs(
             scores_dir, set(unknown_journals), client
@@ -435,7 +435,7 @@ def rate(
                 journal_map[jname].pdf_score = score
                 journal_map[jname].pdf_source = source
 
-    # ── Schritt 4: AI-Bewertung — nur für wirklich unbekannte Journals ───
+    # ── Schritt 4: \gls{AI}-Bewertung — nur für wirklich unbekannte Journals ───
     # Noch unbekannt = nicht in DB UND kein vollständiger Eintrag durch PDF
     still_unknown = [
         j for j in unknown_journals
@@ -462,7 +462,7 @@ def rate(
     else:
         print("  Alle Journals in kuratierter DB gefunden — kein AI-Journal-Lookup nötig.")
 
-    # ── Schritt 5: Autoren bewerten (AI) — nur ≥ 2 Werke im Bib ─────────
+    # ── Schritt 5: Autoren bewerten (\gls{AI}) — nur ≥ 2 Werke im Bib ─────────
     notable_authors = [
         name for name, info in author_map.items() if info.papers_in_bib >= 2
     ]
