@@ -19,6 +19,49 @@ Hinzu kommt, dass mittlere Führungskräfte in Technologietransformationen eine 
 
 \textcite{koponenWorkCharacteristicsNeeded2025} identifizierten durch eine systematische Literaturanalyse zentrale Arbeitscharakteristika, die mittlere Führungskräfte in \acrshort{ki}-integrierten Teams benötigen: Autonomie bei der Gestaltung von Mensch-\acrshort{ki}-Interaktionen, transparente Feedback-Mechanismen für menschliche und algorithmische Leistung, eine Balance zwischen Routine- und strategischen Aufgaben sowie soziale Unterstützung durch Peers und Vorgesetzte bei \acrshort{ki}-bezogenen Unsicherheiten. Fehlen diese Charakteristika, steigt das Risiko für Rollenkonflikte, Ambiguitätsstress und motivationale Erosion.
 
+\subsection{Entscheidungsvorbereitung als Untersuchungsgegenstand}
+\label{sec:entscheidungsvorbereitung}
+
+Die bisherige Darstellung hat Entscheidungsarbeit als Kernaufgabe mittlerer Führungskräfte charakterisiert. Um den Gegenstandsbereich der vorliegenden Arbeit -- den Einsatz generativer \gls{ki} in \textit{Entscheidungsvorbereitungsprozessen} -- konzeptionell präzise zu fassen, bedarf es einer Phasenunterscheidung: Nicht jede Etappe eines Entscheidungsprozesses wird durch generative KI gleichermaßen berührt, und nicht jede Etappe berührt die psychologischen Grundbedürfnisse auf dieselbe Weise.
+
+\textcite{simonNewScienceManagement1977} hat mit seiner Phasenheuristik ein Modell vorgelegt, das Entscheidungsprozesse in drei sequenzielle, aber iterativ verschränkte Phasen gliedert: \textit{Intelligence} -- das Erkennen und Strukturieren eines Entscheidungsbedarfs; \textit{Design} -- das Entwickeln, Durchspielen und Bewerten von Handlungsalternativen; sowie \textit{Choice} -- die eigentliche Auswahl einer Option und deren Legitimierung. Simons Verdienst liegt darin, Entscheidungen nicht als singuläre Akte zu begreifen, sondern als Prozesse mit analytisch unterscheidbaren Teilschritten, die jeweils eigene kognitive und soziale Anforderungen stellen.
+
+\textcite{mintzbergStructureUnstructuredDecision1976} differenzierten dieses Modell für komplexe, wenig strukturierte Entscheidungen weiter -- genau jener Typus, der die Arbeit mittlerer Führungskräfte prägt. Ihre empirische Analyse strategischer Entscheidungsprozesse zeigte, dass die Vorbereitungsphase keineswegs linear verläuft, sondern durch Rückkopplungsschleifen, Suchprozesse und dynamische Problemreformulierungen gekennzeichnet ist. Gerade in der Vorbereitung -- also in den Phasen \textit{Identification} und \textit{Development} -- investieren Entscheidungsträger den Großteil ihrer kognitiven Ressourcen: Sie identifizieren relevante Informationen, generieren und verwerfen Optionen, synthetisieren heterogene Datenquellen und formulieren tragfähige Empfehlungen, die anschließend in der Entscheidung selbst münden.
+
+Für die vorliegende Arbeit wird \textit{Entscheidungsvorbereitung} als jener Abschnitt des Entscheidungsprozesses definiert, der der eigentlichen Entscheidung vorausgeht: von der Identifikation und Strukturierung eines Entscheidungsbedarfs über die Beschaffung und Analyse entscheidungsrelevanter Informationen bis hin zur Formulierung und Bewertung von Handlungsoptionen. Die Entscheidungsvorbereitung umfasst damit die Phasen \textit{Intelligence} und \textit{Design} im Sinne Simons beziehungsweise \textit{Identification} und \textit{Development} im Sinne von Mintzberg et al. Sie endet dort, wo eine Führungskraft (oder ein Gremium) die vorbereiteten Optionen zu einer verbindlichen Wahl verdichtet. Diese Abgrenzung ist nicht arbiträr, sondern forschungslogisch begründet: Die Vorbereitungsphase ist jener Bereich, in dem generative \gls{ki} ihre höchste Eingriffstiefe entfaltet und in dem die motivationalen Spannungsfelder am unmittelbarsten sichtbar werden.
+
+Tabelle~\ref{tab:genai-entscheidung} veranschaulicht, an welchen Teilschritten der Entscheidungsvorbereitung generative \gls{ki} ansetzt und welche psychologischen Grundbedürfnisse dabei berührt werden.
+
+\begin{table}[ht]
+\centering
+
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{3.2cm}}
+\toprule
+\textbf{Teilschritt} & \textbf{Typischer GenAI-Einsatz} & \textbf{Berührtes SDT-Bedürfnis} \\
+\midrule
+Problemidentifikation \newline \textit{(Intelligence)} & Automatisierte Erkennung von Abweichungen, Mustererkennung in großen Datenmengen & Autonomie \newline (Problemframing) \\
+\addlinespace
+Informationsbeschaffung und -synthese & Aggregation heterogener Quellen, Zusammenfassungen, Recherche & Kompetenz \newline (Expertise vs. Delegation) \\
+\addlinespace
+Optionengenerierung \newline \textit{(Design)} & Szenarioanalysen, Entwurf von Handlungsalternativen, Simulationen & Autonomie, Kompetenz \newline (Urheberschaft) \\
+\addlinespace
+Bewertung und Empfehlung & Gegenüberstellungen, Risikoeinschätzungen, Entscheidungsvorlagen & Kompetenz \newline (Urteilsvermögen) \\
+\addlinespace
+Kommunikation der Entscheidungsgrundlage & Erstellung von Berichten, Präsentationen, Dokumentation & Soziale Eingebundenheit \newline (Teaminteraktion) \\
+\bottomrule
+\caption{Entscheidungsvorbereitung: Teilschritte, GenAI-Einsatz und motivationale Berührungspunkte}
+\end{tabularx}
+\end{table}
+
+\label{tab:genai-entscheidung}
+
+Drei Aspekte verdienen besondere Aufmerksamkeit. Erstens ist die Entscheidungsvorbereitung im mittleren Management selten ein individueller Akt; sie ist eingebettet in Teamdynamiken, Rücksprachen mit Vorgesetzten und Abstimmungen mit Fachabteilungen. Wenn generative \gls{ki} Aufgaben substituiert, die bisher kooperativ bearbeitet wurden -- etwa die gemeinsame Erstellung einer Kreditvorlage oder die diskursive Entwicklung einer Vertriebsstrategie --, verändert sich nicht nur die Effizienz des Prozesses, sondern auch seine soziale Textur \parencite{klonekDoesAIWork2025}.
+
+Zweitens unterscheiden sich die Entscheidungstypen im Bankensektor erheblich in ihrem Formalisierungsgrad und damit in der Eingriffstiefe von \gls{genai}. Kreditentscheidungen folgen weitgehend standardisierten Rating- und Bewertungslogiken, in denen \acrshort{ki}-gestützte Analysen vergleichsweise reibungsarm integriert werden können. Strategische Vertriebsentscheidungen oder Personalentscheidungen hingegen erfordern stärker interpretative, kontextabhängige Urteilsprozesse, bei denen die Rolle generativer \gls{ki} ambivalenter ist -- sie kann Informationen strukturieren, aber das situative Urteil nicht ersetzen. Diese Differenzierung wird im empirischen Teil der Arbeit aufgegriffen, wenn Interviewpersonen über unterschiedliche Entscheidungskontexte berichten.
+
+Drittens verweist die Phasenunterscheidung auf eine theoretisch bedeutsame Asymmetrie: Die \textit{Vorbereitung} von Entscheidungen ist jener Bereich, in dem Kompetenzerleben am stärksten an den Prozess gebunden ist -- an die Fähigkeit, Informationen zu beschaffen, zu gewichten und zu einer fundierten Empfehlung zu verdichten. Die \textit{Entscheidung} selbst ist dagegen stärker an formale Autorität und Verantwortungszurechnung geknüpft. Wenn \gls{genai} primär die Vorbereitungsphase substituiert, dann berührt sie genau jenen Bereich, in dem professionelle Identität und Kompetenzerleben am unmittelbarsten verankert sind -- während die formale Entscheidungsverantwortung nominell beim Menschen verbleibt. Dieses Auseinanderfallen von Prozesssubstitution und Verantwortungszurechnung bildet den motivationstheoretischen Kern der vorliegenden Untersuchung.
+
 
 \subsection{Entscheidungsvorbereitung als Untersuchungsgegenstand}
 \label{subsec:entscheidungsvorbereitung}
