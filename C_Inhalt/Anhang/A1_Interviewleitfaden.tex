@@ -1,12 +1,499 @@
-\chapter{Interviewleitfaden}
-\label{anhang:interviewleitfaden}
+% ============================================================
+% INTERVIEWLEITFADEN V2 — ÜBERARBEITETE FASSUNG
+% Revisionsgrundlage: Methodenkritik nach D1–D7 (Witzel 2000;
+%   Flick 2011; Flanagan 1954; Przyborski/Wohlrab-Sahr 2021)
+%
+% Wesentliche Änderungen gegenüber V1:
+%   [R1] Block 3 (Führungsrolle/Identität) eliminiert —
+%        SDT-externe Konstrukte; Accountability → Block 3 (neu),
+%        Identitätserleben emergiert in Block 2a/2b
+%   [R2] Block 4 (Rahmenbedingungen) → neu Block 3,
+%        auf 12 Min ausgebaut; CIT-Frage ergänzt
+%   [R3] S-Fragen in Block 1 von 5 auf 3 reduziert;
+%        Präsuppositions-S4 → A-Frage konditionalisiert
+%   [R4] Präsuppositionen in 2a-S2, 2c-E, 2c-S1 korrigiert
+%   [R5] Block 2b E-Frage: ergebnisverengende Spezifizierung
+%        entfernt; S-Fragen von 5 auf 3 reduziert
+%   [R6] Einstieg-S-Frage (redundant zur E) gestrichen
+%   [R7] Zeitbudget auf realisierbare ~52 Min angepasst
+%   [R8] Block 3 (neu): CIT-Frage für Bedingungsanalyse (RQ-B)
+%        als S-Frage ergänzt
+% ============================================================
 
-Der nachfolgende Leitfaden orientiert sich am Ansatz des problemzentrierten Interviews
-nach \parencite{witzelProblemcenteredInterview2000} und wurde für den Einsatz in
-qualitativen Einzelgesprächen mit Führungskräften im mittleren Management des
-\acrshort{dach}-Bankensektors entwickelt. Die Legende der Fragekategorien (E\,=\,Erzählstimulus,
-S\,=\,Sondierungsfrage, A\,=\,Ad-hoc-Frage) findet sich auf Seite~1 des Dokuments.
+% ---- tcolorbox-Stile ---------------------------------------
 
-\includepdf[pages=-, pagecommand  = {},
-  fitpaper     = true,
-  noautoscale  = false]{C_Inhalt/Anhang/Interviewleitfaden_Masterarbeit_Maerker.pdf}
+\tcbset{
+  hintbox/.style={
+    colback=white,
+    colframe=black,
+    fontupper=\small\itshape\color{black},
+    boxrule=0.6pt,
+    leftrule=2.5pt,
+    arc=0pt,
+    left=6pt, right=6pt,
+    top=3pt, bottom=3pt,
+    breakable
+  }
+}
+
+% ---- Hilfsbefehle ------------------------------------------
+\newcommand{\Efrage}[1]{%
+  \vspace{4pt}%
+  \noindent
+  \makebox[1.8em][l]{\textcolor{black}{\textbf{E}}}%
+  \parbox[t]{\dimexpr\linewidth-1.8em}{%
+    \textit{\textbf{#1}}%
+  }\par\vspace{4pt}%
+}
+
+\newcommand{\Sfrage}[1]{%
+  \vspace{2pt}%
+  \noindent\hspace{1.8em}%
+  \makebox[1.8em][l]{\textcolor{black}{\textbf{S}}}%
+  \parbox[t]{\dimexpr\linewidth-3.6em}{#1}\par\vspace{2pt}%
+}
+
+\newcommand{\Afrage}[1]{%
+  \vspace{2pt}%
+  \noindent\hspace{1.8em}%
+  \makebox[1.8em][l]{\textcolor{black}{\textbf{A}}}%
+  \parbox[t]{\dimexpr\linewidth-3.6em}{#1}\par\vspace{2pt}%
+}
+
+\newcommand{\Hinweis}[1]{%
+  \begin{tcolorbox}[hintbox]
+    $\rightarrow$\enskip #1
+  \end{tcolorbox}%
+}
+
+\newcommand{\blocksep}{\vspace{0.9em}}
+
+% ============================================================
+%  HAUPTDOKUMENT — ab hier einfügen
+% ============================================================
+
+\chapter{INTERVIEWLEITFADEN\\\normalsize}
+
+\vspace{0.5em}
+
+% ---- Metadaten-Tabelle -------------------------------------
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+  \textbf{Projekt}          & \ThesisTitle \\[3pt]
+  \textbf{Autor}            & \AuthorName  (Matrikelnummer: \MatriculationNumber) \\[3pt]
+  \textbf{Betreuung}        & \Supervisor \\[3pt]
+  \textbf{Abgabe}           & \SubmissionDate \\[6pt]
+  \textbf{Interviewdatum}   & \underline{\hspace{7cm}} \\[3pt]
+  \textbf{Interview-Nummer} & IP-\underline{\hspace{5cm}} \\[3pt]
+  \textbf{Dauer (geplant)}  & ca.\ 45–55 Minuten \\[3pt]
+  \textbf{Ort / Medium}     & \underline{\hspace{7cm}} \\
+\end{tabularx}
+
+\vspace{0.8em}
+\noindent\textbf{Legende}
+
+\begin{tabularx}{\linewidth}{@{}llll@{}}
+  \textcolor{ecolor}{\textbf{E}} &
+    Erzählstimulus / Einstiegsfrage \textit{(kursiv, fett)} \\[4pt]
+  \textcolor{scolor}{\textbf{S}} &
+    Sondierungsfrage (vertiefend) \\[4pt]
+  \textcolor{acolor}{\textbf{A}} &
+    Ad-hoc-Frage (situativ, bei Bedarf) \\[4pt]
+  $\rightarrow$ &
+    Hinweis zur Interviewführung \\
+\end{tabularx}
+
+\blocksep
+
+% ============================================================
+%  HINWEISE ZUR INTERVIEWFÜHRUNG
+% ============================================================
+\section{Hinweise zur Interviewführung}
+
+\vspace{0.4em}
+
+\noindent\textbf{Vor dem Interview}
+
+\begin{itemize}[leftmargin=1.5em, itemsep=1pt, topsep=2pt]
+  \item[$\rightarrow$] Schriftliche Einverständniserklärung einholen
+    (Aufnahme, Datennutzung, Anonymisierung)
+  \item[$\rightarrow$] Kurzfragebogen (Anhang) vorab zusenden oder direkt
+    zu Beginn ausfüllen lassen
+  \item[$\rightarrow$] Voraussetzungen für Aufnahme testen; ruhige,
+    störungsfreie Gesprächsatmosphäre sicherstellen
+  \item[$\rightarrow$] \textbf{Pilotinterview:} Leitfaden vor Beginn der
+    Haupterhebung an 1–2 Personen der Zielgruppe erproben. Prüfen: Werden
+    die Fragen wie intendiert verstanden? Öffnen E-Stimuli den Erzählraum?
+    Ergebnisse im Postskriptum dokumentieren und Leitfaden ggf.\ anpassen.
+    (vgl.\ Witzel 2000)
+\end{itemize}
+
+\vspace{0.4em}
+\noindent\textbf{Eröffnung des Interviews}
+
+\begin{itemize}[leftmargin=1.5em, itemsep=1pt, topsep=2pt]
+  \item[$\rightarrow$] Dank für Teilnahme; kurze Vorstellung des
+    Forschungsanliegens (ohne Hypothesen preiszugeben)
+  \item[$\rightarrow$] Hinweis: Teilnahme freiwillig, Anonymisierung
+    zugesichert, Abbruch jederzeit möglich
+  \item[$\rightarrow$] Aufnahmeerlaubnis einholen, Aufnahme starten
+\end{itemize}
+
+\vspace{0.4em}
+\noindent\textbf{Während des Gesprächs}
+
+\begin{itemize}[leftmargin=1.5em, itemsep=1pt, topsep=2pt]
+  \item[$\rightarrow$] Offen und narrativ beginnen, Erzählfluss nicht
+    unterbrechen
+  \item[$\rightarrow$] S-Fragen erst einsetzen, wenn IP den Erzählimpuls
+    nicht selbst aufgreift, nicht als systematische Zweitfrage
+    (Witzel 2000, S.~56)
+  \item[$\rightarrow$] A-Fragen situativ einsetzen, wenn relevante Themen
+    nicht von selbst angesprochen werden
+  \item[$\rightarrow$] Aktives Zuhören, Pausen aushalten, kurze
+    Rückmeldungen geben (\glqq mhm\grqq{}, \glqq ja\grqq{},
+    \glqq interessant\grqq{})
+  \item[$\rightarrow$] \textbf{Präsuppositionen im Blick behalten:} Mehrere
+    Fragen sind mit \textit{falls\,/\,wenn} konditionalisiert, weil KI-Nutzung
+    zwischen IPs stark variieren kann. Diese Konditionalisierungen im
+    Gesprächsverlauf beibehalten, nicht glätten.
+\end{itemize}
+
+% [R7] Zeitbudget an neue Struktur (4 Blöcke, kein Block 3 alt) angepasst
+\vspace{0.4em}
+\noindent\textbf{Zeitbudget je Block (Orientierung)}
+
+\vspace{0.2em}
+\begin{tabularx}{\linewidth}{@{}lXr@{}}
+  \toprule
+  \textbf{Abschnitt} & \textbf{Inhalt} & \textbf{Richtwert} \\
+  \midrule
+  Einstieg  & Rapport, Alltagssituation               & $\approx$\,4 Min \\
+  Block 1   & KI-Einsatz, Entscheidungskontext        & $\approx$\,10 Min \\
+  Block 2   & Motivationales Erleben (SDT)             & $\approx$\,18 Min \\
+  Block 3   & Organisationale Rahmenbedingungen (RQ-B)& $\approx$\,12 Min \\
+  Abschluss & Reflexion, Offenes                      & $\approx$\,6 Min \\
+  \midrule
+  \textbf{Gesamt} &                                   & \textbf{$\approx$\,50 Min} \\
+  \bottomrule
+\end{tabularx}
+
+\vspace{0.2em}
+{\small\itshape Hinweis: Block 3 trägt die Bedingungsanalyse (RQ-B) und ist
+  bewusst auf 12~Min ausgebaut. Falls Block~2 länger dauert als geplant,
+  Block~2c auf E-Frage + 1~S kürzen, Block~3 darf \textbf{nicht} unterschritten
+  werden.}
+
+\vspace{0.4em}
+\noindent\textbf{Abschluss und Nachbereitung}
+
+\begin{itemize}[leftmargin=1.5em, itemsep=1pt, topsep=2pt]
+  \item[$\rightarrow$] Aufnahme beenden, Dank und Verabschiedung
+  \item[$\rightarrow$] Postskriptum direkt nach dem Gespräch anfertigen:
+    Besonderheiten, Atmosphäre, nonverbale Signale
+  \item[$\rightarrow$] \textbf{Reflexivitätsprotokoll (Pflicht):} Da
+    Forscher und Interviewperson demselben professionellen Milieu angehören
+    (DACH-Bankensektor, Führungsrolle), besteht erhöhtes Risiko von implizitem
+    Vorverständnis und unkritisch geteiltem Deutungswissen. Im Postskriptum
+    festhalten: Welche eigenen Annahmen wurden aktiviert? Welche Aussagen der
+    IP wirkten überraschend oder wurden vorschnell als selbstverständlich
+    übergangen? (vgl.\ Przyborski \& Wohlrab-Sahr 2021, S.~89)
+  \item[$\rightarrow$] Transkription nach Dresing \& Pehl (2017),
+    Gesprächsführungsprotokoll ablegen
+\end{itemize}
+
+\blocksep
+
+% ============================================================
+%  GESPRÄCHSEINSTIEG
+% ============================================================
+\section{Gesprächseinstieg \hfill \normalfont\small\itshape ($\approx$\,4 Min)}
+
+\Efrage{Erzählen Sie mir bitte, wie ein typischer Arbeitstag bei Ihnen als
+  Führungskraft aussieht, welche Aufgaben prägen Ihren Alltag am stärksten?}
+
+% [R6] Redundante S-Frage (Zeitanteil) gestrichen — deckungsgleich mit E-Frage
+\Afrage{Wenn Sie Ihre Entscheidungsarbeit beschreiben müssten, was würden Sie
+  besonders hervorheben?}
+
+\Hinweis{Ziel: Vertrauen aufbauen, Interviewperson situieren, noch keine
+  inhaltlichen Vorgaben zu KI machen. S-Frage nur einsetzen, wenn Erzählfluss
+  stockt.}
+
+\blocksep
+
+% ============================================================
+%  BLOCK 1
+% ============================================================
+\section{Block 1: Einsatz und Erfahrungen mit generativer KI %
+  \hfill \normalfont\small\itshape ($\approx$\,10 Min)}
+
+\Efrage{Ich würde gerne verstehen, welche Rolle generative KI-Tools, wie
+  ChatGPT, Microsoft Copilot oder ähnliche, in Ihrer täglichen Führungsarbeit
+  spielen. Erzählen Sie mir davon, wie das bei Ihnen konkret aussieht.}
+
+\Sfrage{Welche Tools nutzen Sie, und in welchen Situationen setzen Sie diese ein?}
+\Sfrage{Denken Sie an eine Situation, in der die KI-Nutzung besonders gut funktioniert hat, und an eine, in der das eher nicht der Fall war. Was war in diesen Situationen jeweils anders?}
+\Afrage{Falls generative KI regelmäßig Teil Ihrer Arbeit ist, wie ist das entstanden? Gab es einen konkreten Ausgangspunkt?}
+\Afrage{Gibt es Bereiche Ihrer Führungsarbeit, in denen Sie KI bewusst nicht einsetzen?}
+
+\Hinweis{Offen einsteigen, erst konkrete Nutzungsszenarien erkunden, bevor motivationale Aspekte thematisiert werden.}
+
+\blocksep
+
+\Efrage{Sie haben verschiedene Nutzungssituationen beschrieben. Ich möchte
+  auf einen spezifischen Bereich eingehen: Wenn Sie an Entscheidungen denken,
+  die Sie vorbereiten müssen, strategische, personelle, operative, wie kommt
+  generative KI dabei ins Spiel?}
+
+\Sfrage{Können Sie mir dazu eine konkrete Situation schildern?}
+\Sfrage{Was hat sich in diesem Prozess durch die KI-Nutzung verändert –
+  wenn überhaupt?}
+
+\Hinweis{Übergang zu Block 2: Fokus gezielt auf Entscheidungsvorbereitungs\-
+  prozesse lenken, bevor motivationale Aspekte thematisiert werden.
+  Erzählfluss nicht unterbrechen.}
+
+\blocksep
+
+% ============================================================
+%  BLOCK 2: MOTIVATIONALE WIRKUNG
+% ============================================================
+\section{Block 2: Motivationale Wirkung (SDT-Grundbedürfnisse) %
+  \hfill \normalfont\small\itshape ($\approx$\,18 Min)}
+
+% ---- 2a) Autonomie -----------------------------------------
+\subsubsection{2a) Autonomieerleben \hfill \normalfont\small\itshape ($\approx$\,6 Min)}
+
+\vspace{0.4em}
+
+\Efrage{Wenn Sie an Entscheidungen denken, die Sie mithilfe generativer KI
+  vorbereitet haben, wie erleben Sie diesen Prozess für sich selbst?}
+
+\Sfrage{Verändert die KI-Nutzung Ihren eigenen Denkprozess, wie Sie an ein
+  Problem herangehen?}
+% [R4] Präsupposition ("im Vergleich zu früher") entfernt — konditionaler Vergleich
+\Sfrage{Wenn Sie den Abschluss einer KI-gestützten Entscheidung beschreiben –
+  wie erleben Sie diesen Moment?}
+\Sfrage{Gibt es Situationen, in denen Sie den Prozess als einengend erleben –
+  und andere, in denen das nicht der Fall ist? Was unterscheidet diese
+  Situationen?}
+\Afrage{Wie erleben Sie es, wenn es in Ihrer Organisation konkrete Vorgaben
+  zum KI-Einsatz gibt, oder wenn solche fehlen?}
+
+\Hinweis{SDT-Kernbegriff: Autonomie = Erleben von Wahlmöglichkeit,
+  Eigenverantwortung und volitionaler Handlungssteuerung. Begriffe
+  \textit{Autonomie} und \textit{SDT} werden im Interview \textbf{nicht}
+  verwendet.}
+
+\vspace{0.6em}
+
+% ---- 2b) Kompetenz -----------------------------------------
+\subsubsection{2b) Kompetenzerleben \hfill \normalfont\small\itshape ($\approx$\,6 Min)}
+
+% [R5] E-Frage: ergebnisverengende Spezifizierung ("in der Art, wie Sie das
+%      Ergebnis wahrnehmen") entfernt — Erzählraum für Prozess- UND
+%      Ergebniserleben geöffnet
+\Efrage{Denken Sie an eine konkrete Arbeitssituation, in der Sie generative
+  KI eingesetzt haben. Was hat sich dabei für Sie verändert?}
+
+\Sfrage{Und wie ist das, wenn Sie dieses Ergebnis anderen vorstellen?}
+% [R5] S-Fragen von 5 auf 3 reduziert; "besser/schneller" und "fachliches
+%      Lernen" zusammengeführt
+\Sfrage{Inwiefern verändert die Arbeit mit generativer KI Ihre eigene Wirksamkeit, in dem, was Sie leisten?}
+\Sfrage{Gibt es Situationen, in denen KI-Nutzung Ihr Gefühl eigener
+  Kompetenz eher untergräbt?}
+\Afrage{Wie gehen Sie damit um, wenn ein KI-Vorschlag falsch oder
+  unvollständig ist?}
+
+\Hinweis{SDT-Kernbegriff: Kompetenz = Erleben von Wirksamkeit und
+  Meisterschaft in herausfordernden Aufgaben. Begriffe nicht im Interview
+  verwenden.}
+
+\vspace{0.6em}
+
+% ---- 2c) Soziale Eingebundenheit ---------------------------
+\subsubsection{2c) Soziale Eingebundenheit \hfill \normalfont\small\itshape ($\approx$\,6 Min)}
+
+% [R4] Präsupposition ("seitdem KI stärker präsent ist") entfernt;
+%      E-Frage für IPs mit sporadischer Nutzung geöffnet
+\Efrage{Wie erleben Sie die Zusammenarbeit mit Ihrem Team, wenn generative
+  KI im Spiel ist, oder auch, wenn sie es nicht ist?}
+
+% [R4] S-Frage 1 konditionalisiert — kein Voraussetzen von KI-Präsentation
+\Sfrage{Wenn Sie im Team auf KI-gestützte Ergebnisse Bezug nehmen –
+  wie erleben Sie das?}
+\Sfrage{Gibt es Situationen, in denen KI eher verbindend wirkt, und welche,
+  in denen sie eher trennend ist?}
+\Afrage{Gibt es Situationen, in denen andere unterschiedlich reagieren –
+  je nachdem, ob sie wissen, dass KI bei der Erarbeitung beteiligt war?}
+
+\Hinweis{SDT-Kernbegriff: Soziale Eingebundenheit = Gefühl des Dazugehörens,
+  bedeutsame Beziehungen zu anderen. Begriffe nicht im Interview verwenden.\\[4pt]
+  Übergang zu Block 3: An Konkretes aus Block 2 anknüpfen. Beispiel:
+  \glqq Sie haben beschrieben, wie KI Ihren Entscheidungsprozess und Ihre
+  Zusammenarbeit beeinflusst. Ich möchte jetzt auf die organisationale Seite
+  schauen, welche Rahmenbedingungen das alles prägen.\grqq}
+
+\blocksep
+
+% ============================================================
+%  BLOCK 3 (NEU) — ORGANISATIONALE RAHMENBEDINGUNGEN
+%  Vormals Block 4; auf 12 Min ausgebaut; RQ-B-Träger
+% ============================================================
+% [R1][R2] Block 3 alt (Führungsrolle/Identität) eliminiert;
+%           ehemaliger Block 4 vorgezogen und erweitert
+\section{Block 3: Organisationale Rahmenbedingungen im Bankensektor %
+  \hfill \normalfont\small\itshape ($\approx$\,12 Min)}
+
+\Efrage{Wie geht Ihre Organisation mit dem Thema generative KI um, gibt es
+  klare Regeln, Empfehlungen oder eher offene Freiräume für den Einsatz?}
+
+\Sfrage{Wie offen ist die Unternehmenskultur gegenüber der Nutzung neuer
+  KI-Werkzeuge?}
+% [R8] CIT-Frage für Bedingungsanalyse (RQ-B) ergänzt — Flanagan 1954
+\Sfrage{Denken Sie an eine Situation, in der der organisationale Rahmen Ihren
+  KI-Einsatz gut unterstützt hat, und an eine, in der das nicht der Fall
+  war. Was war in diesen Situationen jeweils anders?}
+\Sfrage{Wie reagiert Ihr direktes Umfeld, Vorgesetzte, Peers,
+  Mitarbeitende, auf Ihre KI-Nutzung?}
+\Sfrage{Wie geht Ihre Organisation mit Fehlern um, die durch KI-Outputs
+  mitverursacht wurden?}
+\Sfrage{Welchen Einfluss hat die regulatorische Umgebung auf Ihre
+  Möglichkeiten, KI einzusetzen?}
+\Afrage{Gibt es compliance- oder datenschutzbezogene Einschränkungen, die
+  Ihre Nutzung konkret begrenzen?}
+\Afrage{Was müsste sich verändern, an der Technologie, der Organisation
+  oder den Rahmenbedingungen –, damit generative KI Ihre Führungsarbeit
+  wirklich gut unterstützt?}
+\Afrage{Wie erleben Sie den Umgang mit KI im Vergleich zu anderen
+  Instituten, die Sie kennen?}
+
+\Hinweis{Bankensektor-spezifisch: Regulatorik ansprechen, falls nicht von
+  der Interviewperson selbst thematisiert. Länderspezifische Referenzen:
+  DE: BaFin-Rundschreiben, EBA Guidelines on ML/AI;
+  AT: FMA-Leitlinien, DSGVO;
+  CH: FINMA-Aufsichtsmitteilungen.
+  EU-übergreifend: EU AI Act (Risikoklassifizierung für Kreditinstitute).\\[4pt]
+  Die CIT-Frage (S2) ist konstitutiv für die Beantwortung von RQ-B –
+  nicht überspringen. (Flanagan 1954)}
+
+\blocksep
+
+% ============================================================
+%  GESPRÄCHSABSCHLUSS
+% ============================================================
+\section{Abschluss und Reflexion \hfill \normalfont\small\itshape ($\approx$\,6 Min)}
+
+% Kurzimpuls Führungsrolle — einziges Überbleibsel des alten Block 3;
+% als narrativer Abschlussraum statt eigenem Block
+\Efrage{Wenn Sie auf unser gesamtes Gespräch zurückblicken, was würden Sie
+  als den Kern Ihres Erlebens mit generativer KI in Ihrer Führungsarbeit
+  beschreiben?}
+
+\Sfrage{Inwiefern hat die KI-Nutzung verändert, was Ihre Führungsarbeit für
+  Sie im Kern ausmacht, falls das der Fall ist?}
+
+\Afrage{Wenn Sie ein Bild oder einen Begriff wählen müssten, der Ihr
+  Verhältnis zu generativer KI treffend einfängt, welcher würde am
+  ehesten passen?}
+\Afrage{Gibt es etwas, das wir noch nicht angesprochen haben, das Ihnen aber
+  wichtig erscheint?}
+
+\Hinweis{Aufnahme beenden. Dank und Verabschiedung. Hinweis auf
+  Anonymisierung und Weiterverwendung der Daten. Postskriptum \textbf{und}
+  Reflexivitätsprotokoll unmittelbar nach dem Gespräch anfertigen:
+  Besonderheiten, nonverbale Signale, Gesprächsatmosphäre, eigene aktivierte
+  Vorannahmen.}
+
+\blocksep
+
+% ============================================================
+%  ANHANG: KURZFRAGEBOGEN
+% ============================================================
+\section*{Anhang: Kurzfragebogen (Soziodemografika)}
+\textit{Bitte vor oder unmittelbar nach dem Interview ausfüllen. Alle Angaben
+  sind anonym und dienen ausschließlich der Beschreibung der Stichprobe.}
+
+\noindent\textbf{Angaben zur Person und Tätigkeit}
+
+\vspace{0.4em}
+
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+  \toprule
+  \textbf{Interview-Nummer}
+    & IP-\underline{\hspace{7cm}} \\[5pt]
+  \textbf{Aktuelle Position / Bezeichnung}
+    & \underline{\hspace{7cm}} \\[5pt]
+  \textbf{Hierarchieebene} & $\square$ Teamleitung \quad
+      $\square$ Gruppenleitung \\ &
+      $\square$ Abteilungsleitung \quad
+      $\square$ Bereichsleitung \\[5pt]
+  \textbf{Dauer in aktueller Führungsrolle}
+    & \underline{\hspace{4cm}} Jahre \\[5pt]
+  \textbf{Führungsspanne (direkt unterst.)}
+    & \underline{\hspace{4cm}} Mitarbeitende \\
+  \bottomrule
+\end{tabularx}
+
+\vspace{0.8em}
+
+\noindent\textbf{Angaben zur Organisation}
+
+\vspace{0.4em}
+
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+  \toprule
+  \textbf{Typ des Kreditinstituts} &
+    $\square$ Universalbank \quad
+    $\square$ Privatbank \\ &
+    $\square$ Sparkasse \quad
+    $\square$ Genossenschaftsbank \\ &
+    $\square$ Direktbank \quad
+    $\square$ Sonstige \\[5pt]
+  \textbf{Land} &
+    $\square$ Deutschland \quad
+    $\square$ Österreich \quad
+    $\square$ Schweiz \\[5pt]
+  \textbf{Institutsgröße (MA gesamt, ca.)} &
+    $\square$ ${<}$\,500 \quad
+    $\square$ 500–5.000 \\ &
+    $\square$ 5.001–20.000 \quad
+    $\square$ ${>}$\,20.000 \\
+  \bottomrule
+\end{tabularx}
+
+\vspace{0.8em}
+
+\noindent\textbf{Angaben zur KI-Nutzung}
+
+\vspace{0.4em}
+
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+  \toprule
+  \textbf{Nutzungshäufigkeit KI-Tools} &
+    $\square$ täglich \quad
+    $\square$ mehrmals/Woche \\ &
+    $\square$ wöchentlich \quad
+    $\square$ selten \\ &
+    $\square$ gar nicht \\[5pt]
+  \textbf{Genutzte Tools (offene Nennung)} &
+    \underline{\hspace{8cm}} \\[5pt]
+  \textbf{KI-Nutzung dienstlich erlaubt?} &
+    $\square$ Ja, offiziell eingeführt \\ &
+    $\square$ Ja, geduldet / informell \\ &
+    $\square$ Nein / unklar \\
+  \bottomrule
+\end{tabularx}
+
+\vspace{0.8em}
+
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+  \toprule
+  \textbf{Anmerkungen / Ergänzungen} &
+    \underline{\hspace{8cm}} \\[5pt]
+                                     &
+    \underline{\hspace{8cm}} \\
+  \bottomrule
+\end{tabularx}
+
+\vspace{1em}
