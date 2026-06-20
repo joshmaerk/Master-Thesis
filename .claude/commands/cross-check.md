@@ -1,5 +1,13 @@
 # /cross-check — Theorie–Ergebnisse–Diskussion Konsistenzprüfung
 
+
+## Gemeinsame Referenzen
+
+Vor Ausführung bei Bedarf lesen:
+- `.claudedocs/terminology.md`
+- `.claudedocs/citations-and-sources.md`
+- `.claudedocs/writing-style.md`
+
 Prüfe die inhaltliche Konsistenz zwischen Kapitel 2 (Theorie), Kapitel 4 (Ergebnisse)
 und Kapitel 5 (Diskussion). Identifiziere fehlende Verknüpfungen und nicht belegte
 Interpretationen.

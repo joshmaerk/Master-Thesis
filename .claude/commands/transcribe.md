@@ -1,5 +1,12 @@
 # Transkriptions-Skill — Dresing & Pehl (2017)
 
+
+## Gemeinsame Referenzen
+
+Vor Ausführung bei Bedarf lesen:
+- `.claudedocs/services.md`
+- `.claudedocs/user-guide.md`
+
 Transkribiere eine Audiodatei nach dem einfachen Transkriptionssystem von Dresing & Pehl (2017).
 Sprecher werden automatisch zugewiesen (I: = Interviewer, B: = Befragte Person).
 Ausgabe als RTF-Datei in interviews/transcripts/.

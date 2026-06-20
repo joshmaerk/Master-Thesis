@@ -1,5 +1,12 @@
 # /check-citations — Zitationsvollständigkeit prüfen
 
+
+## Gemeinsame Referenzen
+
+Vor Ausführung bei Bedarf lesen:
+- `.claudedocs/bibliography.md`
+- `.claudedocs/citations-and-sources.md`
+
 Prüfe alle Zitationen in den LaTeX-Kapiteln auf Vollständigkeit und identifiziere
 unkitierte, aber relevante Literatur aus der Bibliographie.
 

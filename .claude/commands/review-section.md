@@ -1,5 +1,13 @@
 # /review-section — Akademische Schreibqualität prüfen
 
+
+## Gemeinsame Referenzen
+
+Vor Ausführung bei Bedarf lesen:
+- `.claudedocs/writing-style.md`
+- `.claudedocs/terminology.md`
+- `.claudedocs/citations-and-sources.md`
+
 Prüfe einen übergebenen Textabschnitt auf akademische Schreibqualität, SDT-Terminologie-
 Konsistenz, korrekte Kuckartz-Terminologie und LaTeX-Konventionen.
 
