@@ -1,0 +1,1636 @@
+{
+  "collection_keys": [
+    "96MD2D9G"
+  ],
+  "apply_changes": true,
+  "items_total": 101,
+  "items_changed": 101,
+  "items_unchanged": 0,
+  "items_failed": 0,
+  "top_added_tags": [
+    [
+      "qual:type:journal",
+      72
+    ],
+    [
+      "qual:peer:yes",
+      60
+    ],
+    [
+      "qual:evidence:empirical",
+      48
+    ],
+    [
+      "qual:impact:high",
+      37
+    ],
+    [
+      "qual:abs:4",
+      28
+    ],
+    [
+      "qual:vhb:a",
+      26
+    ],
+    [
+      "thema:motivation",
+      24
+    ],
+    [
+      "thema:organizational_behavior",
+      21
+    ],
+    [
+      "methode:konzeptionell",
+      20
+    ],
+    [
+      "qual:type:book",
+      18
+    ],
+    [
+      "qual:vhb:nicht_bewertet",
+      17
+    ],
+    [
+      "thema:sdt",
+      16
+    ],
+    [
+      "thema:genai",
+      16
+    ],
+    [
+      "thema:autonomie",
+      15
+    ],
+    [
+      "thema:wohlbefinden",
+      15
+    ],
+    [
+      "thema:fuehrung",
+      12
+    ],
+    [
+      "qual:impact:medium",
+      12
+    ],
+    [
+      "qual:impact:low",
+      12
+    ],
+    [
+      "qual:abs:unrated",
+      11
+    ],
+    [
+      "qual:peer:unknown",
+      11
+    ],
+    [
+      "qual:evidence:unknown",
+      11
+    ],
+    [
+      "qual:impact:unknown",
+      11
+    ],
+    [
+      "qual:vhb:unrated",
+      11
+    ],
+    [
+      "thema:soziale_eingebundenheit",
+      10
+    ],
+    [
+      "thema:kompetenz",
+      10
+    ],
+    [
+      "methode:qualitativ",
+      10
+    ],
+    [
+      "qual:abs:nicht_bewertet",
+      9
+    ],
+    [
+      "qual:abs:2",
+      9
+    ],
+    [
+      "thema:entscheidung",
+      8
+    ],
+    [
+      "methode:quantitativ",
+      8
+    ]
+  ],
+  "rows": [
+    {
+      "item_key": "GZ8MZLEL",
+      "title": "Self-Determination Theory von Richard M. Ryan | ISBN 978-1-4625-2876-9 | Fachbuch online kaufen - Lehmanns.de",
+      "status": "updated",
+      "added_tags": [
+        "qual:type:web",
+        "thema:sdt"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "RD9L68YQ",
+      "title": "The nature of managerial work",
+      "status": "updated",
+      "added_tags": [
+        "qual:type:book"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "A5SQUFB4",
+      "title": "The new science of management decision.",
+      "status": "updated",
+      "added_tags": [
+        "qual:type:book"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "RKCJTFIN",
+      "title": "GenAI and the psychology of work",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:unrated",
+        "qual:evidence:unknown",
+        "qual:impact:unknown",
+        "qual:peer:unknown",
+        "qual:type:journal",
+        "qual:vhb:unrated",
+        "thema:autonomie",
+        "thema:genai",
+        "thema:kompetenz",
+        "thema:soziale_eingebundenheit"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "KBHXMENJ",
+      "title": "Artificial Intelligence and the Future of Work: A Functional-Identity Perspective - Eva Selenko, Sarah Bankins, Mindy Shoss, Joel Warburton, Simon Lloyd D. Restubog, 2022",
+      "status": "updated",
+      "added_tags": [
+        "qual:type:web"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "IKRA43W5",
+      "title": "The rise of artificial intelligence – understanding the AI identity threat at the workplace",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:unrated",
+        "qual:evidence:unknown",
+        "qual:impact:unknown",
+        "qual:peer:unknown",
+        "qual:type:journal",
+        "qual:vhb:unrated"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "SNKB3UP7",
+      "title": "How Knowledge Workers Think Generative AI Will (Not) Transform Their Industries",
+      "status": "updated",
+      "added_tags": [
+        "qual:type:conference",
+        "thema:genai",
+        "thema:soziale_eingebundenheit"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "ZK6D95QI",
+      "title": "Opening up decision making:  The view from the black stool",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:unrated",
+        "qual:evidence:unknown",
+        "qual:impact:unknown",
+        "qual:peer:unknown",
+        "qual:type:journal",
+        "qual:vhb:unrated",
+        "thema:entscheidung",
+        "thema:organizational_behavior",
+        "thema:soziale_eingebundenheit"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "DCJMKBX3",
+      "title": "Administrative Decision-Making with Generative AI: The Challenge of Epistemic Boundedness",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:unrated",
+        "qual:evidence:unknown",
+        "qual:impact:unknown",
+        "qual:peer:unknown",
+        "qual:type:journal",
+        "qual:vhb:unrated",
+        "thema:entscheidung",
+        "thema:genai"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "PNG2K8AC",
+      "title": "Issues and trends in generative AI technologies for decision making - Gloria Phillips-Wren, Maria Virvou, 2025",
+      "status": "updated",
+      "added_tags": [
+        "qual:type:web",
+        "thema:entscheidung",
+        "thema:genai"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "D986D5X3",
+      "title": "Generative artificial intelligence and evaluating strategic decisions",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:4_star",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a_plus",
+        "thema:entscheidung",
+        "thema:genai"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "H2PSLUZQ",
+      "title": "On the Legacy of Herbert Simon and his Contribution to Decision-making Support Systems and Artificial Intelligence",
+      "status": "updated",
+      "added_tags": [
+        "qual:type:book",
+        "thema:entscheidung"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "HG43ZLYC",
+      "title": "The New Science of Management Decision",
+      "status": "updated",
+      "added_tags": [
+        "qual:type:book",
+        "thema:entscheidung"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "THDKQWTC",
+      "title": "The Structure of \"Unstructured\" Decision Processes",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:unrated",
+        "qual:evidence:unknown",
+        "qual:impact:unknown",
+        "qual:peer:unknown",
+        "qual:type:journal",
+        "qual:vhb:unrated"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "U3MA4AGZ",
+      "title": "Middle Management Involvement in Strategy and Its Association with Strategic Type: A Research Note",
+      "status": "updated",
+      "added_tags": [
+        "methode:konzeptionell",
+        "qual:abs:4_star",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a_plus"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "5GBBDCB8",
+      "title": "The Nature of Managerial Work",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:unrated",
+        "qual:evidence:unknown",
+        "qual:impact:unknown",
+        "qual:peer:unknown",
+        "qual:type:journal",
+        "qual:vhb:unrated"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "WTBZCZTU",
+      "title": "Sandwiched: Exploring role and identity of middle managers in the genuine middle",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "R7DPYEZD",
+      "title": "Einführung in die qualitative Sozialforschung: eine Anleitung zu qualitativem Denken",
+      "status": "updated",
+      "added_tags": [
+        "methode:mixed_methods",
+        "methode:qualitativ",
+        "qual:type:book",
+        "thema:methodik"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "2NRVLN2A",
+      "title": "Die Qualität qualitativer Daten",
+      "status": "updated",
+      "added_tags": [
+        "qual:type:book"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "BWVAPFXU",
+      "title": "Organizational Culture and Leadership",
+      "status": "updated",
+      "added_tags": [
+        "qual:type:book",
+        "thema:fuehrung",
+        "thema:organizational_behavior"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "9RFZ6MGQ",
+      "title": "Qualitative Inhaltsanalyse. Methoden, Praxis, Computerunterstützung",
+      "status": "updated",
+      "added_tags": [
+        "methode:qualitativ",
+        "qual:type:book"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "Y7GCMFNG",
+      "title": "Intrinsic and Extrinsic Motivations: Classic Definitions and New Directions",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:unrated",
+        "qual:evidence:unknown",
+        "qual:impact:unknown",
+        "qual:peer:unknown",
+        "qual:type:journal",
+        "qual:vhb:unrated",
+        "thema:autonomie",
+        "thema:kompetenz",
+        "thema:motivation",
+        "thema:soziale_eingebundenheit"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "I2ATSBAV",
+      "title": "Your journey to a GenAI future: A strategic path to success for government",
+      "status": "updated",
+      "added_tags": [
+        "methode:quantitativ",
+        "qual:type:web",
+        "thema:genai"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "7U765ERA",
+      "title": "Capturing the Full Value of Generative AI in Banking",
+      "status": "updated",
+      "added_tags": [
+        "qual:type:web",
+        "thema:bankensektor",
+        "thema:genai"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "3Z78WGFU",
+      "title": "Generative AI at Work",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:unrated",
+        "qual:evidence:unknown",
+        "qual:impact:unknown",
+        "qual:peer:unknown",
+        "qual:type:journal",
+        "qual:vhb:unrated",
+        "thema:genai"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "KSD85AZJ",
+      "title": "Leader autonomy support in the workplace: A meta-analytic review",
+      "status": "updated",
+      "added_tags": [
+        "methode:meta_analyse",
+        "qual:abs:unrated",
+        "qual:evidence:unknown",
+        "qual:impact:unknown",
+        "qual:peer:unknown",
+        "qual:type:journal",
+        "qual:vhb:unrated",
+        "thema:autonomie",
+        "thema:fuehrung",
+        "thema:motivation",
+        "thema:sdt",
+        "thema:wohlbefinden"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "T8DQ2SQX",
+      "title": "Human-generative AI collaboration enhances task performance but undermines human’s intrinsic motivation",
+      "status": "updated",
+      "added_tags": [
+        "methode:experiment",
+        "qual:abs:nicht_bewertet",
+        "qual:evidence:empirical",
+        "qual:impact:medium",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:nicht_bewertet",
+        "thema:genai",
+        "thema:motivation"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "JT52KXQ9",
+      "title": "Pay, Intrinsic Motivation, Extrinsic Motivation, Performance, and Creativity in the Workplace: Revisiting Long-Held Beliefs",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:4",
+        "qual:evidence:review",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:nicht_bewertet",
+        "thema:motivation",
+        "thema:organizational_behavior"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "VTID9VV3",
+      "title": "Perceived financial incentive salience and its undermining effect: A moderated‐mediation model - Saini - 2025 - Journal of Occupational and Organizational Psychology - Wiley Online Library",
+      "status": "updated",
+      "added_tags": [
+        "qual:type:web",
+        "thema:bankensektor"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "TMNCTPAU",
+      "title": "Self-determination theory and its implications for team motivation",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:unrated",
+        "qual:evidence:unknown",
+        "qual:impact:unknown",
+        "qual:peer:unknown",
+        "qual:type:journal",
+        "qual:vhb:unrated",
+        "thema:motivation",
+        "thema:sdt"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "D5DY3KEL",
+      "title": "Differentiating autonomy from individualism and independence: A self-determination theory perspective on internalization of cultural orientations and well-being",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:unrated",
+        "qual:evidence:unknown",
+        "qual:impact:unknown",
+        "qual:peer:unknown",
+        "qual:type:journal",
+        "qual:vhb:unrated",
+        "thema:autonomie",
+        "thema:motivation",
+        "thema:sdt",
+        "thema:wohlbefinden"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "LUV473UY",
+      "title": "The Multidimensional Work Motivation Scale: Validation evidence in seven languages and nine countries",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:3",
+        "qual:evidence:empirical",
+        "qual:impact:medium",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:b",
+        "thema:motivation",
+        "thema:sdt"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "6TG2W8GB",
+      "title": "IFZ Generative AI in Finance Studie 2024",
+      "status": "updated",
+      "added_tags": [
+        "qual:type:report",
+        "thema:bankensektor",
+        "thema:genai"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "RK43GVBH",
+      "title": "Transkriptionen qualitativer Daten",
+      "status": "updated",
+      "added_tags": [
+        "methode:qualitativ",
+        "qual:type:book"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "CTV5THVT",
+      "title": "The Problem-centered Interview",
+      "status": "updated",
+      "added_tags": [
+        "methode:konzeptionell",
+        "methode:qualitativ",
+        "qual:abs:nicht_bewertet",
+        "qual:evidence:mixed",
+        "qual:impact:low",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:nicht_bewertet",
+        "thema:methodik"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "NPTJC552",
+      "title": "Self-Determination Theory in Work Organizations: The State of a Science",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:4",
+        "qual:evidence:review",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:nicht_bewertet",
+        "thema:autonomie",
+        "thema:fuehrung",
+        "thema:kompetenz",
+        "thema:motivation",
+        "thema:organizational_behavior",
+        "thema:sdt",
+        "thema:soziale_eingebundenheit",
+        "thema:wohlbefinden"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "CLJESICD",
+      "title": "Grounded theory: Grundlagen qualitativer Sozialforschung",
+      "status": "updated",
+      "added_tags": [
+        "methode:qualitativ",
+        "qual:type:book"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "ELBQRDBS",
+      "title": "Die gesellschaftliche Konstruktion der Wirklichkeit: eine Theorie der Wissenssoziologie",
+      "status": "updated",
+      "added_tags": [
+        "qual:type:book"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "LMSRUN8N",
+      "title": "Qualitative Sozialforschung: Ein Arbeitsbuch",
+      "status": "updated",
+      "added_tags": [
+        "methode:qualitativ",
+        "qual:type:book",
+        "thema:methodik"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "UIV7G93T",
+      "title": "Qualitative Sozialforschung: eine Einführung",
+      "status": "updated",
+      "added_tags": [
+        "methode:qualitativ",
+        "qual:type:book",
+        "thema:methodik"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "I75KFXD6",
+      "title": "Understanding and shaping the future of work with self-determination theory",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:nicht_bewertet",
+        "qual:evidence:review",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:nicht_bewertet",
+        "thema:sdt"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "LY9XLJT5",
+      "title": "Does Leaders’ Mindfulness Benefit Followers? A Meta-analytic Review and Research Agenda",
+      "status": "updated",
+      "added_tags": [
+        "methode:meta_analyse",
+        "qual:abs:3",
+        "qual:evidence:mixed",
+        "qual:impact:medium",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:b",
+        "thema:fuehrung",
+        "thema:wohlbefinden"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "P26UNJ9J",
+      "title": "Experimental evidence on the productivity effects of generative artificial intelligence",
+      "status": "updated",
+      "added_tags": [
+        "methode:experiment",
+        "qual:abs:nicht_bewertet",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:nicht_bewertet"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "WTE8C3R4",
+      "title": "Motivation through the design of work: test of a theory",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:motivation",
+        "thema:organizational_behavior"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "BP9PALFJ",
+      "title": "Navigating AI Convergence in Human–Artificial Intelligence Teams: A Signaling Theory Approach",
+      "status": "updated",
+      "added_tags": [
+        "methode:experiment",
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:entscheidung",
+        "thema:organizational_behavior",
+        "thema:sdt"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "8SSTWAJT",
+      "title": "The Proof Is in the Eating: Lessons Learnt from One Year of Generative AI Adoption in a Science-for-Policy Organisation",
+      "status": "updated",
+      "added_tags": [
+        "methode:fallstudie",
+        "methode:konzeptionell",
+        "qual:abs:2",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:nicht_bewertet",
+        "thema:genai"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "MCH3N3X6",
+      "title": "Employees’ Adaptation to Technology Uncertainty in the Digital Era: An Exploration Through the Lens of Job Demands–Resources Theory",
+      "status": "updated",
+      "added_tags": [
+        "methode:konzeptionell",
+        "methode:quantitativ",
+        "qual:abs:2",
+        "qual:evidence:empirical",
+        "qual:impact:medium",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:nicht_bewertet",
+        "thema:bankensektor",
+        "thema:digitale_transformation",
+        "thema:jdr",
+        "thema:wohlbefinden"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "VZ4MLZNI",
+      "title": "Research: Gen AI Makes People More Productive—and Less Motivated",
+      "status": "updated",
+      "added_tags": [
+        "qual:type:other",
+        "thema:genai",
+        "thema:motivation"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "RJEQYEL4",
+      "title": "The Acceptance of AI Tools Among Design Professionals: Exploring the Moderating Role of Job Replacement",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:nicht_bewertet",
+        "qual:evidence:empirical",
+        "qual:impact:low",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:nicht_bewertet",
+        "thema:genai",
+        "thema:sdt"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "2EPMJ4HL",
+      "title": "Attitudes toward artificial intelligence: combining three theoretical perspectives on technology acceptance",
+      "status": "updated",
+      "added_tags": [
+        "methode:experiment",
+        "methode:konzeptionell",
+        "qual:abs:1",
+        "qual:evidence:mixed",
+        "qual:impact:low",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:nicht_bewertet"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "7HWAIIVS",
+      "title": "Work Characteristics Needed by Middle Managers When Leading AI-Integrated Service Teams",
+      "status": "updated",
+      "added_tags": [
+        "methode:fallstudie",
+        "methode:konzeptionell",
+        "methode:qualitativ",
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:bankensektor",
+        "thema:digitale_transformation",
+        "thema:kompetenz"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "DUMTZX4D",
+      "title": "From worker empowerment to managerial control: The devolution of AI tools' intended positive implementation to their negative consequences",
+      "status": "updated",
+      "added_tags": [
+        "methode:fallstudie",
+        "methode:qualitativ",
+        "qual:abs:3",
+        "qual:evidence:mixed",
+        "qual:impact:medium",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:nicht_bewertet"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "3U7A4HHH",
+      "title": "Robots, meaning, and self-determination",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:autonomie",
+        "thema:kompetenz",
+        "thema:motivation",
+        "thema:sdt",
+        "thema:soziale_eingebundenheit",
+        "thema:wohlbefinden"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "KESYZBKE",
+      "title": "Influence of employee impact on their evaluation of enterprise digital capability: a mediated moderation model",
+      "status": "updated",
+      "added_tags": [
+        "methode:quantitativ",
+        "qual:abs:nicht_bewertet",
+        "qual:evidence:empirical",
+        "qual:impact:low",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:nicht_bewertet",
+        "thema:digitale_transformation",
+        "thema:fuehrung",
+        "thema:wohlbefinden"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "CDDM8NUF",
+      "title": "Enabling or burdening?—The double-edged sword impact of digital transformation on employee resilience",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:2",
+        "qual:evidence:empirical",
+        "qual:impact:medium",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:c",
+        "thema:digitale_transformation",
+        "thema:jdr"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "HAGMB7R5",
+      "title": "Hospitality employees and digital transformation: The mediating roles of alienation and motivation",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:3",
+        "qual:evidence:empirical",
+        "qual:impact:medium",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:c",
+        "thema:digitale_transformation",
+        "thema:jdr",
+        "thema:kompetenz",
+        "thema:motivation"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "V84VT5G8",
+      "title": "Flow: The psychology of optimal experience",
+      "status": "updated",
+      "added_tags": [
+        "qual:type:book"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "FVGLHDU4",
+      "title": "The Job Demands-Resources model: State of the art",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:2",
+        "qual:evidence:empirical",
+        "qual:impact:low",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:c",
+        "thema:jdr",
+        "thema:methodik",
+        "thema:wohlbefinden"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "WSN68PI5",
+      "title": "Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of AI on Knowledge Worker Productivity and Quality",
+      "status": "updated",
+      "added_tags": [
+        "methode:experiment",
+        "qual:abs:nicht_bewertet",
+        "qual:evidence:practitioner",
+        "qual:impact:low",
+        "qual:peer:no",
+        "qual:type:journal",
+        "qual:vhb:nicht_bewertet"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "NL38Z9ZU",
+      "title": "GPT-4 Technical Report",
+      "status": "updated",
+      "added_tags": [
+        "qual:type:working_paper"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "NKF5PD9N",
+      "title": "A multilevel review of artificial intelligence in organizations: Implications for organizational behavior research and practice",
+      "status": "updated",
+      "added_tags": [
+        "methode:konzeptionell",
+        "methode:review",
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:algorithmic_management",
+        "thema:genai",
+        "thema:organizational_behavior",
+        "thema:wohlbefinden"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "D97D3DCA",
+      "title": "Capturing autonomy, competence, and relatedness at work: Construction and initial validation of the Work‐related Basic Need Satisfaction scale",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:3",
+        "qual:evidence:empirical",
+        "qual:impact:medium",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:b",
+        "thema:autonomie",
+        "thema:kompetenz",
+        "thema:soziale_eingebundenheit"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "VYU3KBVG",
+      "title": "Managerial control or feedback provision: How perceptions  of algorithmic HR systems shape employee motivation,  behavior, and well-being",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:algorithmic_management",
+        "thema:motivation",
+        "thema:wohlbefinden"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "P94JN5YB",
+      "title": "Middle Management’s Strategic Influence and Organizational Performance",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:4",
+        "qual:evidence:mixed",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "CNGQ9YBE",
+      "title": "Understanding digital transformation: A review and a research agenda",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:2",
+        "qual:evidence:empirical",
+        "qual:impact:medium",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:c",
+        "thema:digitale_transformation"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "4YRU4UG7",
+      "title": "PSYCHOLOGICAL, EMPOWERMENT IN THE WORKPLACE: DIMENSIONS, MEASUREMENT AND VALIDATION.",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:4_star",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a_plus"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "8692G6RP",
+      "title": "The health-performance framework of presenteeism: Towards understanding an adaptive behaviour",
+      "status": "updated",
+      "added_tags": [
+        "methode:konzeptionell",
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:bankensektor",
+        "thema:sdt"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "SMWJ4M6W",
+      "title": "How work redesign interventions affect performance: An evidence-based model from a systematic review",
+      "status": "updated",
+      "added_tags": [
+        "methode:review",
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:motivation"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "SGHXVKME",
+      "title": "The Janus face of artificial intelligence feedback: Deployment versus disclosure effects on employee performance",
+      "status": "updated",
+      "added_tags": [
+        "methode:experiment",
+        "qual:abs:4_star",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a_plus"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "FX7UD6RL",
+      "title": "Assumptions about Human Motivation have Consequences for Practice",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:4",
+        "qual:evidence:mixed",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:autonomie",
+        "thema:motivation"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "5K3VU8MB",
+      "title": "Self-Determination Theory and Workplace Outcomes: A Conceptual Review and Future Research Directions",
+      "status": "updated",
+      "added_tags": [
+        "methode:experiment",
+        "methode:konzeptionell",
+        "qual:abs:nicht_bewertet",
+        "qual:evidence:empirical",
+        "qual:impact:low",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:nicht_bewertet",
+        "thema:motivation",
+        "thema:sdt",
+        "thema:wohlbefinden"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "CZNCVLMA",
+      "title": "How and when humble leadership influences employee adaptive performance? The roles of self-determination and employee attributions",
+      "status": "updated",
+      "added_tags": [
+        "methode:quantitativ",
+        "qual:abs:1",
+        "qual:evidence:mixed",
+        "qual:impact:low",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:d",
+        "thema:fuehrung",
+        "thema:methodik",
+        "thema:sdt"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "VRFMBD2Z",
+      "title": "Creation of the algorithmic management questionnaire: A six-phase scale development process",
+      "status": "updated",
+      "added_tags": [
+        "methode:quantitativ",
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:algorithmic_management",
+        "thema:autonomie",
+        "thema:entscheidung"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "EEJCK3R4",
+      "title": "Generative AI as a catalyst for HRM practices: mediating effects of trust",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:nicht_bewertet",
+        "qual:evidence:empirical",
+        "qual:impact:low",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:nicht_bewertet",
+        "thema:genai"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "7LD23NZP",
+      "title": "Smart Technology, Artificial Intelligence, Robotics, and Algorithms (STARA): Employees’ perceptions of our future workplace",
+      "status": "updated",
+      "added_tags": [
+        "methode:mixed_methods",
+        "qual:abs:1",
+        "qual:evidence:empirical",
+        "qual:impact:low",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:nicht_bewertet",
+        "thema:wohlbefinden"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "EDA8HGT6",
+      "title": "Bedeutung von Soft Skills in einer sich wandelnden Unternehmenswelt",
+      "status": "updated",
+      "added_tags": [
+        "qual:type:book"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "4TLMZWER",
+      "title": "Organizational Behavior, Global Edition",
+      "status": "updated",
+      "added_tags": [
+        "qual:type:web",
+        "thema:organizational_behavior"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "JGYAAJ8P",
+      "title": "The Now, New, and Next of Digital Leadership: How Artificial Intelligence (AI) Will Take Over and Change Leadership as We Know It",
+      "status": "updated",
+      "added_tags": [
+        "methode:konzeptionell",
+        "qual:abs:1",
+        "qual:evidence:empirical",
+        "qual:impact:low",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:d",
+        "thema:fuehrung"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "Q3R3P375",
+      "title": "Organisationskultur und Leadership",
+      "status": "updated",
+      "added_tags": [
+        "methode:qualitativ",
+        "qual:type:book",
+        "thema:fuehrung",
+        "thema:motivation"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "3LS854NY",
+      "title": "Organization development and change",
+      "status": "updated",
+      "added_tags": [
+        "qual:type:book"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "5GK2WPCE",
+      "title": "Organization change: theory and practice",
+      "status": "updated",
+      "added_tags": [
+        "qual:type:book",
+        "thema:fuehrung"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "2RN8R624",
+      "title": "The 'What' and 'Why' of Goal Pursuits: Human Needs and the Self-Determination of Behavior",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:2",
+        "qual:evidence:review",
+        "qual:impact:medium",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:nicht_bewertet",
+        "thema:sdt"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "M9H6KQHQ",
+      "title": "Empowering Leadership in Management Teams: Effects on Knowledge Sharing, Efficacy, And Performance",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:4_star",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a_plus",
+        "thema:fuehrung"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "UCGM7LAC",
+      "title": "Self‐determination theory and work motivation",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:autonomie",
+        "thema:motivation",
+        "thema:organizational_behavior"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "YW7R3KKP",
+      "title": "A systematic review of temporal person‐environment fit research: Trends, developments, obstacles, and opportunities for future research",
+      "status": "updated",
+      "added_tags": [
+        "methode:review",
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:organizational_behavior"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "TQTQALUK",
+      "title": "Integrating behavior and organizational change literatures to uncover crucial psychological mechanisms underlying the adoption and maintenance of organizational change",
+      "status": "updated",
+      "added_tags": [
+        "methode:konzeptionell",
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:organizational_behavior"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "TGAF4TK7",
+      "title": "Gig work and gig workers: An integrative review and agenda for future research",
+      "status": "updated",
+      "added_tags": [
+        "methode:konzeptionell",
+        "methode:review",
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:organizational_behavior"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "QRN6YGRF",
+      "title": "Motivational climates, work passion, and behavioral consequences",
+      "status": "updated",
+      "added_tags": [
+        "methode:experiment",
+        "methode:konzeptionell",
+        "methode:quantitativ",
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:organizational_behavior"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "Q5UFPPLY",
+      "title": "Explaining the Negative Consequences of Organizational Dehumanization: The Mediating Role of Psychological Need Thwarting",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:2",
+        "qual:evidence:empirical",
+        "qual:impact:medium",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:b",
+        "thema:soziale_eingebundenheit",
+        "thema:wohlbefinden"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "N5HVME67",
+      "title": "Explaining dyadic expertise use in knowledge work teams: An opportunity–ability–motivation perspective",
+      "status": "updated",
+      "added_tags": [
+        "methode:konzeptionell",
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:motivation",
+        "thema:organizational_behavior"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "N4TXQUTK",
+      "title": "Work‐contingent self‐esteem: A boon or bane for worker well‐being?",
+      "status": "updated",
+      "added_tags": [
+        "methode:konzeptionell",
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:motivation",
+        "thema:organizational_behavior"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "EDE2TNCQ",
+      "title": "A cross‐level model of shared leadership, meaning, and individual creativity",
+      "status": "updated",
+      "added_tags": [
+        "methode:konzeptionell",
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:fuehrung",
+        "thema:organizational_behavior"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "DWCCJN99",
+      "title": "Does daily proactivity affect well‐being? The moderating role of punitive supervision",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:kompetenz",
+        "thema:organizational_behavior"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "CKGLPRBY",
+      "title": "Breaking rules yet helpful for all: Beneficial effects of pro‐customer rule breaking on employee outcomes",
+      "status": "updated",
+      "added_tags": [
+        "methode:konzeptionell",
+        "methode:quantitativ",
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:organizational_behavior"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "ASEY8SGR",
+      "title": "A Review of Self-Determination Theory’s Basic Psychological Needs at Work",
+      "status": "updated",
+      "added_tags": [
+        "methode:meta_analyse",
+        "qual:abs:4_star",
+        "qual:evidence:mixed",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a_plus",
+        "thema:autonomie",
+        "thema:kompetenz",
+        "thema:motivation",
+        "thema:sdt",
+        "thema:soziale_eingebundenheit",
+        "thema:wohlbefinden"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "9VN8GJCF",
+      "title": "Bringing Self-Determination Theory to the Forefront: Examining How Human Resource Practices Motivate Employees of All Ages to Succeed",
+      "status": "updated",
+      "added_tags": [
+        "methode:konzeptionell",
+        "methode:mixed_methods",
+        "qual:abs:2",
+        "qual:evidence:empirical",
+        "qual:impact:low",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:c",
+        "thema:autonomie",
+        "thema:kompetenz",
+        "thema:motivation",
+        "thema:sdt",
+        "thema:soziale_eingebundenheit"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "6IADXJHJ",
+      "title": "Explaining supervisor–subordinate guanxi and subordinate performance through a conservation of resources lens",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:autonomie"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "5D7XJFKU",
+      "title": "Algorithmic management in the gig economy: A systematic review and research integration",
+      "status": "updated",
+      "added_tags": [
+        "methode:konzeptionell",
+        "methode:review",
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:algorithmic_management",
+        "thema:organizational_behavior"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "5IVF8V3S",
+      "title": "Different motivations for knowledge sharing and hiding: The role of motivating work design",
+      "status": "updated",
+      "added_tags": [
+        "methode:quantitativ",
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:autonomie",
+        "thema:motivation",
+        "thema:organizational_behavior"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "52CR3DCU",
+      "title": "Being Oneself and Doing Great: The Effect of Authenticity on Job Performance and the Role of Supportive Leadership",
+      "status": "updated",
+      "added_tags": [
+        "methode:konzeptionell",
+        "qual:abs:2",
+        "qual:evidence:empirical",
+        "qual:impact:medium",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:b",
+        "thema:fuehrung",
+        "thema:motivation"
+      ],
+      "removed_tags": []
+    },
+    {
+      "item_key": "4534STZN",
+      "title": "Does AI at Work Increase Stress? Text Mining Social Media About Human–AI Team Processes and AI Control",
+      "status": "updated",
+      "added_tags": [
+        "qual:abs:4",
+        "qual:evidence:empirical",
+        "qual:impact:high",
+        "qual:peer:yes",
+        "qual:type:journal",
+        "qual:vhb:a",
+        "thema:autonomie",
+        "thema:genai",
+        "thema:organizational_behavior",
+        "thema:wohlbefinden"
+      ],
+      "removed_tags": []
+    }
+  ]
+}
