@@ -38,3 +38,17 @@ Thumbs.db
 venv/
 *.pyc
 __pycache__/
+
+# Interviews — Audiodateien und Transkripte nicht einchecken (Datenschutz / Pseudonymisierung)
+interviews/audio/*.mp3
+interviews/audio/*.wav
+interviews/audio/*.m4a
+interviews/audio/*.flac
+interviews/audio/*.aac
+interviews/audio/*.ogg
+interviews/transcripts/*.rtf
+interviews/transcripts/*.txt
+interviews/transcripts/*.docx
+
+# Qualitative Kodierungen — lokal, nicht eingecheckt (Datenschutz / Pseudonymisierung)
+interviews/coded/*.tex

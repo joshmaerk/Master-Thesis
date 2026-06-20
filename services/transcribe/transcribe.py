@@ -1,0 +1,230 @@
+#!/usr/bin/env python3
+"""
+Transkriptions-Service für Masterarbeit-Interviews.
+Transkribiert Audiodateien nach dem einfachen Transkriptionssystem von Dresing & Pehl (2017).
+
+Verwendung (vom Repo-Root):
+    python3 services/transcribe/transcribe.py interviews/audio/interview_01.mp3
+    python3 services/transcribe/transcribe.py interviews/audio/interview_01.mp3 --interview-id IP-01
+    python3 services/transcribe/transcribe.py interviews/audio/interview_01.mp3 --no-finalize
+
+Umgebungsvariablen (in services/.env):
+    OPENAI_API_KEY     — OpenAI API-Schlüssel (Whisper)
+    ANTHROPIC_API_KEY  — Anthropic API-Schlüssel (Claude)
+    ANTHROPIC_MODEL    — Claude-Modell (optional, Standard: claude-opus-4-8)
+"""
+
+import argparse
+import os
+import sys
+from pathlib import Path
+
+
+def _load_env() -> None:
+    """Lädt .env-Datei aus services/.env oder .env im Repo-Root."""
+    script_dir = Path(__file__).parent
+    repo_root = script_dir.parent.parent
+
+    candidates = [
+        script_dir.parent / ".env",       # services/.env
+        repo_root / ".env",               # Repo-Root/.env
+    ]
+
+    for env_file in candidates:
+        if env_file.exists():
+            with open(env_file) as f:
+                for line in f:
+                    line = line.strip()
+                    if line and not line.startswith("#") and "=" in line:
+                        key, _, value = line.partition("=")
+                        key = key.strip()
+                        value = value.strip().strip('"').strip("'")
+                        if key and key not in os.environ:
+                            os.environ[key] = value
+            print(f"  Umgebungsvariablen geladen aus: {env_file}")
+            return
+
+    print("  Hinweis: Keine .env-Datei gefunden. Nutze System-Umgebungsvariablen.")
+
+
+def _require_env(key: str, hint: str = "") -> str:
+    """Gibt Umgebungsvariable zurück oder beendet mit Fehlermeldung."""
+    value = os.environ.get(key, "").strip()
+    if not value:
+        msg = f"\nFehler: Umgebungsvariable '{key}' ist nicht gesetzt."
+        if hint:
+            msg += f"\n{hint}"
+        msg += "\nBitte services/.env nach dem Vorbild von services/.env.example befüllen."
+        print(msg)
+        sys.exit(1)
+    return value
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Transkription nach Dresing & Pehl (2017) via Whisper + Claude."
+    )
+    parser.add_argument(
+        "audio_file",
+        help="Pfad zur Audiodatei (MP3, WAV, M4A, FLAC, ...)",
+    )
+    parser.add_argument(
+        "--interview-id",
+        default="B",
+        help="Kürzel der befragten Person (z.B. IP-01). Standard: B",
+    )
+    parser.add_argument(
+        "--output-dir",
+        default=None,
+        help="Ausgabeverzeichnis für RTF-Datei. Standard: interviews/transcripts/",
+    )
+    parser.add_argument(
+        "--language",
+        default="de",
+        help="Sprache für Whisper (ISO 639-1). Standard: de",
+    )
+    parser.add_argument(
+        "--no-finalize",
+        action="store_true",
+        help="Abschließenden Konsistenz-Pass (Claude) überspringen.",
+    )
+    parser.add_argument(
+        "--chunk-minutes",
+        type=int,
+        default=5,
+        help="Chunk-Länge in Minuten. Standard: 5",
+    )
+    args = parser.parse_args()
+
+    # ── Pfade ──────────────────────────────────────────────────────────────────
+    audio_path = Path(args.audio_file)
+    if not audio_path.exists():
+        print(f"\nFehler: Audiodatei nicht gefunden: {audio_path}")
+        sys.exit(1)
+
+    repo_root = Path(__file__).parent.parent.parent
+    output_dir = Path(args.output_dir) if args.output_dir else repo_root / "interviews" / "transcripts"
+    output_path = output_dir / (audio_path.stem + ".rtf")
+
+    print(f"\n{'='*60}")
+    print(f"  Transkriptions-Service — Dresing & Pehl (2017)")
+    print(f"{'='*60}")
+    print(f"  Audiodatei : {audio_path}")
+    print(f"  Interview-ID: {args.interview_id}")
+    print(f"  Ausgabe    : {output_path}")
+    print(f"{'='*60}\n")
+
+    # ── Umgebungsvariablen ─────────────────────────────────────────────────────
+    _load_env()
+
+    openai_key = _require_env(
+        "OPENAI_API_KEY",
+        "  Hinweis: OpenAI API-Key erstellen unter: platform.openai.com → API Keys"
+    )
+    anthropic_key = _require_env(
+        "ANTHROPIC_API_KEY",
+        "  Hinweis: Anthropic API-Key erstellen unter: console.anthropic.com → API Keys"
+    )
+    claude_model = os.environ.get("ANTHROPIC_MODEL", "claude-opus-4-8")
+
+    # ── Imports (nach Env-Check, damit Fehler frühzeitig sichtbar) ───────────
+    sys.path.insert(0, str(Path(__file__).parent))
+
+    from audio_chunker import AudioChunker
+    from whisper_client import WhisperClient
+    from dresing_pehl_formatter import DresingPehlFormatter
+    from rtf_writer import RTFWriter
+
+    # ── Schritt 1: Audio aufteilen ─────────────────────────────────────────────
+    print("[1/4] Audio aufteilen...")
+    chunker = AudioChunker(
+        chunk_duration=args.chunk_minutes * 60,
+        overlap=15,
+    )
+    chunks = chunker.split(audio_path)
+    print(f"      → {len(chunks)} Chunk(s) für Verarbeitung bereit.\n")
+
+    # ── Schritt 2: Transkription + Formatierung ────────────────────────────────
+    whisper = WhisperClient(api_key=openai_key)
+    formatter = DresingPehlFormatter(api_key=anthropic_key, model=claude_model)
+
+    formatted_blocks: list[str] = []
+    previous_context = ""
+
+    total = len(chunks)
+    for chunk in chunks:
+        i = chunk.index
+        print(f"[2/4] Chunk {i + 1}/{total}  ({chunk.start_time / 60:.1f}–{chunk.end_time / 60:.1f} Min.)")
+
+        # Whisper-Transkription
+        print("      Whisper-Transkription...")
+        try:
+            raw = whisper.transcribe(
+                audio_path=chunk.path,
+                language=args.language,
+                time_offset=chunk.start_time,
+            )
+        except Exception as exc:
+            print(f"      FEHLER bei Whisper-Transkription: {exc}")
+            chunk.cleanup()
+            sys.exit(1)
+
+        seg_count = len(raw["segments"])
+        print(f"      → {seg_count} Segment(s) erkannt (Sprache: {raw['language']}).")
+
+        # Dresing & Pehl Formatierung via Claude
+        print("      Formatierung nach Dresing & Pehl (Claude)...")
+        try:
+            formatted = formatter.format_chunk(
+                raw_segments=raw["segments"],
+                previous_context=previous_context,
+                chunk_index=i,
+            )
+        except Exception as exc:
+            print(f"      FEHLER bei Claude-Formatierung: {exc}")
+            chunk.cleanup()
+            sys.exit(1)
+
+        formatted_blocks.append(formatted)
+        # Letzten ~400 Zeichen als Kontext für nächsten Chunk
+        previous_context = formatted[-400:] if len(formatted) > 400 else formatted
+
+        chunk.cleanup()
+        print(f"      ✓ Chunk {i + 1} abgeschlossen.\n")
+
+    # ── Schritt 3: Zusammenführen ──────────────────────────────────────────────
+    print("[3/4] Transkript zusammenführen...")
+    full_transcript = "\n\n".join(formatted_blocks)
+
+    if not args.no_finalize:
+        print("      Abschließender Konsistenz-Pass (Claude)...")
+        try:
+            full_transcript = formatter.finalize(full_transcript)
+        except Exception as exc:
+            print(f"      Warnung: Finalisierung fehlgeschlagen ({exc}). Verwende unfinalisierten Text.")
+    else:
+        print("      (Finalisierung übersprungen via --no-finalize)")
+
+    # ── Schritt 4: RTF-Ausgabe ─────────────────────────────────────────────────
+    print("\n[4/4] RTF-Datei schreiben...")
+    writer = RTFWriter()
+    writer.write(
+        transcript=full_transcript,
+        output_path=output_path,
+        interview_name=audio_path.stem,
+    )
+
+    print(f"\n{'='*60}")
+    print(f"  Transkription abgeschlossen!")
+    print(f"  Ausgabe: {output_path}")
+    print(f"{'='*60}")
+    print(f"\n  Nächste Schritte:")
+    print(f"  1. RTF-Datei in MAXQDA importieren")
+    print(f"  2. Transkript manuell gegen Aufnahme gegenhören")
+    print(f"  3. Speaker-Zuweisung (I:/B:) überprüfen und korrigieren")
+    print(f"  4. Pseudonymisierung prüfen (Namen → {args.interview_id})")
+    print()
+
+
+if __name__ == "__main__":
+    main()
