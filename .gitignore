@@ -53,4 +53,4 @@ interviews/transcripts/*.docx
 interviews/transcripts/*mapping.json
 
 # Qualitative Kodierungen — lokal, nicht eingecheckt (Datenschutz / Pseudonymisierung)
-interviews/coded/*.tex
+# interviews/coded/*.tex
