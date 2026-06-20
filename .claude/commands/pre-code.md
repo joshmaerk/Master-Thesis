@@ -1,5 +1,12 @@
 # /pre-code — KI-gestützte Erst-Kodierung von Interviewtranskripten
 
+
+## Gemeinsame Referenzen
+
+Vor Ausführung bei Bedarf lesen:
+- `.claudedocs/terminology.md`
+- `.claudedocs/services.md`
+
 Analysiere ein Interviewtranskript und erstelle eine Erstkodierung nach den
 Hauptkategorien (HK0–HK3) der strukturierenden qualitativen Inhaltsanalyse (Kuckartz 2018).
 Die Kodierung dient als Ausgangspunkt für die manuelle Vertiefung in MAXQDA.

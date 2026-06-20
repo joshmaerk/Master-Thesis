@@ -1,5 +1,13 @@
 # Erster Codierdurchgang — Strukturierende Qualitative Inhaltsanalyse (Kuckartz, 2018)
 
+
+## Gemeinsame Referenzen
+
+Vor Ausführung bei Bedarf lesen:
+- `.claudedocs/services.md`
+- `.claudedocs/terminology.md`
+- `.claudedocs/user-guide.md`
+
 Codiert ein RTF-Transkript aus `interviews/transcripts/` nach den vier deduktiven
 Hauptkategorien HK0–HK3 (Erster Codierdurchgang, Phase 3 nach Kuckartz, 2018).
 Ausgabe als LaTeX-Datei in `interviews/coded/`.
