@@ -1,5 +1,12 @@
 # /subcategory-suggest — Induktive Subkategorie-Findung (Kuckartz Phase 5)
 
+
+## Gemeinsame Referenzen
+
+Vor Ausführung bei Bedarf lesen:
+- `.claudedocs/terminology.md`
+- `.claudedocs/writing-style.md`
+
 Analysiere kodierte Interviewpassagen einer Hauptkategorie und schlage induktiv
 Subkategorien vor. Unterstützt Phase 5 der strukturierenden qualitativen
 Inhaltsanalyse nach Kuckartz (2018).
