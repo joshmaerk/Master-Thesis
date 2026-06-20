@@ -94,6 +94,11 @@ def main() -> None:
         default=5,
         help="Chunk-Länge in Minuten. Standard: 5",
     )
+    parser.add_argument(
+        "--diarize",
+        action="store_true",
+        help="Speaker-Diarisierung via pyannote.audio aktivieren (benötigt HF_TOKEN in .env).",
+    )
     args = parser.parse_args()
 
     # ── Pfade ──────────────────────────────────────────────────────────────────
@@ -109,10 +114,22 @@ def main() -> None:
     print(f"\n{'='*60}")
     print(f"  Transkriptions-Service — Dresing & Pehl (2017)")
     print(f"{'='*60}")
-    print(f"  Audiodatei : {audio_path}")
+    print(f"  Eingabedatei: {audio_path}")
     print(f"  Interview-ID: {args.interview_id}")
-    print(f"  Ausgabe    : {output_path}")
+    print(f"  Ausgabe     : {output_path}")
     print(f"{'='*60}\n")
+
+    # ── Schritt 0: Video → Audio (falls nötig) ────────────────────────────────
+    sys.path.insert(0, str(Path(__file__).parent))
+    from mp4_extractor import is_video_file, MP4Extractor
+
+    if is_video_file(audio_path):
+        print("[0/4] Audiospur aus Video extrahieren...")
+        audio_path = MP4Extractor().extract_audio(
+            video_path=audio_path,
+            output_dir=audio_path.parent,
+        )
+        print()
 
     # ── Umgebungsvariablen ─────────────────────────────────────────────────────
     _load_env()
@@ -128,12 +145,21 @@ def main() -> None:
     claude_model = os.environ.get("ANTHROPIC_MODEL", "claude-opus-4-8")
 
     # ── Imports (nach Env-Check, damit Fehler frühzeitig sichtbar) ───────────
-    sys.path.insert(0, str(Path(__file__).parent))
-
     from audio_chunker import AudioChunker
     from whisper_client import WhisperClient
     from dresing_pehl_formatter import DresingPehlFormatter
     from rtf_writer import RTFWriter
+
+    # ── Schritt 0b: Speaker-Diarisierung (optional) ───────────────────────────
+    diarization_context = ""
+    if args.diarize:
+        from speaker_diarizer import SpeakerDiarizer
+        hf_token = os.environ.get("HF_TOKEN", "")
+        print("[0b/4] Speaker-Diarisierung (pyannote.audio)...")
+        diarizer = SpeakerDiarizer(hf_token=hf_token)
+        segments = diarizer.diarize(audio_path)
+        diarization_context = diarizer.segments_to_context(segments)
+        print()
 
     # ── Schritt 1: Audio aufteilen ─────────────────────────────────────────────
     print("[1/4] Audio aufteilen...")
@@ -182,6 +208,7 @@ def main() -> None:
                     raw_segments=raw["segments"],
                     previous_context=previous_context,
                     chunk_index=i,
+                    diarization_context=diarization_context,
                 )
             except Exception as exc:
                 print(f"      FEHLER bei Claude-Formatierung: {exc}")
