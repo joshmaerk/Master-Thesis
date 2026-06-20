@@ -2,6 +2,13 @@
 
 Transkribiere eine Audio- oder Videodatei nach dem einfachen Transkriptionssystem von Dresing & Pehl (2017).
 Videodateien (MP4, MOV, MKV) werden automatisch in Audio konvertiert.
+
+## Gemeinsame Referenzen
+
+Vor Ausführung bei Bedarf lesen:
+- `.claudedocs/services.md`
+- `.claudedocs/user-guide.md`
+
 Sprecher werden automatisch zugewiesen (I: = Interviewer, B: = Befragte Person).
 Personennamen und identifizierende Informationen werden automatisch pseudonymisiert.
 Ausgabe als RTF-Datei in interviews/transcripts/.

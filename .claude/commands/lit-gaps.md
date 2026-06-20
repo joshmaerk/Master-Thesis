@@ -1,5 +1,12 @@
 # /lit-gaps — Research-Gaps aus Literatur extrahieren
 
+
+## Gemeinsame Referenzen
+
+Vor Ausführung bei Bedarf lesen:
+- `.claudedocs/citations-and-sources.md`
+- `.claudedocs/terminology.md`
+
 Analysiere die kodierten Literaturmetadaten und erstelle ein strukturiertes Gerüst
 der Research Gaps für Kapitel 5.2 (Einordnung in den Forschungsstand).
 
