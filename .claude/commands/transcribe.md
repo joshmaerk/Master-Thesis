@@ -3,6 +3,7 @@
 Transkribiere eine Audio- oder Videodatei nach dem einfachen Transkriptionssystem von Dresing & Pehl (2017).
 Videodateien (MP4, MOV, MKV) werden automatisch in Audio konvertiert.
 Sprecher werden automatisch zugewiesen (I: = Interviewer, B: = Befragte Person).
+Personennamen und identifizierende Informationen werden automatisch pseudonymisiert.
 Ausgabe als RTF-Datei in interviews/transcripts/.
 
 ## Aufruf
@@ -38,7 +39,8 @@ Führe folgende Schritte durch:
    ```
    python3 services/transcribe/transcribe.py <datei> [--interview-id <id>]
    ```
-   Bei MP4/MOV/MKV wird die Audiospur automatisch via ffmpeg extrahiert (Schritt 0/4).
+   Bei MP4/MOV/MKV wird die Audiospur automatisch via ffmpeg extrahiert (Schritt 0/5).
+   Pseudonymisierung läuft automatisch als Schritt 4/5 — zum Überspringen: `--no-pseudonymize`.
    Das Videooriginal bleibt erhalten — nicht löschen (siehe Hinweise).
 
 5. **Fortschritt verfolgen**: Zeige dem Nutzer an, welcher Chunk gerade verarbeitet wird
@@ -57,6 +59,7 @@ Führe folgende Schritte durch:
 
 - Audiodateien in `interviews/audio/` werden NICHT ins Git eingecheckt (Datenschutz)
 - Transkripte in `interviews/transcripts/` werden NICHT ins Git eingecheckt (Pseudonymisierung)
+- Zuordnungstabellen (`*.mapping.json`) werden ebenfalls NICHT ins Git eingecheckt — sie enthalten die Klarnamen-Pseudonym-Zuordnung und müssen sicher aufbewahrt werden
 - **MP4/Video-Originale NICHT löschen**: Das Video dient für manuelle Körpersprache-Überprüfung.
   Auffällige nonverbale Reaktionen (Zögern, Aufleuchten, Unbehagen) können als Forschungsmemo
   festgehalten werden — besonders relevant für die SDT-Grundbedürfnisse Autonomie/Kompetenzerleben.
@@ -81,6 +84,9 @@ Nach erfolgreicher RTF-Ausgabe:
 1. RTF-Datei in MAXQDA importieren
 2. Transkript manuell gegen Aufnahme gegenhören
 3. Speaker-Zuweisung (I:/B:) überprüfen und korrigieren
-4. Pseudonymisierung prüfen (Namen → Interview-ID, z.B. IP-01)
+4. Pseudonymisierung gegen Zuordnungstabelle (`.mapping.json`) prüfen — insbesondere:
+   - Alle Nennungen der befragten Person → Interview-ID (z.B. IP-01)
+   - Genannte Dritte → KP-01, KP-02, ...
+   - Institutionsnamen falls identifizierend → Org-A, Org-B, ...
 5. Bei Video-Interviews: Video einmalig durchsehen, auffällige nonverbale Reaktionen in Protokollnotiz festhalten
 6. Videooriginal archivieren (NICHT löschen)

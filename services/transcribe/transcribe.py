@@ -99,6 +99,11 @@ def main() -> None:
         action="store_true",
         help="Speaker-Diarisierung via pyannote.audio aktivieren (benötigt HF_TOKEN in .env).",
     )
+    parser.add_argument(
+        "--no-pseudonymize",
+        action="store_true",
+        help="Pseudonymisierung (Claude) überspringen.",
+    )
     args = parser.parse_args()
 
     # ── Pfade ──────────────────────────────────────────────────────────────────
@@ -124,7 +129,7 @@ def main() -> None:
     from mp4_extractor import is_video_file, MP4Extractor
 
     if is_video_file(audio_path):
-        print("[0/4] Audiospur aus Video extrahieren...")
+        print("[0/5] Audiospur aus Video extrahieren...")
         audio_path = MP4Extractor().extract_audio(
             video_path=audio_path,
             output_dir=audio_path.parent,
@@ -155,14 +160,14 @@ def main() -> None:
     if args.diarize:
         from speaker_diarizer import SpeakerDiarizer
         hf_token = os.environ.get("HF_TOKEN", "")
-        print("[0b/4] Speaker-Diarisierung (pyannote.audio)...")
+        print("[0b/5] Speaker-Diarisierung (pyannote.audio)...")
         diarizer = SpeakerDiarizer(hf_token=hf_token)
         segments = diarizer.diarize(audio_path)
         diarization_context = diarizer.segments_to_context(segments)
         print()
 
     # ── Schritt 1: Audio aufteilen ─────────────────────────────────────────────
-    print("[1/4] Audio aufteilen...")
+    print("[1/5] Audio aufteilen...")
     chunker = AudioChunker(
         chunk_duration=args.chunk_minutes * 60,
         overlap=15,
@@ -183,7 +188,7 @@ def main() -> None:
         for chunk in chunks:
             remaining_chunks = remaining_chunks[1:]
             i = chunk.index
-            print(f"[2/4] Chunk {i + 1}/{total}  ({chunk.start_time / 60:.1f}–{chunk.end_time / 60:.1f} Min.)")
+            print(f"[2/5] Chunk {i + 1}/{total}  ({chunk.start_time / 60:.1f}–{chunk.end_time / 60:.1f} Min.)")
 
             # Whisper-Transkription
             print("      Whisper-Transkription...")
@@ -226,7 +231,7 @@ def main() -> None:
             leftover.cleanup()
 
     # ── Schritt 3: Zusammenführen ──────────────────────────────────────────────
-    print("[3/4] Transkript zusammenführen...")
+    print("[3/5] Transkript zusammenführen...")
     full_transcript = "\n\n".join(formatted_blocks)
 
     if not args.no_finalize:
@@ -238,8 +243,26 @@ def main() -> None:
     else:
         print("      (Finalisierung übersprungen via --no-finalize)")
 
-    # ── Schritt 4: RTF-Ausgabe ─────────────────────────────────────────────────
-    print("\n[4/4] RTF-Datei schreiben...")
+    # ── Schritt 4: Pseudonymisierung ───────────────────────────────────────────
+    print("\n[4/5] Pseudonymisierung...")
+    mapping_path = output_path.with_suffix(".mapping.json")
+    if not args.no_pseudonymize:
+        from pseudonymizer import Pseudonymizer
+        try:
+            pseudo = Pseudonymizer(api_key=anthropic_key, model=claude_model)
+            full_transcript = pseudo.pseudonymize(
+                transcript=full_transcript,
+                interview_id=args.interview_id,
+                mapping_output_path=mapping_path,
+            )
+            print(f"      ✓ Pseudonymisierung abgeschlossen.\n")
+        except Exception as exc:
+            print(f"      Warnung: Pseudonymisierung fehlgeschlagen ({exc}). Verwende nicht-pseudonymisierten Text.")
+    else:
+        print("      (Pseudonymisierung übersprungen via --no-pseudonymize)")
+
+    # ── Schritt 5: RTF-Ausgabe ─────────────────────────────────────────────────
+    print("[5/5] RTF-Datei schreiben...")
     writer = RTFWriter()
     writer.write(
         transcript=full_transcript,
@@ -250,12 +273,14 @@ def main() -> None:
     print(f"\n{'='*60}")
     print(f"  Transkription abgeschlossen!")
     print(f"  Ausgabe: {output_path}")
+    if not args.no_pseudonymize and mapping_path.exists():
+        print(f"  Zuordnung: {mapping_path}")
     print(f"{'='*60}")
     print(f"\n  Nächste Schritte:")
     print(f"  1. RTF-Datei in MAXQDA importieren")
     print(f"  2. Transkript manuell gegen Aufnahme gegenhören")
     print(f"  3. Speaker-Zuweisung (I:/B:) überprüfen und korrigieren")
-    print(f"  4. Pseudonymisierung prüfen (Namen → {args.interview_id})")
+    print(f"  4. Pseudonymisierung gegen Zuordnungstabelle prüfen")
     print()
 
 
