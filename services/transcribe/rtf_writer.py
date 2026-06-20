@@ -35,13 +35,12 @@ class RTFWriter:
     def _rtf_unicode(text: str) -> str:
         """
         Wandelt Unicode-Zeichen in RTF-Escape-Sequenzen um.
-        \\uN? = Unicode-Codepoint N, ? als Fallback-Zeichen.
+        \\uN? = Unicode-Codepoint N (vorzeichenbehaftet 16-bit) per RTF-Spec.
         """
         result = []
         for char in text:
             code = ord(char)
             if code < 128:
-                # Standard-ASCII
                 if char == "\\":
                     result.append("\\\\")
                 elif char == "{":
@@ -52,11 +51,10 @@ class RTFWriter:
                     result.append("\\line\n")
                 else:
                     result.append(char)
-            elif 128 <= code <= 255:
-                # Latin-1: direkt als RTF-Unicode
-                result.append(f"\\u{code}?")
             else:
-                result.append(f"\\u{code}?")
+                # RTF \uN erwartet vorzeichenbehaftete 16-bit-Ganzzahl
+                signed = code if code <= 32767 else code - 65536
+                result.append(f"\\u{signed}?")
         return "".join(result)
 
     def _build_rtf(self, transcript: str, interview_name: str, date_str: str) -> str:
