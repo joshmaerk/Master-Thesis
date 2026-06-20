@@ -1,5 +1,13 @@
 # /draft-section — SDT-strukturiertes Kapitel-Drafting
 
+
+## Gemeinsame Referenzen
+
+Vor Ausführung bei Bedarf lesen:
+- `.claudedocs/writing-style.md`
+- `.claudedocs/terminology.md`
+- `.claudedocs/citations-and-sources.md`
+
 Erstelle einen fundierten Arbeitsdraft für einen spezifischen Abschnitt der
 ausstehenden Kapitel 4, 5 oder 6. Der Draft orientiert sich an der SDT-Operationalisierung
 aus Kapitel 2 und der Kuckartz-Methodik aus Kapitel 3.
