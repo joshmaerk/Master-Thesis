@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /home/user/Master-Thesis/scripts/ki_log_hook.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
