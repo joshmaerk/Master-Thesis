@@ -49,3 +49,6 @@ interviews/audio/*.ogg
 interviews/transcripts/*.rtf
 interviews/transcripts/*.txt
 interviews/transcripts/*.docx
+
+# Qualitative Kodierungen — lokal, nicht eingecheckt (Datenschutz / Pseudonymisierung)
+interviews/coded/*.tex

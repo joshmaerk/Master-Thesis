@@ -1,0 +1,9 @@
+# Code-Transcript-Service — Abhängigkeiten
+# Installation: pip install -r services/code_transcript/requirements.txt
+
+# RTF-Parsing (Klartext-Extraktion aus MAXQDA-kompatiblen RTF-Dateien)
+striprtf>=0.0.26
+
+# Anthropic Claude API (Kodierung nach Kuckartz Hauptkategorien)
+# Bereits in services/transcribe/requirements.txt — hier zur Vollständigkeit
+anthropic>=0.25.0
