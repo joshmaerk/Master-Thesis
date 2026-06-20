@@ -231,6 +231,22 @@ def main() -> None:
     print(f"  4. Pseudonymisierung prüfen (Namen → {args.interview_id})")
     print()
 
+    # KI-Nutzung protokollieren
+    import subprocess
+    ki_log = repo_root / "services" / "ki_log" / "ki_log.py"
+    if ki_log.exists():
+        subprocess.run(
+            [
+                sys.executable, str(ki_log), "add",
+                "--kapitel",  "Kapitel 3, Methodik / Datenerhebung / Transkription",
+                "--tool",     f"OpenAI Whisper-1 + Anthropic Claude ({claude_model})",
+                "--zweck",    f"Automatische Rohtranskription nach Dresing & Pehl (2017); Interview-ID: {args.interview_id}",
+                "--pruefung", "Manuelles Gegenhören und Korrektur des Transkripts gegen Originalaufnahme",
+                "--einfluss", "Transkriptgrundlage erstellt; inhaltliche Aussagen durch manuelle Korrektur gesichert",
+            ],
+            check=False,
+        )
+
 
 if __name__ == "__main__":
     main()

@@ -643,6 +643,23 @@ def main() -> None:
     print(f"     bilden (Phase 5 nach Kuckartz, 2018)")
     print()
 
+    # KI-Nutzung protokollieren (nur bei echtem API-Aufruf, nicht im Dry-Run)
+    if not args.dry_run:
+        import subprocess
+        ki_log = repo_root / "services" / "ki_log" / "ki_log.py"
+        if ki_log.exists():
+            subprocess.run(
+                [
+                    sys.executable, str(ki_log), "add",
+                    "--kapitel",  "Kapitel 3, Methodik / Datenauswertung / Erstkodierung",
+                    "--tool",     f"Anthropic Claude ({model})",
+                    "--zweck",    f"Erster Codierdurchgang (Phase 3) nach Kuckartz (2018); {len(results)} Sinneinheiten, Interview-ID: {args.interview_id}",
+                    "--pruefung", "Manuelle Validierung aller KI-generierten Kodierungen (konsensuelle Kodierung nach Kuckartz, 2018)",
+                    "--einfluss", f"KI-Arbeitshypothesen für Erstkodierung; endgültige Kodierungen manuell bestätigt und ggf. korrigiert",
+                ],
+                check=False,
+            )
+
 
 if __name__ == "__main__":
     main()
