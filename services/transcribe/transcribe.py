@@ -32,7 +32,7 @@ def _load_env() -> None:
 
     for env_file in candidates:
         if env_file.exists():
-            with open(env_file) as f:
+            with open(env_file, encoding="utf-8") as f:
                 for line in f:
                     line = line.strip()
                     if line and not line.startswith("#") and "=" in line:
@@ -152,45 +152,51 @@ def main() -> None:
     previous_context = ""
 
     total = len(chunks)
-    for chunk in chunks:
-        i = chunk.index
-        print(f"[2/4] Chunk {i + 1}/{total}  ({chunk.start_time / 60:.1f}–{chunk.end_time / 60:.1f} Min.)")
+    remaining_chunks = list(chunks)
+    try:
+        for chunk in chunks:
+            remaining_chunks = remaining_chunks[1:]
+            i = chunk.index
+            print(f"[2/4] Chunk {i + 1}/{total}  ({chunk.start_time / 60:.1f}–{chunk.end_time / 60:.1f} Min.)")
 
-        # Whisper-Transkription
-        print("      Whisper-Transkription...")
-        try:
-            raw = whisper.transcribe(
-                audio_path=chunk.path,
-                language=args.language,
-                time_offset=chunk.start_time,
-            )
-        except Exception as exc:
-            print(f"      FEHLER bei Whisper-Transkription: {exc}")
+            # Whisper-Transkription
+            print("      Whisper-Transkription...")
+            try:
+                raw = whisper.transcribe(
+                    audio_path=chunk.path,
+                    language=args.language,
+                    time_offset=chunk.start_time,
+                )
+            except Exception as exc:
+                print(f"      FEHLER bei Whisper-Transkription: {exc}")
+                chunk.cleanup()
+                sys.exit(1)
+
+            seg_count = len(raw["segments"])
+            print(f"      → {seg_count} Segment(s) erkannt (Sprache: {raw['language']}).")
+
+            # Dresing & Pehl Formatierung via Claude
+            print("      Formatierung nach Dresing & Pehl (Claude)...")
+            try:
+                formatted = formatter.format_chunk(
+                    raw_segments=raw["segments"],
+                    previous_context=previous_context,
+                    chunk_index=i,
+                )
+            except Exception as exc:
+                print(f"      FEHLER bei Claude-Formatierung: {exc}")
+                chunk.cleanup()
+                sys.exit(1)
+
+            formatted_blocks.append(formatted)
+            # Letzten ~400 Zeichen als Kontext für nächsten Chunk
+            previous_context = formatted[-400:] if len(formatted) > 400 else formatted
+
             chunk.cleanup()
-            sys.exit(1)
-
-        seg_count = len(raw["segments"])
-        print(f"      → {seg_count} Segment(s) erkannt (Sprache: {raw['language']}).")
-
-        # Dresing & Pehl Formatierung via Claude
-        print("      Formatierung nach Dresing & Pehl (Claude)...")
-        try:
-            formatted = formatter.format_chunk(
-                raw_segments=raw["segments"],
-                previous_context=previous_context,
-                chunk_index=i,
-            )
-        except Exception as exc:
-            print(f"      FEHLER bei Claude-Formatierung: {exc}")
-            chunk.cleanup()
-            sys.exit(1)
-
-        formatted_blocks.append(formatted)
-        # Letzten ~400 Zeichen als Kontext für nächsten Chunk
-        previous_context = formatted[-400:] if len(formatted) > 400 else formatted
-
-        chunk.cleanup()
-        print(f"      ✓ Chunk {i + 1} abgeschlossen.\n")
+            print(f"      ✓ Chunk {i + 1} abgeschlossen.\n")
+    finally:
+        for leftover in remaining_chunks:
+            leftover.cleanup()
 
     # ── Schritt 3: Zusammenführen ──────────────────────────────────────────────
     print("[3/4] Transkript zusammenführen...")
