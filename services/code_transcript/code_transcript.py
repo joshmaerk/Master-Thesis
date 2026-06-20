@@ -150,7 +150,7 @@ def _load_env() -> None:
     ]
     for env_file in candidates:
         if env_file.exists():
-            with open(env_file) as f:
+            with open(env_file, encoding="utf-8") as f:
                 for line in f:
                     line = line.strip()
                     if line and not line.startswith("#") and "=" in line:
@@ -190,8 +190,12 @@ class RTFParser:
                 "  pip install -r services/code_transcript/requirements.txt"
             )
 
-        with open(rtf_path, "r", encoding="ascii", errors="replace") as f:
-            rtf_content = f.read()
+        with open(rtf_path, "rb") as f:
+            rtf_bytes = f.read()
+        # Kodierung aus RTF-Header ableiten (\ansicpgNNNN), Fallback: cp1252
+        cpg_match = re.search(rb'\\ansicpg(\d+)', rtf_bytes[:512])
+        encoding = f"cp{cpg_match.group(1).decode()}" if cpg_match else "cp1252"
+        rtf_content = rtf_bytes.decode(encoding, errors="replace")
 
         plain_text = rtf_to_text(rtf_content)
         lines = plain_text.splitlines()
@@ -303,6 +307,7 @@ class KuckartzCoder:
                 memo="DRY-RUN",
             )
 
+        raw = ""
         try:
             response = self.client.messages.create(
                 model=self.model,
@@ -311,6 +316,9 @@ class KuckartzCoder:
                 messages=[{"role": "user", "content": user_prompt}],
             )
             raw = response.content[0].text.strip()
+            # Markdown-Fences entfernen (Claude gibt trotz Anweisung gelegentlich ```json...``` aus)
+            if raw.startswith("```"):
+                raw = re.sub(r'^```(?:json)?\s*|\s*```$', '', raw, flags=re.DOTALL).strip()
             data = json.loads(raw)
         except json.JSONDecodeError as exc:
             return KodierErgebnis(
