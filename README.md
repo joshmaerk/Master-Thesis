@@ -38,3 +38,30 @@ If `latexmk` or `pdflatex` is still not found in your current shell, restart the
 ```bash
 eval "$(/usr/libexec/path_helper)"
 ```
+
+## Zotero tagging for `92_Abstract`
+
+To auto-tag literature in Zotero (quality + topic + method tags), use:
+
+```bash
+python3 services/zotero_tag_abstracts.py --collection-name 92_Abstract
+```
+
+This runs as a dry-run by default. To write tags back to Zotero:
+
+```bash
+python3 services/zotero_tag_abstracts.py --collection-name 92_Abstract --apply
+```
+
+Configuration is read from `services/.env` (`ZOTERO_API_KEY`, `ZOTERO_USER_ID`, optional group settings) or via CLI flags.
+
+## Agent and automation guide
+
+Shared project knowledge for Claude Code, Codex, and other coding agents lives in `.claudedocs/`.
+Use `.claudedocs/user-guide.md` to choose the right slash command, specialized agent, or helper script.
+
+Validate agent documentation after changes with:
+
+```bash
+python3 scripts/check-agent-docs.py
+```

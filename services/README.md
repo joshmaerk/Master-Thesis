@@ -160,3 +160,56 @@ Secrets im GitHub-Repo anlegen:
 
 **Leere `.bib`-Datei nach dem Sync**
 → `--dry-run` zur Diagnose nutzen; ggf. `ZOTERO_USER_ID` und Bibliothekstyp prüfen.
+
+---
+
+## Zotero-Tagging fuer `92_Abstract` (`zotero_tag_abstracts.py`)
+
+Das Skript taggt Quellen in einer Zotero-Collection automatisch entlang von:
+
+- `qual:*` (Qualitaet: Quellentyp, Peer-Review, Impact, VHB/ABS soweit verfuegbar)
+- `thema:*` (Themen: z. B. SDT, Fuehrung, Entscheidung, GenAI, Bankensektor)
+- `methode:*` (Methodik: z. B. Experiment, Review, Interview, Survey, konzeptionell)
+
+### Voraussetzungen
+
+- Python 3.10+
+- gueltige Zotero-API-Zugangsdaten mit Schreibrechten fuer Tags
+
+### Konfiguration
+
+Standardmaessig nutzt das Skript dieselben ENV-Werte wie `zotero_sync.py`:
+
+- `ZOTERO_API_KEY`
+- `ZOTERO_USER_ID`
+- `ZOTERO_LIBRARY_TYPE` (`user` oder `group`)
+- `ZOTERO_GROUP_ID` (nur bei Group-Library)
+
+Werte koennen alternativ direkt als CLI-Parameter gesetzt werden.
+
+### Verwendung
+
+```bash
+# Dry-Run (Standard): zeigt geplante Aenderungen, schreibt nichts in Zotero
+python3 services/zotero_tag_abstracts.py --collection-name 92_Abstract
+
+# Nur Kategoriensystem ausgeben (ohne API-Zugriff)
+python3 services/zotero_tag_abstracts.py --print-taxonomy
+
+# Tags tatsaechlich in Zotero schreiben
+python3 services/zotero_tag_abstracts.py --collection-name 92_Abstract --apply
+
+# Mit Untercollections
+python3 services/zotero_tag_abstracts.py \
+  --collection-name 92_Abstract \
+  --include-subcollections \
+  --apply
+
+# Eindeutig ueber Collection-Key
+python3 services/zotero_tag_abstracts.py --collection-key ABCD1234 --apply
+```
+
+Standardmaessig ersetzt das Skript bereits vorhandene, vom Skript verwaltete Praefix-Tags (`qual:`, `thema:`, `methode:`), damit die Kategorisierung konsistent bleibt.
+Mit `--keep-managed-tags` bleiben diese Alt-Tags erhalten.
+
+Ein Laufreport wird als JSON unter `utils/zotero_tagging_92_abstract_report.json` geschrieben (Pfad via `--report-path` konfigurierbar).
