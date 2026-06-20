@@ -1,0 +1,17 @@
+# Transkriptions-Service — Abhängigkeiten
+# Installation: pip install -r services/transcribe/requirements.txt
+#
+# Systemvoraussetzung: ffmpeg muss installiert sein (für pydub)
+#   Ubuntu/Debian: sudo apt install ffmpeg
+#   macOS:         brew install ffmpeg
+#   Windows:       https://ffmpeg.org/download.html
+
+# OpenAI Whisper API (Speech-to-Text)
+openai>=1.14.0
+
+# Audio-Verarbeitung und Splitting
+pydub>=0.25.1
+
+# Anthropic Claude API (Dresing & Pehl Formatierung + Sprecherzuweisung)
+# Bereits in services/literature_review/requirements.txt — hier zur Vollständigkeit
+anthropic>=0.25.0
