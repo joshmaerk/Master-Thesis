@@ -28,6 +28,8 @@
 ## Text Generation
 
 - When generating thesis prose, apply `/humanizer` to the draft before delivering the final text.
+- After completing any task that touches thesis content or generates AI-assisted output, append a KI-Nutzung log entry:
+  `python3 services/ki_log/ki_log.py add --kapitel "..." --tool "Claude Code (claude-sonnet-4-6)" --zweck "..." --pruefung "Manuell überprüft" --einfluss "..."`
 
 ## Referenced Docs
 
