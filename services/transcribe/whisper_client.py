@@ -16,8 +16,7 @@ class WhisperClient:
                 "openai ist nicht installiert. Bitte ausführen:\n"
                 "  pip install -r services/transcribe/requirements.txt"
             )
-        self._OpenAI = OpenAI
-        self.api_key = api_key
+        self._client = OpenAI(api_key=api_key)
 
     def transcribe(
         self,
@@ -34,8 +33,7 @@ class WhisperClient:
           - 'segments': Liste mit {start, end, text} (Timestamps global adjustiert)
           - 'language': erkannte Sprache
         """
-        from openai import OpenAI
-        client = OpenAI(api_key=self.api_key)
+        client = self._client
 
         with open(audio_path, "rb") as f:
             response = client.audio.transcriptions.create(

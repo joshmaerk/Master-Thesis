@@ -237,4 +237,11 @@ class DresingPehlFormatter:
             messages=[{"role": "user", "content": prompt}],
         )
 
+        if response.stop_reason == "max_tokens":
+            raise RuntimeError(
+                "Transkript zu lang für einen einzigen Finalisierungs-Pass "
+                "(max_tokens=8192 überschritten). Verwende --no-finalize um diesen "
+                "Schritt zu überspringen."
+            )
+
         return response.content[0].text.strip()
