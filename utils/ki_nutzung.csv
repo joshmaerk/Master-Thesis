@@ -1,0 +1,2 @@
+Kapitel,Datum,KI_Tool_Version,Verwendungszweck,Pruefungsprozess,Einfluss
+Projekt-Setup / Thesis-Infrastruktur,2026-06-20,Claude Code (claude-sonnet-4-6),Erstellung /humanizer Skill und KI-Nutzungs-Logging-System; Konfiguration von Stop-Hook und CLAUDE.md-Regeln,Code manuell geprüft; Skill inhaltlich gegen blader/humanizer v2.8.0 Spezifikation validiert,Infrastruktur für automatisches KI-Logging und Texthuman­isierung bereitgestellt; kein Einfluss auf inhaltliche Thesis-Aussagen
