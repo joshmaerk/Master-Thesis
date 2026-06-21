@@ -12,29 +12,20 @@ on:
           - 'true'
           - 'false'
 
+# Cancel superseded runs on the same ref so the runner is not busy on stale commits.
+concurrency:
+  group: build-latex-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Install TeX Live
-        run: |
-          sudo apt-get update -q
-          sudo apt-get install -y --no-install-recommends \
-            texlive-latex-extra \
-            texlive-bibtex-extra \
-            texlive-publishers \
-            texlive-pictures \
-            biber \
-            texlive-lang-german \
-            texlive-fonts-recommended \
-            lmodern \
-            latexmk
 
       - name: Remove DRAFT watermark (if requested)
         if: inputs.draft_mode == 'false'
@@ -46,12 +37,14 @@ jobs:
             -e 's/\\SetWatermarkLightness/% \\SetWatermarkLightness/' \
             main.tex
 
-      - name: Compile LaTeX (full build)
-        run: |
-          pdflatex -interaction=nonstopmode main.tex
-          biber main
-          pdflatex -interaction=nonstopmode main.tex
-          pdflatex -interaction=nonstopmode main.tex
+      # Full TeX Live ships preinstalled in the Docker image, so there is no
+      # apt install step and no missing-package failures. latexmk runs biber
+      # and only the pdflatex passes that are actually required.
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          latexmk_use_lualatex: false
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
