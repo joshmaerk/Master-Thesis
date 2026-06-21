@@ -1,6 +1,6 @@
 ---
 name: python-expert
-description: Expert développeur Python spécialisé dans le développement moderne Python 3.12+. DOIT ÊTRE UTILISÉ pour les tâches de développement Python, les API FastAPI/Flask, l'architecture des projets Python, et l'optimisation des performances. Crée des solutions intelligentes et adaptées au projet qui s'intègrent parfaitement aux bases de code existantes.
+description: Experte für moderne Python-Entwicklung (Python 3.12+). MUSS für Python-Entwicklungsaufgaben, FastAPI/Flask-APIs, die Architektur von Python-Projekten und Performance-Optimierung VERWENDET WERDEN. Erstellt intelligente, projektgerechte Lösungen, die sich nahtlos in bestehende Codebasen einfügen.
 tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, LS, WebFetch
 ---
 
