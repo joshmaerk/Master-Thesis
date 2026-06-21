@@ -43,6 +43,20 @@
     & VHB-JOURQUAL-Filterung aller zitierten Quellen; Aktualitätsrecherche für A/A+-Journals via Websuche (Google Scholar, Wiley, SAGE); Identifikation neuerer A/A+-Publikationen 2024–2026; Bewertung der Forschungsstandaktualität; Empfehlungen für uncitierte Bib-Einträge (Doshi 2025 SMJ, Gagné \& Hewett 2025 JMS)
     & Manuell zu prüfen – VHB-Ratings KI-bewertet (QJE, JPSP) erfordern manuelle Verifikation; Paywall-Treffer (Kim 2025 HRM, Stollberger 2025 HR) erfordern Volltext-Prüfung durch Nutzer
     & Mittel – strukturierte Recherchegrundlage; keine Textveränderungen; Empfehlungen zur Zitierintegration verbleiben beim Nutzer \\
+\midrule
+  Build/CI
+    & 2026-06-21
+    & Claude Code (claude-sonnet-4-6)
+    & Fehlende lmodern.sty im GitHub-Actions LaTeX-Build behoben
+    & Manuell überprüft
+    & lmodern zur apt-Paketliste in build-latex.yml hinzugefügt; kein Inhalt der Thesis geändert \\
+\midrule
+  Build/CI
+    & 2026-06-21
+    & Claude Code (claude-sonnet-4-6)
+    & GitHub-Actions LaTeX-Build optimiert und fehlende Pakete behoben
+    & Manuell überprüft
+    & Workflow auf TeX-Live-Docker-Image (xu-cheng/latex-action) mit latexmk umgestellt; apt-Install entfernt, concurrency.cancel-in-progress ergänzt; kein Inhalt der Thesis geändert \\
 \bottomrule
 \end{tabular}
 \caption{KI-Nutzungsprotokoll nach Kapitel}
