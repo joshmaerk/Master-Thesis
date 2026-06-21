@@ -25,6 +25,20 @@
 - Do not manually edit `B_Literatur/*.bib`, secrets, audio files, transcripts, or coded interview data.
 - Do not commit `.env`, ignored interview data, build artifacts, or generated private files.
 
+## Code Behavior
+
+- Read `.claudedocs/karpathy-guidelines.md` before any code change (Python, Bash, LaTeX macros).
+- State assumptions explicitly; stop and ask when intent is unclear.
+- Write the minimum code that solves the problem — no speculative features.
+- Touch only what the task requires; mention but do not remove unrelated dead code.
+- Define a verifiable success criterion before multi-step tasks.
+
+## Text Generation
+
+- When generating thesis prose, apply `/humanizer` to the draft before delivering the final text.
+- After completing any task that touches thesis content or generates AI-assisted output, append a KI-Nutzung log entry:
+  `python3 services/ki_log/ki_log.py add --kapitel "..." --tool "Claude Code (claude-sonnet-4-6)" --zweck "..." --pruefung "Manuell überprüft" --einfluss "..."`
+
 ## Referenced Docs
 
 - Read `.claudedocs/architecture.md` when changing project structure, entry points, or chapter organization.
@@ -35,3 +49,4 @@
 - Read `.claudedocs/quality-checks.md` before final checks or CI-related changes.
 - Read `.claudedocs/git-workflow.md` before committing.
 - Read `.claudedocs/user-guide.md` to choose the right command, agent, or script.
+- Read `.claudedocs/karpathy-guidelines.md` before any code change (Python, Bash, LaTeX macros).
