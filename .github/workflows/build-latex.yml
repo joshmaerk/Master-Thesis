@@ -32,6 +32,7 @@ jobs:
             biber \
             texlive-lang-german \
             texlive-fonts-recommended \
+            lmodern \
             latexmk
 
       - name: Remove DRAFT watermark (if requested)
