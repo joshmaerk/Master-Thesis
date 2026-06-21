@@ -311,7 +311,7 @@ class KuckartzCoder:
         try:
             response = self.client.messages.create(
                 model=self.model,
-                max_tokens=512,
+                max_tokens=1024,
                 system=_SYSTEM_PROMPT,
                 messages=[{"role": "user", "content": user_prompt}],
             )

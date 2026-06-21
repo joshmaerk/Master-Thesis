@@ -1,5 +1,7 @@
 # Transkriptions-Skill — Dresing & Pehl (2017)
 
+Transkribiere eine Audio- oder Videodatei nach dem einfachen Transkriptionssystem von Dresing & Pehl (2017).
+Videodateien (MP4, MOV, MKV) werden automatisch in Audio konvertiert.
 
 ## Gemeinsame Referenzen
 
@@ -7,19 +9,20 @@ Vor Ausführung bei Bedarf lesen:
 - `.claudedocs/services.md`
 - `.claudedocs/user-guide.md`
 
-Transkribiere eine Audiodatei nach dem einfachen Transkriptionssystem von Dresing & Pehl (2017).
 Sprecher werden automatisch zugewiesen (I: = Interviewer, B: = Befragte Person).
+Personennamen und identifizierende Informationen werden automatisch pseudonymisiert.
 Ausgabe als RTF-Datei in interviews/transcripts/.
 
 ## Aufruf
 
 ```
-/transcribe <pfad-zur-audiodatei> [--interview-id IP-01]
+/transcribe <pfad-zur-datei> [--interview-id IP-01]
 ```
 
-Beispiel:
+Beispiele:
 ```
 /transcribe interviews/audio/interview_01.mp3 --interview-id IP-01
+/transcribe interviews/audio/interview_01.mp4 --interview-id IP-01
 ```
 
 ## Anweisungen
@@ -28,7 +31,7 @@ $ARGUMENTS
 
 Führe folgende Schritte durch:
 
-1. **Argument prüfen**: Lies den Pfad zur Audiodatei aus `$ARGUMENTS`. Falls kein Pfad angegeben,
+1. **Argument prüfen**: Lies den Pfad zur Datei aus `$ARGUMENTS`. Falls kein Pfad angegeben,
    liste alle Dateien in `interviews/audio/` auf und frage den Nutzer, welche verarbeitet werden soll.
 
 2. **Abhängigkeiten prüfen**: Stelle sicher, dass die Requirements installiert sind:
@@ -41,8 +44,11 @@ Führe folgende Schritte durch:
 
 4. **Transkription starten**:
    ```
-   python3 services/transcribe/transcribe.py <audiodatei> [--interview-id <id>]
+   python3 services/transcribe/transcribe.py <datei> [--interview-id <id>]
    ```
+   Bei MP4/MOV/MKV wird die Audiospur automatisch via ffmpeg extrahiert (Schritt 0/5).
+   Pseudonymisierung läuft automatisch als Schritt 4/5 — zum Überspringen: `--no-pseudonymize`.
+   Das Videooriginal bleibt erhalten — nicht löschen (siehe Hinweise).
 
 5. **Fortschritt verfolgen**: Zeige dem Nutzer an, welcher Chunk gerade verarbeitet wird
    und wie viele insgesamt zu verarbeiten sind.
@@ -51,14 +57,23 @@ Führe folgende Schritte durch:
    auf MAXQDA-Import hin.
 
 7. **Fehlerbehandlung**: Bei Fehlern (API-Key fehlt, ffmpeg nicht installiert, Datei nicht gefunden)
-   diagnostiziere die Ursache und gib klare Handlungsanweisungen.
+   diagnostiziere die Ursache und gib klare Handlungsanweisungen:
+   - ffmpeg fehlt → `brew install ffmpeg` (macOS) oder `sudo apt install ffmpeg` (Ubuntu)
+   - OpenAI-Key fehlt → platform.openai.com → API Keys
+   - Anthropic-Key fehlt → console.anthropic.com → API Keys
 
 ## Wichtige Hinweise
 
 - Audiodateien in `interviews/audio/` werden NICHT ins Git eingecheckt (Datenschutz)
 - Transkripte in `interviews/transcripts/` werden NICHT ins Git eingecheckt (Pseudonymisierung)
+- Zuordnungstabellen (`*.mapping.json`) werden ebenfalls NICHT ins Git eingecheckt — sie enthalten die Klarnamen-Pseudonym-Zuordnung und müssen sicher aufbewahrt werden
+- **MP4/Video-Originale NICHT löschen**: Das Video dient für manuelle Körpersprache-Überprüfung.
+  Auffällige nonverbale Reaktionen (Zögern, Aufleuchten, Unbehagen) können als Forschungsmemo
+  festgehalten werden — besonders relevant für die SDT-Grundbedürfnisse Autonomie/Kompetenzerleben.
+  MAXQDA unterstützt Video-Dokumente für optionale manuelle Video-Kodierung.
 - Der Interviewleitfaden liegt unter `C_Inhalt/Anhang/Interviewleitfaden_Masterarbeit_Maerker.pdf`
 - Bei mehreren Befragten in einem Interview: `--interview-id IP-01` (für B1:, B2: etc.)
+- Für verbesserte Sprecher-Erkennung (Phase 2): `--diarize` nutzt pyannote.audio (benötigt HF-Token)
 
 ## Transkriptionsstandard
 
@@ -68,3 +83,17 @@ Das Skript wendet alle 15 Regeln des einfachen Transkriptionssystems nach Dresin
 - I: / B: Sprecherkennzeichnung
 - Zeitmarken #HH:MM:SS# am Absatzende
 - VERSALIEN für Betonungen, ( …) für Pausen ≥3 Sek., (unv.) für Unverständliches
+- (lacht), (seufzt), (räuspert sich) für hörbare nonverbale Signale (Regel 12)
+
+## Post-Transkriptions-Checkliste
+
+Nach erfolgreicher RTF-Ausgabe:
+1. RTF-Datei in MAXQDA importieren
+2. Transkript manuell gegen Aufnahme gegenhören
+3. Speaker-Zuweisung (I:/B:) überprüfen und korrigieren
+4. Pseudonymisierung gegen Zuordnungstabelle (`.mapping.json`) prüfen — insbesondere:
+   - Alle Nennungen der befragten Person → Interview-ID (z.B. IP-01)
+   - Genannte Dritte → KP-01, KP-02, ...
+   - Institutionsnamen falls identifizierend → Org-A, Org-B, ...
+5. Bei Video-Interviews: Video einmalig durchsehen, auffällige nonverbale Reaktionen in Protokollnotiz festhalten
+6. Videooriginal archivieren (NICHT löschen)

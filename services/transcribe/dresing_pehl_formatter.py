@@ -165,10 +165,12 @@ class DresingPehlFormatter:
         raw_segments: List[Dict[str, Any]],
         previous_context: str = "",
         chunk_index: int = 0,
+        diarization_context: str = "",
     ) -> str:
         """
         Formatiert einen Transkript-Chunk nach Dresing & Pehl.
-        previous_context: Letzten ~300 Zeichen des vorherigen Chunks für Kontinuität.
+        previous_context:    Letzten ~300 Zeichen des vorherigen Chunks für Kontinuität.
+        diarization_context: Optional — Sprecher-Zeitstempel aus pyannote.audio als Kontext.
         Gibt formatierten Transkripttext zurück.
         """
         raw_text = self._segments_to_prompt_text(raw_segments)
@@ -181,10 +183,21 @@ class DresingPehlFormatter:
                 f"---\n"
             )
 
+        diarization_abschnitt = ""
+        if diarization_context:
+            diarization_abschnitt = (
+                f"\n## Automatische Sprecher-Diarisierung (pyannote.audio):\n"
+                f"{diarization_context}\n"
+                f"Nutze diese Zeitstempel als Hilfe: SPEAKER_00 und SPEAKER_01 entsprechen I: und B:.\n"
+                f"Entscheide anhand des Inhalts, welcher Sprecher der Interviewer (I:) ist.\n"
+                f"---\n"
+            )
+
         prompt = (
             f"{_DRESING_PEHL_REGELN}\n\n"
             f"{_INTERVIEW_KONTEXT}\n"
-            f"{kontext_abschnitt}\n"
+            f"{kontext_abschnitt}"
+            f"{diarization_abschnitt}\n"
             f"## Deine Aufgabe:\n\n"
             f"Formatiere das folgende Whisper-Rohtranskript nach den 15 Dresing & Pehl-Regeln.\n"
             f"Die Zeitangaben [HH:MM:SS] vor jedem Segment sind die globalen Startzeiten.\n\n"
@@ -214,7 +227,15 @@ class DresingPehlFormatter:
         """
         Abschließender Qualitäts- und Konsistenz-Pass über das vollständige Transkript.
         Korrigiert Sprecherzuweisungsfehler, Zeitmarken-Lücken und Chunk-Übergänge.
+        Bei sehr langen Transkripten wird rekursiv in Hälften aufgeteilt.
         """
+        return self._finalize_section(full_transcript)
+
+    def _finalize_section(self, transcript: str, depth: int = 0) -> str:
+        """Versucht einen Finalisierungs-Pass; halbiert rekursiv bei max_tokens-Überschreitung."""
+        if depth > 3:
+            return transcript
+
         prompt = (
             f"{_DRESING_PEHL_REGELN}\n\n"
             f"Du bekommst ein vollständiges Interview-Transkript, das in Abschnitten "
@@ -227,21 +248,31 @@ class DresingPehlFormatter:
             f"WICHTIG: Verändere den INHALT nicht. Nur Formatierung, Zeitmarken und "
             f"Sprecherzuweisung korrigieren.\n"
             f"Gib NUR das korrigierte Transkript aus.\n\n"
-            f"## Transkript:\n{full_transcript}\n\n"
+            f"## Transkript:\n{transcript}\n\n"
             f"## Korrigiertes Transkript:"
         )
 
-        response = self.client.messages.create(
+        collected = []
+        stop_reason = None
+        with self.client.messages.stream(
             model=self.model,
-            max_tokens=8192,
+            max_tokens=16000,
             messages=[{"role": "user", "content": prompt}],
-        )
+        ) as stream:
+            for text in stream.text_stream:
+                collected.append(text)
+            final_msg = stream.get_final_message()
+            stop_reason = final_msg.stop_reason
 
-        if response.stop_reason == "max_tokens":
-            raise RuntimeError(
-                "Transkript zu lang für einen einzigen Finalisierungs-Pass "
-                "(max_tokens=8192 überschritten). Verwende --no-finalize um diesen "
-                "Schritt zu überspringen."
-            )
+        if stop_reason == "max_tokens":
+            mid = len(transcript) // 2
+            split_at = transcript.rfind("\n\nI:", mid) or transcript.rfind("\n\nB:", mid)
+            if split_at <= 0:
+                split_at = mid
+            first_half = transcript[:split_at].strip()
+            second_half = transcript[split_at:].strip()
+            finalized_first = self._finalize_section(first_half, depth + 1)
+            finalized_second = self._finalize_section(second_half, depth + 1)
+            return finalized_first + "\n\n" + finalized_second
 
-        return response.content[0].text.strip()
+        return "".join(collected).strip()
