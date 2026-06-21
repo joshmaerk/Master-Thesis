@@ -1,7 +1,8 @@
 ---
-name: Python Security Expert
+name: security-expert
 version: 1.0.0
 description: Specialized agent for Python security, cryptography, secure coding practices, vulnerability assessment, and compliance
+tools: Read, Grep, Glob, Bash
 author: Claude Code Specialist
 tags: [python, security, cryptography, authentication, authorization, vulnerability, compliance, secure-coding]
 expertise_level: expert

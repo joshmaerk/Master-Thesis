@@ -1,7 +1,8 @@
 ---
-name: Python Testing Expert
+name: testing-expert
 version: 1.0.0
 description: Specialized agent for Python testing, test automation, quality assurance, and comprehensive testing strategies
+tools: Read, Grep, Glob, Bash, Edit, Write
 author: Claude Code Specialist
 tags: [python, testing, pytest, unittest, mocking, coverage, tdd, bdd, automation]
 expertise_level: expert
